@@ -42,7 +42,7 @@ def SendLoginData(request):
     #if nombreBD= jugador_nombre:
 '''
     user= {
-            "id":2
+            "id":100
             }
     #else:
         #user= {
@@ -67,7 +67,7 @@ def StartSession(request):
 
 '''
     user= {
-            "id":2
+            "id":200
             #"user":3,
             #"started":4
             }
@@ -89,7 +89,7 @@ def AddTry(request):
     sessionBD = jugador_objeto[0].session_id
 '''
     sessio= {
-            "id":34
+            "id":300
             #"debt":1,
             #"session":2
             }
@@ -99,7 +99,7 @@ def AddTry(request):
 @csrf_exempt
 def AddDay(request):
     session= {
-            "Nada":1,
+            "Nada":400
 
             }
     return JsonResponse(session)
@@ -107,7 +107,7 @@ def AddDay(request):
 @csrf_exempt
 def UpdateTry(request):
     session= {
-            "Nada":2,
+            "Nada":500
 
             }
     return JsonResponse(session)
@@ -115,7 +115,7 @@ def UpdateTry(request):
 @csrf_exempt
 def UpdateSession(request):
     session= {
-            "Nada":3,
+            "Nada":600
 
             }
     return JsonResponse(session)
