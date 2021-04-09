@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-'''
+
 class Reto(models.Model):
     nombre = models.CharField(max_length =30)
     minutos_jugados =models.IntegerField()
@@ -39,4 +39,3 @@ class Day(models.Model):
     num_elements_purchased = models.IntegerField()
     customers_rejected = models.IntegerField()
     money_generated_day = models.IntegerField()
-'''
