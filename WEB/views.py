@@ -1,13 +1,15 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.core import serializers
-from . models import Reto
+#from . models import Reto
 from django.views.decorators.csrf import csrf_exempt
 from json import loads
+'''
 from . models import User
 from . models import Session
 from . models import Try
 from . models import Day
+'''
 
 # Create your views here.
 
