@@ -1,5 +1,5 @@
 from django.contrib import admin
-
+'''
 from . models import Reto
 from . models import User
 from . models import Session
@@ -12,3 +12,4 @@ admin.site.register(User)
 admin.site.register(Session)
 admin.site.register(Try)
 admin.site.register(Day)
+'''

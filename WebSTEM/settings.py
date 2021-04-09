@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 with open(BASE_DIR / 'SECRET_KEY') as f:
      SECRET_KEY = f.read().strip()
-        
+
 #SECRET_KEY = '@81@9q57s%7&+=@b(hsysmi-(a93nm1vt-^+qa%@r$0^d**3pu'
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-     'WEB',
+     #'WEB',
 ]
 
 MIDDLEWARE = [
@@ -81,7 +81,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'medchembd',
-        'USER': 'FarmaceuticoUser',
+        'USER': 'farmaceuticouser',
         'PASSWORD': 'LibroVerde23',
         'HOST': 'localhost',
         'PORT': '5432',

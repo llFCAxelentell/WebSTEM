@@ -25,6 +25,7 @@ def stem(request):
 
 @csrf_exempt
 def SendLoginData(request):
+    '''
     body_unicode = request.body.decode('utf-8')
     body = loads(body_unicode)
 
@@ -37,9 +38,9 @@ def SendLoginData(request):
     passBD = jugador_objeto[0].password
     idBD = jugador_objeto[0].idd
     #if nombreBD= jugador_nombre:
-
+'''
     user= {
-            "id":idBD
+            "id":2
             }
     #else:
         #user= {
@@ -49,6 +50,7 @@ def SendLoginData(request):
 
 @csrf_exempt
 def StartSession(request):
+    '''
     body_unicode = request.body.decode('utf-8')
     body = loads(body_unicode)
 
@@ -61,11 +63,11 @@ def StartSession(request):
     startedBD = jugador_objeto[0].started
     idBD = jugador_objeto[0].idd
 
-
+'''
     user= {
-            "idd":idBD,
-            "user":user_idBD,
-            "started":startedBD
+            "idd":2,
+            "user":3,
+            "started":4
 
             }
 
@@ -73,6 +75,7 @@ def StartSession(request):
 
 @csrf_exempt
 def AddTry(request):
+    '''
     body_unicode = request.body.decode('utf-8')
     body = loads(body_unicode)
 
@@ -83,10 +86,10 @@ def AddTry(request):
 
     debt_idBD = jugador_objeto[0].debt
     sessionBD = jugador_objeto[0].session_id
-
+'''
     sessio= {
-            "debt":debt_idBD,
-            "session":sessionBD
+            "debt":1,
+            "session":2
 
             }
 
@@ -115,4 +118,3 @@ def UpdateSession(request):
 
             }
     return JsonResponse(session)
-
