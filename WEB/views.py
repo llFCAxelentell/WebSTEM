@@ -67,10 +67,9 @@ def StartSession(request):
 
 '''
     user= {
-            "idd":2,
-            "user":3,
-            "started":4
-
+            "id":2
+            #"user":3,
+            #"started":4
             }
 
     return JsonResponse(user)
@@ -90,9 +89,9 @@ def AddTry(request):
     sessionBD = jugador_objeto[0].session_id
 '''
     sessio= {
-            "debt":1,
-            "session":2
-
+            "id":34
+            #"debt":1,
+            #"session":2
             }
 
     return JsonResponse(sessio)
