@@ -42,7 +42,7 @@ def SendLoginData(request):
     #if nombreBD= jugador_nombre:
 
     user= {
-            "id":100
+            "id":idBD
             }
     #else:
         #user= {
