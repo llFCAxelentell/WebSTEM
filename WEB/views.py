@@ -48,7 +48,7 @@ def SendLoginData(request):
         #user= {
                 #"id":-1
                 #}
-    return JsonResponse(user)
+    return HttpResponse(idBD, content_type = "text/json-comment-filtered")
 
 @csrf_exempt
 def StartSession(request):
@@ -71,9 +71,8 @@ def StartSession(request):
             #"user":3,
             #"started":4
             }
-    uu=220
 
-    return HttpResponse(uu, content_type = "text/json-comment-filtered")
+    return HttpResponse(200, content_type = "text/json-comment-filtered")
 
 @csrf_exempt
 def AddTry(request):
@@ -95,7 +94,7 @@ def AddTry(request):
             #"session":2
             }
 
-    return JsonResponse(sessio)
+    return HttpResponse(300, content_type = "text/json-comment-filtered")
 
 @csrf_exempt
 def AddDay(request):
@@ -103,7 +102,7 @@ def AddDay(request):
             "Nada":400
 
             }
-    return JsonResponse(session)
+    return HttpResponse(400, content_type = "text/json-comment-filtered")
 
 @csrf_exempt
 def UpdateTry(request):
@@ -111,7 +110,7 @@ def UpdateTry(request):
             "Nada":500
 
             }
-    return JsonResponse(session)
+    return HttpResponse(500, content_type = "text/json-comment-filtered")
 
 @csrf_exempt
 def UpdateSession(request):
@@ -119,4 +118,4 @@ def UpdateSession(request):
             "Nada":600
 
             }
-    return JsonResponse(session)
+    return HttpResponse(600, content_type = "text/json-comment-filtered")
