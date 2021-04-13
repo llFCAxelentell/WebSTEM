@@ -71,8 +71,9 @@ def StartSession(request):
             #"user":3,
             #"started":4
             }
+    uu=220
 
-    return JsonResponse(user)
+    return uu
 
 @csrf_exempt
 def AddTry(request):
