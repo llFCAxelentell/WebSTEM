@@ -73,7 +73,7 @@ def StartSession(request):
             }
     uu=220
 
-    return uu
+    return HttpResponse(uu, content_type = "text/json-comment-filtered")
 
 @csrf_exempt
 def AddTry(request):
