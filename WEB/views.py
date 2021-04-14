@@ -43,13 +43,17 @@ def SendLoginData(request):
     #if nombreBD= jugador_nombre:
 
     user= {
-            "id":idBD
+            "idBD":idBD,
+            "nombreBD":nombreBD,
+            "passBD":passBD,
+            "jugador_nombre":jugador_nombre,
+            "jugador_pass":jugador_pass
             }
     #else:
         #user= {
                 #"id":-1
                 #}
-    return HttpResponse(idBD, content_type = "text/json-comment-filtered")
+    return JsonResponse(user)
 
 @csrf_exempt
 def StartSession(request):
