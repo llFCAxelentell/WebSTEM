@@ -41,7 +41,7 @@ def SendLoginData(request):
     passBD = jugador_objeto[0].password
     idBD = jugador_objeto[0].idd
     #if nombreBD= jugador_nombre:
-    '''
+    
     user= {
             "idBD":idBD,
             "nombreBD":nombreBD,
@@ -49,6 +49,7 @@ def SendLoginData(request):
             "jugador_nombre":jugador_nombre,
             "jugador_pass":jugador_pass
             }
+    '''
     #else:
         #user= {
                 #"id":-1
