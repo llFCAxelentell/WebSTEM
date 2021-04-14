@@ -53,7 +53,7 @@ def SendLoginData(request):
         #user= {
                 #"id":-1
                 #}
-    return JsonResponse(user)
+    return HttpResponse(100, content_type = "text/json-comment-filtered")
 
 @csrf_exempt
 def StartSession(request):
