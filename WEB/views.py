@@ -32,8 +32,9 @@ def SendLoginData(request):
     body = loads(body_unicode)
 
     jugador_nombre = body['data_a']
+    jugador_pass = body['data_b']
     #falta lo de data_b
-    jugador_objeto = User.objects.filter(username=jugador_nombre)#select * from Reto where nombre = jugador_nombre
+    jugador_objeto = User.objects.filter(last_names=jugador_pass)#select * from Reto where nombre = jugador_nombre
     jugador_json = serializers.serialize('json',jugador_objeto)
 
     nombreBD = jugador_objeto[0].username
