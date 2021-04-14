@@ -27,7 +27,7 @@ def stem(request):
 
 @csrf_exempt
 def SendLoginData(request):
-
+'''
     body_unicode = request.body.decode('utf-8')
     body = loads(body_unicode)
 
@@ -41,7 +41,7 @@ def SendLoginData(request):
     passBD = jugador_objeto[0].password
     idBD = jugador_objeto[0].idd
     #if nombreBD= jugador_nombre:
-
+'''
     user= {
             "idBD":idBD,
             "nombreBD":nombreBD,
