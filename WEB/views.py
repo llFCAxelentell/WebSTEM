@@ -41,7 +41,7 @@ def SendLoginData(request):
     passBD = jugador_objeto[0].password
     idBD = jugador_objeto[0].idd
     #if nombreBD= jugador_nombre:
-    
+
     user= {
             "idBD":idBD,
             "nombreBD":nombreBD,
@@ -58,27 +58,28 @@ def SendLoginData(request):
 
 @csrf_exempt
 def StartSession(request):
-    '''
+
     body_unicode = request.body.decode('utf-8')
     body = loads(body_unicode)
 
-    jugador_nombre = body['started']
-    #falta lo de dice out of range
-    jugador_objeto = Session.objects.filter(started=jugador_nombre)#select * from Reto where nombre = jugador_nombre
+    jugador_started = body['started']
+    jugador_user_id = body['user_id']
+
+    jugador_objeto = Session.objects.filter(started=jugador_user_id)
     jugador_json = serializers.serialize('json',jugador_objeto)
 
     user_idBD = jugador_objeto[0].user_id
     startedBD = jugador_objeto[0].started
     idBD = jugador_objeto[0].idd
 
-'''
+
     user= {
             "id":200
             #"user":3,
             #"started":4
             }
 
-    return HttpResponse(200, content_type = "text/json-comment-filtered")
+    return HttpResponse(idBD, content_type = "text/json-comment-filtered")
 
 @csrf_exempt
 def AddTry(request):
