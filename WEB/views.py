@@ -119,3 +119,10 @@ def UpdateSession(request):
 
             }
     return HttpResponse(600, content_type = "text/json-comment-filtered")
+
+@login_required
+def minutosJugador(request):
+    usuario = request.user
+    registros = Minutos.objects.filter(jugador=usuario)
+    minutos = registros[0].minutos
+    return render(request,'minutosJugador.html',{'minutos':minutos} )

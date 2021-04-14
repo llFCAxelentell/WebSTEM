@@ -13,4 +13,8 @@ urlpatterns = [
     path('AddDay',views.AddDay, name='AddDay'),
     path('UpdateTry',views.UpdateTry, name='UpdateTry'),
     path('UpdateSession',views.UpdateSession, name='UpdateSession'),
+    path('minutosJugador',views.minutosJugador, name = 'minutosJugador'),
+]
+urlpatterns += [
+    path('accounts/', include('django.contrib.auth.urls')),
 ]

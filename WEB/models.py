@@ -1,10 +1,15 @@
 from django.db import models
 
+
 # Create your models here.
 
 class Reto(models.Model):
     nombre = models.CharField(max_length =30)
     minutos_jugados =models.IntegerField()
+
+class Minutos(models.Model):
+    jugador= models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True )
+    minutos= models.IntegerField()
 
 class User(models.Model):
     idd = models.IntegerField(primary_key=True)
