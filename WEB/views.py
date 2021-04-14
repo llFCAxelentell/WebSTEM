@@ -102,7 +102,7 @@ def AddDay(request):
             "Nada":400
 
             }
-    return HttpResponse(400, content_type = "text/json-comment-filtered")
+    return HttpResponse("ok", content_type = "text/json-comment-filtered")
 
 @csrf_exempt
 def UpdateTry(request):
@@ -110,7 +110,7 @@ def UpdateTry(request):
             "Nada":500
 
             }
-    return HttpResponse(500, content_type = "text/json-comment-filtered")
+    return HttpResponse("ok", content_type = "text/json-comment-filtered")
 
 @csrf_exempt
 def UpdateSession(request):
@@ -118,7 +118,7 @@ def UpdateSession(request):
             "Nada":600
 
             }
-    return HttpResponse(600, content_type = "text/json-comment-filtered")
+    return HttpResponse("ok", content_type = "text/json-comment-filtered")
 '''
 @login_required
 def minutosJugador(request):
