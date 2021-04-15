@@ -9,7 +9,7 @@ class Reto(models.Model):
 
 
 class User(models.Model):
-    #idd = models.AutoField(auto_created=True, primary_key=True)
+    idd = models.AutoField(auto_created=True, primary_key=True)
     names = models.CharField(max_length =30)
     last_names = models.CharField(max_length =30)
     created = models.CharField(max_length =30)
@@ -20,19 +20,19 @@ class User(models.Model):
     birthdate = models.CharField(max_length =30)
 
 class Session(models.Model):
-    #idd = models.AutoField(auto_created=True, primary_key=True)
+    idd = models.AutoField(auto_created=True, primary_key=True)
     user_id = models.IntegerField()
     started = models.CharField(max_length =30)
     ended = models.CharField(max_length =30)
 
 class Try(models.Model):
-    #idd = models.AutoField(auto_created=True, primary_key=True)
+    idd = models.AutoField(auto_created=True, primary_key=True)
     session_id = models.IntegerField()
     try_num = models.IntegerField()
     debt = models.IntegerField()
 
 class Day(models.Model):
-    #idd = models.AutoField(auto_created=True, primary_key=True)
+    idd = models.AutoField(auto_created=True, primary_key=True)
     try_id = models.IntegerField()
     dayNumer = models.IntegerField()
     success = models.IntegerField()
