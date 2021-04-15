@@ -7,7 +7,7 @@ class Reto(models.Model):
     nombre = models.CharField(max_length =30)
     minutos_jugados =models.IntegerField()
 
-
+'''
 
 class User(models.Model):
     idd = models.AutoField(primary_key=True)
@@ -25,12 +25,14 @@ class Session(models.Model):
     user_id = models.IntegerField()
     started = models.CharField(max_length =30)
     ended = models.CharField(max_length =30)
+    '''
 
 class Session2(models.Model):
     user_id = models.IntegerField()
     started = models.CharField(max_length =30)
     ended = models.CharField(max_length =30)
 
+'''
 class Try(models.Model):
     idd = models.AutoField( primary_key=True)
     session_id = models.IntegerField()
@@ -47,3 +49,4 @@ class Day(models.Model):
     num_elements_purchased = models.IntegerField()
     customers_rejected = models.IntegerField()
     money_generated_day = models.IntegerField()
+'''
