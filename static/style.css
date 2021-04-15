@@ -221,10 +221,17 @@ h3 {
     overflow: hidden;
 }
 
-div.graficas {
-    margin-left: 15%;
+
+.grid-container8 {
+    display: grid;
+    grid-template-columns: 48% 48%;
+    grid-gap: 2%;
+    margin-top: 2%;
 }
 
+.grid-container8 > div {
+    text-align: center;
+}
 /*-------------PAGINA STEM-------------*/
 /*STEM*/
 .grid-container6 {
