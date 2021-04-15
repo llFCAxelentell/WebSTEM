@@ -56,7 +56,7 @@ def SendLoginData(request):
         #user= {
                 #"id":-1
                 #}
-    return HttpResponse(100, content_type = "text/json-comment-filtered")
+    return HttpResponse(100)
 
 @csrf_exempt
 def StartSession(request):
@@ -85,7 +85,7 @@ def StartSession(request):
 
     return HttpResponse(idBD, content_type = "text/json-comment-filtered")
     '''
-    return HttpResponse(1, content_type = "text/json-comment-filtered")
+    return HttpResponse(200)
 
 
 @csrf_exempt
@@ -108,7 +108,7 @@ def AddTry(request):
             #"session":2
             }
 
-    return HttpResponse(300, content_type = "text/json-comment-filtered")
+    return HttpResponse(300)
 
 @csrf_exempt
 def AddDay(request):
@@ -116,7 +116,7 @@ def AddDay(request):
             "Nada":400
 
             }
-    return HttpResponse("okAddDay", content_type = "text/json-comment-filtered")
+    return HttpResponse("okAddDay")
 
 @csrf_exempt
 def UpdateTry(request):
@@ -124,7 +124,7 @@ def UpdateTry(request):
             "Nada":500
 
             }
-    return HttpResponse("okUpdateTry", content_type = "text/json-comment-filtered")
+    return HttpResponse("okUpdateTry")
 
 @csrf_exempt
 def UpdateSession(request):
@@ -132,7 +132,7 @@ def UpdateSession(request):
             "Nada":600
 
             }
-    return HttpResponse("okUpdateSession", content_type = "text/json-comment-filtered")
+    return HttpResponse("okUpdateSession")
 '''
 @login_required
 def minutosJugador(request):
