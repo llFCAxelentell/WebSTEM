@@ -20,7 +20,7 @@ class User(models.Model):
     birthdate = models.CharField(max_length =30)
 
 class Session(models.Model):
-    id = models.AutoField(primary_key=True)
+    idd = models.AutoField(primary_key=True)
     user_id = models.IntegerField()
     started = models.CharField(max_length =30)
     ended = models.CharField(max_length =30)

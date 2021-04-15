@@ -65,7 +65,7 @@ def StartSession(request):
     jugador_started = body['started']
     jugador_user_id = body['user_id']
 
-    p = Session(id=88,user_id=jugador_user_id, started=jugador_started, ended='som')
+    p = Session(idd=88,user_id=jugador_user_id, started=jugador_started, ended='som')
     p.save()
     jugador_objeto = Session.objects.filter(user_id=jugador_user_id)
     jugador_json = serializers.serialize('json',jugador_objeto)
