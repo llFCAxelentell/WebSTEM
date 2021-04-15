@@ -6,6 +6,7 @@ from django.views.decorators.csrf import csrf_exempt
 from json import loads
 
 from . models import User
+from . models import Session2
 from . models import Session
 from . models import Try
 from . models import Day
@@ -65,9 +66,9 @@ def StartSession(request):
     jugador_started = body['started']
     jugador_user_id = body['user_id']
 
-    p = Session(user_id=jugador_user_id, started=jugador_started, ended='som')
+    p = Session2(user_id=jugador_user_id, started=jugador_started, ended='som')
     p.save()
-    jugador_objeto = Session.objects.filter(user_id=jugador_user_id)
+    jugador_objeto = Session2.objects.filter(user_id=jugador_user_id)
     jugador_json = serializers.serialize('json',jugador_objeto)
 
     user_idBD = jugador_objeto[0].user_id

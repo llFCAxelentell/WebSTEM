@@ -8,6 +8,7 @@ class Reto(models.Model):
     minutos_jugados =models.IntegerField()
 
 
+
 class User(models.Model):
     idd = models.AutoField(primary_key=True)
     names = models.CharField(max_length =30)
@@ -21,6 +22,11 @@ class User(models.Model):
 
 class Session(models.Model):
     idd = models.AutoField(primary_key=True)
+    user_id = models.IntegerField()
+    started = models.CharField(max_length =30)
+    ended = models.CharField(max_length =30)
+
+class Session2(models.Model):
     user_id = models.IntegerField()
     started = models.CharField(max_length =30)
     ended = models.CharField(max_length =30)
