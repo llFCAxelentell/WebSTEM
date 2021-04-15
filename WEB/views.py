@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.core import serializers
 from . models import Reto
-from . models import Session2
+from . models import Sesion
 from django.views.decorators.csrf import csrf_exempt
 from json import loads
 '''
@@ -60,7 +60,7 @@ def SendLoginData(request):
 
 @csrf_exempt
 def StartSession(request):
-
+    '''
     body_unicode = request.body.decode('utf-8')
     body = loads(body_unicode)
 
@@ -84,6 +84,9 @@ def StartSession(request):
             }
 
     return HttpResponse(idBD, content_type = "text/json-comment-filtered")
+    '''
+    return HttpResponse(1, content_type = "text/json-comment-filtered")
+
 
 @csrf_exempt
 def AddTry(request):

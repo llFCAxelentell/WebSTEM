@@ -27,7 +27,7 @@ class Session(models.Model):
     ended = models.CharField(max_length =30)
     '''
 
-class Session2(models.Model):
+class Sesion(models.Model):
     user_id = models.IntegerField()
     started = models.CharField(max_length =30)
     ended = models.CharField(max_length =30)

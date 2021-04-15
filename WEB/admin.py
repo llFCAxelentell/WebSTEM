@@ -2,8 +2,8 @@ from django.contrib import admin
 
 from . models import Reto
 admin.site.register(Reto)
-from . models import Session2
-admin.site.register(Session2)
+from . models import Sesion
+admin.site.register(Sesion)
 
 '''
 from . models import User
