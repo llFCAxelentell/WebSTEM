@@ -10,7 +10,10 @@
 </head>
 
 <body>
-
+    <audio id="musica" hidden loop preload oncanplay="musicaF()">
+        <source src="{% static 'AMBIENCE_Witch_World.mp3'%}" type="audio/mpeg">
+        <script src="{%static 'script.js'%}"></script>
+    </audio>
     <div class="navegador">
         <h1><img src="{% static 'logo1.png'%}" alt="decorativo">Medieval Chemist<img src="{% static 'logo1.png'%}" alt="decorativo"></h1>
         <ul class="nav">
