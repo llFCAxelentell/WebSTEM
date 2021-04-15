@@ -19,12 +19,6 @@ class User(models.Model):
     username = models.CharField(max_length =30)
     gender = models.CharField(max_length =30)
     birthdate = models.CharField(max_length =30)
-
-class Session(models.Model):
-    idd = models.AutoField(primary_key=True)
-    user_id = models.IntegerField()
-    started = models.CharField(max_length =30)
-    ended = models.CharField(max_length =30)
     '''
 
 class Sesion(models.Model):

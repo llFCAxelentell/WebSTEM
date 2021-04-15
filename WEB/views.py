@@ -7,13 +7,10 @@ from django.views.decorators.csrf import csrf_exempt
 from json import loads
 '''
 from . models import User
-
 from . models import Session
 from . models import Try
 from . models import Day
 '''
-
-# Create your views here.
 
 def index(request):
     return render(request, 'index.html')
@@ -102,37 +99,26 @@ def AddTry(request):
     debt_idBD = jugador_objeto[0].debt
     sessionBD = jugador_objeto[0].session_id
 '''
-    sessio= {
-            "id":300
-            #"debt":1,
-            #"session":2
-            }
+
 
     return HttpResponse(300)
 
 @csrf_exempt
 def AddDay(request):
-    session= {
-            "Nada":400
-
-            }
+    #falta código
     return HttpResponse("okAddDay")
 
 @csrf_exempt
 def UpdateTry(request):
-    session= {
-            "Nada":500
-
-            }
+    #falta código
     return HttpResponse("okUpdateTry")
 
 @csrf_exempt
 def UpdateSession(request):
-    session= {
-            "Nada":600
-
-            }
+    #falta código
     return HttpResponse("okUpdateSession")
+
+    #a esto no le tomes ss, plox
 '''
 @login_required
 def minutosJugador(request):
