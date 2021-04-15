@@ -39,7 +39,7 @@ def SendLoginData(request):
 
     nombreBD = jugador_objeto[0].username
     passBD = jugador_objeto[0].password
-    idBD = jugador_objeto[0].idd
+    idBD = jugador_objeto[0].id
     #if nombreBD= jugador_nombre:
 
     user= {
@@ -65,14 +65,14 @@ def StartSession(request):
     jugador_started = body['started']
     jugador_user_id = body['user_id']
 
-    p = Session(idd=66,user_id=jugador_user_id, started=jugador_started, ended='som')
+    p = Session(id=66,user_id=jugador_user_id, started=jugador_started, ended='som')
     p.save()
     jugador_objeto = Session.objects.filter(user_id=jugador_user_id)
     jugador_json = serializers.serialize('json',jugador_objeto)
 
     user_idBD = jugador_objeto[0].user_id
     startedBD = jugador_objeto[0].started
-    idBD = jugador_objeto[0].idd
+    idBD = jugador_objeto[0].id
 
 
     user= {
