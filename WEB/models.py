@@ -7,10 +7,8 @@ class Reto(models.Model):
     nombre = models.CharField(max_length =30)
     minutos_jugados =models.IntegerField()
 
-'''
 
-class User(models.Model):
-    idd = models.AutoField(primary_key=True)
+class Usuario(models.Model):
     names = models.CharField(max_length =30)
     last_names = models.CharField(max_length =30)
     created = models.CharField(max_length =30)
@@ -19,23 +17,21 @@ class User(models.Model):
     username = models.CharField(max_length =30)
     gender = models.CharField(max_length =30)
     birthdate = models.CharField(max_length =30)
-    '''
+
 
 class Sesion(models.Model):
-    user_id = models.IntegerField()
+    user_id = models.ForeignKey(Usuario, blank=False, null=False)
     started = models.CharField(max_length =30)
     ended = models.CharField(max_length =30)
 
-'''
+
 class Try(models.Model):
-    idd = models.AutoField( primary_key=True)
-    session_id = models.IntegerField()
+    session_id = models.ForeignKey(Sesion, blank=False, null=False)
     try_num = models.IntegerField()
     debt = models.IntegerField()
 
 class Day(models.Model):
-    idd = models.AutoField(primary_key=True)
-    try_id = models.IntegerField()
+    try_id = models.ForeignKey(Try, blank=False, null=False)
     dayNumer = models.IntegerField()
     success = models.IntegerField()
     num_compounds_made = models.IntegerField()
@@ -43,4 +39,3 @@ class Day(models.Model):
     num_elements_purchased = models.IntegerField()
     customers_rejected = models.IntegerField()
     money_generated_day = models.IntegerField()
-'''

@@ -5,12 +5,12 @@ from . models import Reto
 from . models import Sesion
 from django.views.decorators.csrf import csrf_exempt
 from json import loads
-'''
-from . models import User
-from . models import Session
+
+from . models import Usuario
+
 from . models import Try
 from . models import Day
-'''
+
 
 def index(request):
     return render(request, 'index.html')
