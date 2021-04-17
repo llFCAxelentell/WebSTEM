@@ -45,7 +45,7 @@ def SendLoginData(request):
 
 @csrf_exempt
 def StartSession(request):
-    todos = Usuario.objects
+    todos = Usuario.objects.username
     print(todos)
     '''
     body_unicode = request.body.decode('utf-8')
