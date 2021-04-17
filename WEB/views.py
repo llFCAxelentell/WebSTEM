@@ -43,6 +43,7 @@ def SendLoginData(request):
 
     return HttpResponse(idBD)
 
+@csrf_exempt
 def minutosJugadosTotales(request):
         body_unicode = request.body.decode('utf-8')
         body = loads(body_unicode)
