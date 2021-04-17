@@ -32,7 +32,6 @@ def SendLoginData(request):
 
     jugador_nombre = body['data_a']
     jugador_pass = body['data_b']
-    #falta lo de data_b
     jugador_objeto = Usuario.objects.filter(username=jugador_nombre)#select * from Reto where nombre = jugador_nombre
     jugador_json = serializers.serialize('json',jugador_objeto)
 
@@ -40,7 +39,7 @@ def SendLoginData(request):
     passBD = jugador_objeto[0].password
 
     #if nombreBD= jugador_nombre:
-
+    print(jugador_objeto[0].id)
     user= {
 
             "nombreBD":nombreBD,
@@ -53,7 +52,7 @@ def SendLoginData(request):
         #user= {
                 #"id":-1
                 #}
-    return HttpResponse(100)
+    return HttpResponse(jugador_objeto[0].id)
 
 @csrf_exempt
 def StartSession(request):
