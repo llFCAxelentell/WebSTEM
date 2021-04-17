@@ -1,9 +1,5 @@
 from django.db import models
 
-
-# Create your models here.
-
-
 class Usuario(models.Model):
     names = models.CharField(max_length =30)
     last_names = models.CharField(max_length =30)
@@ -14,12 +10,10 @@ class Usuario(models.Model):
     gender = models.CharField(max_length =30)
     birthdate = models.DateField(blank=True, null=True)
 
-
 class Sesion(models.Model):
     user_id = models.ForeignKey(Usuario, on_delete=models.SET_NULL, blank=True, null=True)
     started = models.DateTimeField(blank=True, null=True)
     ended = models.DateTimeField(blank=True, null=True)
-
 
 class Try(models.Model):
     session_id = models.ForeignKey(Sesion, on_delete=models.SET_NULL, blank=True, null=True)

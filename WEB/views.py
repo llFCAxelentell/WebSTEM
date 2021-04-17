@@ -63,8 +63,7 @@ def minutosJugadosTotales(request):
 
 @csrf_exempt
 def StartSession(request):
-    todos = Usuario.objects.username
-    print(todos)
+    
     '''
     body_unicode = request.body.decode('utf-8')
     body = loads(body_unicode)
