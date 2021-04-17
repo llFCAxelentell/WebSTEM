@@ -20,18 +20,18 @@ class Usuario(models.Model):
 
 
 class Sesion(models.Model):
-    user_id = models.ForeignKey(Usuario, blank=False, null=False)
+    user_id = models.ForeignKey(Usuario, models.CASCADE, blank=False, null=False)
     started = models.CharField(max_length =30)
     ended = models.CharField(max_length =30)
 
 
 class Try(models.Model):
-    session_id = models.ForeignKey(Sesion, blank=False, null=False)
+    session_id = models.ForeignKey(Sesion, models.CASCADE, blank=False, null=False)
     try_num = models.IntegerField()
     debt = models.IntegerField()
 
 class Day(models.Model):
-    try_id = models.ForeignKey(Try, blank=False, null=False)
+    try_id = models.ForeignKey(Try, models.CASCADE, blank=False, null=False)
     dayNumer = models.IntegerField()
     success = models.IntegerField()
     num_compounds_made = models.IntegerField()
