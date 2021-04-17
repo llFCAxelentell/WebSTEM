@@ -13,5 +13,7 @@ urlpatterns = [
     path('AddDay',views.AddDay, name='AddDay'),
     path('UpdateTry',views.UpdateTry, name='UpdateTry'),
     path('UpdateSession',views.UpdateSession, name='UpdateSession'),
+    path('minutosJugadosTotales',views.minutosJugadosTotales, name='minutosJugadosTotales'),
+
 
 ]
