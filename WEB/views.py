@@ -26,29 +26,29 @@ def stem(request):
 
 @csrf_exempt
 def SendLoginData(request):
-    '''
+    
     body_unicode = request.body.decode('utf-8')
     body = loads(body_unicode)
 
     jugador_nombre = body['data_a']
     jugador_pass = body['data_b']
     #falta lo de data_b
-    jugador_objeto = User.objects.filter(last_names=jugador_pass)#select * from Reto where nombre = jugador_nombre
+    jugador_objeto = User.objects.filter(username=jugador_nombre)#select * from Reto where nombre = jugador_nombre
     jugador_json = serializers.serialize('json',jugador_objeto)
 
     nombreBD = jugador_objeto[0].username
     passBD = jugador_objeto[0].password
-    idBD = jugador_objeto[0].id
+
     #if nombreBD= jugador_nombre:
 
     user= {
-            "idBD":idBD,
+
             "nombreBD":nombreBD,
             "passBD":passBD,
             "jugador_nombre":jugador_nombre,
             "jugador_pass":jugador_pass
             }
-    '''
+
     #else:
         #user= {
                 #"id":-1
