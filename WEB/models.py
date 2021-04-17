@@ -7,7 +7,7 @@ from django.db import models
 class Usuario(models.Model):
     names = models.CharField(max_length =30)
     last_names = models.CharField(max_length =30)
-    created = models.CharField(max_length =30)
+    created = models.DateTimeField(blank=True, null=True)
     email = models.CharField(max_length =30)
     password = models.CharField(max_length =255)
     username = models.CharField(max_length =30)
@@ -17,8 +17,8 @@ class Usuario(models.Model):
 
 class Sesion(models.Model):
     user_id = models.ForeignKey(Usuario, on_delete=models.SET_NULL, blank=True, null=True)
-    started = models.DateField(blank=True, null=True)
-    ended = models.DateField(blank=True, null=True)
+    started = models.DateTimeField(blank=True, null=True)
+    ended = models.DateTimeField(blank=True, null=True)
 
 
 class Try(models.Model):
