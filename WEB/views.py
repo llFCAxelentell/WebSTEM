@@ -45,6 +45,7 @@ def SendLoginData(request):
 
 @csrf_exempt
 def StartSession(request):
+    '''
     body_unicode = request.body.decode('utf-8')
     body = loads(body_unicode)
 
@@ -67,8 +68,8 @@ def StartSession(request):
             #"started":4
             }
 
-
-    return HttpResponse(idBD)
+    '''
+    return HttpResponse(200)
 
 
 @csrf_exempt
