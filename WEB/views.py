@@ -37,40 +37,28 @@ def SendLoginData(request):
 
     nombreBD = jugador_objeto[0].username
     passBD = jugador_objeto[0].password
+    idBD = jugador_objeto[0].id
 
-    #if nombreBD= jugador_nombre:
-    print(jugador_objeto[0].id)
-    user= {
+    #FALTA VALIDAR LOS DATOS CON UN IF
 
-            "nombreBD":nombreBD,
-            "passBD":passBD,
-            "jugador_nombre":jugador_nombre,
-            "jugador_pass":jugador_pass
-            }
-
-    #else:
-        #user= {
-                #"id":-1
-                #}
-    return HttpResponse(jugador_objeto[0].id)
+    return HttpResponse(idBD)
 
 @csrf_exempt
 def StartSession(request):
-    '''
     body_unicode = request.body.decode('utf-8')
     body = loads(body_unicode)
 
-    jugador_started = body['started']
     jugador_user_id = body['user_id']
+    jugador_started = body['started']
 
-    p = Session2(user_id=jugador_user_id, started=jugador_started, ended='som')
+    p = Sesion(user_id=jugador_user_id, started=jugador_started, ended=null)
     p.save()
-    jugador_objeto = Session2.objects.filter(user_id=jugador_user_id)
+    jugador_objeto = Sesion.objects.filter(user_id=jugador_user_id)
     jugador_json = serializers.serialize('json',jugador_objeto)
 
     user_idBD = jugador_objeto[0].user_id
     startedBD = jugador_objeto[0].started
-    idBD = jugador_objeto[0].idd
+    idBD = jugador_objeto[0].id
 
 
     user= {
@@ -79,9 +67,8 @@ def StartSession(request):
             #"started":4
             }
 
-    return HttpResponse(idBD, content_type = "text/json-comment-filtered")
-    '''
-    return HttpResponse(200)
+
+    return HttpResponse(idBD)
 
 
 @csrf_exempt
