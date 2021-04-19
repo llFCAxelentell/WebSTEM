@@ -67,7 +67,7 @@ def StartSession(request):
 
     jugador_user_id = body['user_id']
     jugador_started = body['started']
-    ahorita= datetime.now().datetime()
+    ahorita= datetime.datetime.now()
     print(ahorita)
     #p = Sesion(user_id = Usuario(jugador_user_id), started=jugador_started, ended=None)
     #p.save()
