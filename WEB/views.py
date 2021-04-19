@@ -66,27 +66,11 @@ def StartSession(request):
     jugador_user_id = body['user_id']
     jugador_started = body['started']
     ahorita= dt.now()
-    print(ahorita)
     p = Sesion(user_id = Usuario(jugador_user_id), started=ahorita, ended=None)
     p.save()
     print(p.id)
-    '''
-    jugador_objeto = Sesion.objects.filter(user_id=jugador_user_id)
-    jugador_json = serializers.serialize('json',jugador_objeto)
 
-    user_idBD = jugador_objeto[0].user_id
-    startedBD = jugador_objeto[0].started
-    idBD = jugador_objeto[0].id
-    '''
-
-    user= {
-            "id":200
-            #"user":3,
-            #"started":4
-            }
-
-
-    return HttpResponse(200)
+    return HttpResponse(p.id)
 
 
 @csrf_exempt
