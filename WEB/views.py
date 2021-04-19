@@ -77,8 +77,8 @@ def minutosJugadosTotales(request):
             print("star ")
             print(star[i])
 
-            #tiempo = end[i] - star[i]
-            #print(tiempo)
+            tiempo = end[i] - star[i]
+            print(tiempo)
             #last_datetime__lt=now + datetime.timedelta(seconds=1)*F("interval"))
             #minutosTotales += tiempo
 
