@@ -66,11 +66,13 @@ def minutosJugadosTotales(request):
         end = Sesion.objects.values_list('ended', flat=True).distinct()
         print(star)
         print(end)
+        '''
         for i in range(len(star)):
             tiempo = end[i] - star[i]
+            last_datetime__lt=now + datetime.timedelta(seconds=1)*F("interval"))
             minutosTotales += tiempo
-
-        return HttpResponse(minutosTotales)
+            '''
+        return HttpResponse(5000)
 
 
 
