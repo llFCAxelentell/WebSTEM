@@ -1,14 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.core import serializers
-from datetime import datetime
+from datetime import datetime as dt
 from django.db.models import F, Func
 from . models import Sesion
 from django.views.decorators.csrf import csrf_exempt
 from json import loads
-
 from . models import Usuario
-
 from . models import Try
 from . models import Day
 
@@ -67,7 +65,7 @@ def StartSession(request):
 
     jugador_user_id = body['user_id']
     jugador_started = body['started']
-    ahorita= datetime.datetime.now()
+    ahorita= dt.datetime.now()
     print(ahorita)
     #p = Sesion(user_id = Usuario(jugador_user_id), started=jugador_started, ended=None)
     #p.save()
