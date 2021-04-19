@@ -59,13 +59,12 @@ def minutosJugadosTotales(request):
         SumaMinutos = sum(round(segundos))
         SumaMinutos_json = serializers.serialize('json',SumaMinnutos)
         '''
-        star= []
-        end = []
+        
         tiempo=0
         minutosTotales=0
-        star = Sesion.objects.filter(started)
-        end = Sesion.objects.filter(ended)
-        for i in range(len(started)):
+        star = Sesion.objects.values_list('started', flat=True).distinct()
+        end = Sesion.objects.values_list('ended', flat=True).distinct()
+        for i in range(len(star)):
             tiempo = end[j] - star[i]
             minutosTotales += tiempo
 
