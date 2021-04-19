@@ -69,6 +69,7 @@ def StartSession(request):
     print(ahorita)
     p = Sesion(user_id = Usuario(jugador_user_id), started=ahorita, ended=None)
     p.save()
+    print(p.id)
     '''
     jugador_objeto = Sesion.objects.filter(user_id=jugador_user_id)
     jugador_json = serializers.serialize('json',jugador_objeto)
