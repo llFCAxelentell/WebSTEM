@@ -62,8 +62,10 @@ def minutosJugadosTotales(request):
 
         tiempo=0
         minutosTotales=0
-        star = Sesion.objects.values_list('started', flat=True).distinct()
-        end = Sesion.objects.values_list('ended', flat=True).distinct()
+        #star = Sesion.objects.values_list('started', flat=True).distinct()
+        #end = Sesion.objects.values_list('ended', flat=True).distinct()
+        star= Sesion.object.values('started')
+        end= Sesion.object.values('ended')
         print(star)
         print(end)
         #aa=Sesion.objects.annotate(duration = Func(F('ended'), F('started'), function='year'))
@@ -74,7 +76,7 @@ def minutosJugadosTotales(request):
             print(end[i])
             print("star ")
             print(star[i])
-            
+
             tiempo = end[i] - star[i]
             print(tiempo)
             #last_datetime__lt=now + datetime.timedelta(seconds=1)*F("interval"))
