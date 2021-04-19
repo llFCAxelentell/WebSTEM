@@ -46,45 +46,20 @@ def SendLoginData(request):
 
 @csrf_exempt
 def minutosJugadosTotales(request):
-        '''
-        body_unicode = request.body.decode('utf-8')
-        body = loads(body_unicode)
-        startedMin = body['started']
-        startedMin2 = Sesion.objects.filter(started=startedMin)
-        endedMin = body['ended']
-        endedMin2 = Sesion.objects.filter(ended=endedMin)
-        FMT = '%Y/%m/%d, %H:%M:%S'
-        dif = (datetime.strptime(startedMin2,FMT)-datetime.strptime(endedMin2,FMT))/60
-        segundos = dif.total_seconds()
-        SumaMinutos = sum(round(segundos))
-        SumaMinutos_json = serializers.serialize('json',SumaMinnutos)
-        '''
 
         tiempo=0
         minutosTotales=0
         star = Sesion.objects.values_list('started', flat=True)
         end = Sesion.objects.values_list('ended', flat=True)
-        #star= Sesion.objects.values('started')
-        #end= Sesion.objects.values('ended')
-        print(star)
-        print(end)
-        #aa=Sesion.objects.annotate(duration = Func(F('ended'), F('started'), function='year'))
-        #print(aa)
+
         minutosTotales =0.0
         for i in range(len(star)):
-            #print("end ")
-            print(end[i])
-            #print("star ")
-            print(star[i])
 
             tiempo = end[i] - star[i]
             minutes = tiempo.total_seconds() / 60
-            print(minutes)
-            #last_datetime__lt=now + datetime.timedelta(seconds=1)*F("interval"))
             minutosTotales += minutes
-        print(minutosTotales)
 
-        return HttpResponse(5000)
+        return HttpResponse(minutosTotales)
 
 
 
