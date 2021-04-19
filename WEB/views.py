@@ -70,7 +70,7 @@ def minutosJugadosTotales(request):
         print(end)
         #aa=Sesion.objects.annotate(duration = Func(F('ended'), F('started'), function='year'))
         #print(aa)
-
+        minutosTotales =0.0
         for i in range(len(star)):
             #print("end ")
             print(end[i])
@@ -81,7 +81,8 @@ def minutosJugadosTotales(request):
             minutes = tiempo.total_seconds() / 60
             print(minutes)
             #last_datetime__lt=now + datetime.timedelta(seconds=1)*F("interval"))
-            #minutosTotales += tiempo
+            minutosTotales += minutes
+        print(minutosTotales)
 
         return HttpResponse(5000)
 
