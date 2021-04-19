@@ -66,6 +66,8 @@ def minutosJugadosTotales(request):
         end = Sesion.objects.values_list('ended', flat=True).distinct()
         print(star)
         print(end)
+        aa=Sesion.objects.annotate(duration = Func(F('ended'), F('started'), function='second'))
+        print(aa)
         '''
         for i in range(len(star)):
             tiempo = end[i] - star[i]
