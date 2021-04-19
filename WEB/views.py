@@ -46,6 +46,7 @@ def SendLoginData(request):
 
 @csrf_exempt
 def minutosJugadosTotales(request):
+        '''
         body_unicode = request.body.decode('utf-8')
         body = loads(body_unicode)
         startedMin = body['started']
@@ -57,7 +58,14 @@ def minutosJugadosTotales(request):
         segundos = dif.total_seconds()
         SumaMinutos = sum(round(segundos))
         SumaMinutos_json = serializers.serialize('json',SumaMinnutos)
-        return HttpResponse(SumaMinutos_json, content_type = "text/json-comment-filtered")
+        '''
+        started = Sesion.objects.filter(started)
+        ended = Sesion.objects.filter(ended)
+        for i in range(len(started)):
+            tiempo = ended[j] - started[i]
+            minutosTotales += tiempo
+
+        return HttpResponse(minutosTotales)
 
 
 
