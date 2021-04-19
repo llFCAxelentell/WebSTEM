@@ -46,15 +46,12 @@ def SendLoginData(request):
 
 @csrf_exempt
 def minutosJugadosTotales(request):
-
         tiempo=0
         minutosTotales=0
         star = Sesion.objects.values_list('started', flat=True)
         end = Sesion.objects.values_list('ended', flat=True)
-
         minutosTotales =0.0
         for i in range(len(star)):
-
             tiempo = end[i] - star[i]
             minutes = tiempo.total_seconds() / 60
             minutosTotales += minutes
@@ -62,26 +59,26 @@ def minutosJugadosTotales(request):
         return HttpResponse(minutosTotales)
 
 
-
 @csrf_exempt
 def StartSession(request):
 
-    '''
     body_unicode = request.body.decode('utf-8')
     body = loads(body_unicode)
 
     jugador_user_id = body['user_id']
     jugador_started = body['started']
-
-    p = Sesion(user_id = Usuario(jugador_user_id), started=jugador_started, ended=False)
-    p.save()
+    ahorita= datetime.datetime.now().date()
+    print(ahorita)
+    #p = Sesion(user_id = Usuario(jugador_user_id), started=jugador_started, ended=None)
+    #p.save()
+    '''
     jugador_objeto = Sesion.objects.filter(user_id=jugador_user_id)
     jugador_json = serializers.serialize('json',jugador_objeto)
 
     user_idBD = jugador_objeto[0].user_id
     startedBD = jugador_objeto[0].started
     idBD = jugador_objeto[0].id
-
+    '''
 
     user= {
             "id":200
@@ -89,7 +86,7 @@ def StartSession(request):
             #"started":4
             }
 
-    '''
+
     return HttpResponse(200)
 
 
