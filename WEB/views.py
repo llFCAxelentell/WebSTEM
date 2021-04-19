@@ -27,7 +27,7 @@ def stem(request):
 
 @csrf_exempt
 def SendLoginData(request):
-    '''
+
     body_unicode = request.body.decode('utf-8')
     body = loads(body_unicode)
 
@@ -41,8 +41,8 @@ def SendLoginData(request):
     idBD = jugador_objeto[0].id
 
     #FALTA VALIDAR LOS DATOS CON UN IF
-    '''
-    return HttpResponse(100)
+
+    return HttpResponse(idBD)
 
 @csrf_exempt
 def minutosJugadosTotales(request):
@@ -63,7 +63,7 @@ def minutosJugadosTotales(request):
 
 @csrf_exempt
 def StartSession(request):
-    
+
     '''
     body_unicode = request.body.decode('utf-8')
     body = loads(body_unicode)
