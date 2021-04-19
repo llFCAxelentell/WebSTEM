@@ -72,9 +72,9 @@ def minutosJugadosTotales(request):
         #print(aa)
 
         for i in range(len(star)):
-            print("end ")
+            #print("end ")
             print(end[i])
-            print("star ")
+            #print("star ")
             print(star[i])
 
             tiempo = end[i] - star[i]
