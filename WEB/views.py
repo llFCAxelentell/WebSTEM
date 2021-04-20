@@ -95,8 +95,22 @@ def AddTry(request):
 @csrf_exempt
 def AddDay(request):
     #falta código
+    '''
+    try_id,
+    dayNumber,
+    success,
+    num_compounds_made,
+    num_compounds_sold,
+    num_elements_purchased,
+    customers_rejected,
+    money_generated_day
+'''
+
+
+
     return HttpResponse("okAddDay")
 
+#Listo
 @csrf_exempt
 def UpdateTry(request):
     body_unicode = request.body.decode('utf-8')
@@ -110,7 +124,7 @@ def UpdateTry(request):
     a.save()
     return HttpResponse("okUpdateTry")
 
-#listo
+#listo, solo recibo el id, el ended ya no
 @csrf_exempt
 def UpdateSession(request):
     body_unicode = request.body.decode('utf-8')
