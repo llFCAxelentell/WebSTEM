@@ -56,7 +56,6 @@ def StartSession(request):
     ahorita= dt.now()
     p = Sesion(user_id = Usuario(jugador_user_id), started=ahorita, ended=None)
     p.save()
-    print(p.id)
 
     return HttpResponse(p.id)
 
