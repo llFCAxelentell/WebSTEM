@@ -163,8 +163,8 @@ def exitoPromedio(request):
         print("result")
         print(result)
         for i in range(len(result)):
-            print(result[i][i])
-        return HttpResponse(100)
+            print(result[i])
+        return HttpResponse(result)
 
 '''
 @login_required
