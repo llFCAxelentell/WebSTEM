@@ -15,5 +15,9 @@ urlpatterns = [
     path('UpdateSession',views.UpdateSession, name='UpdateSession'),
     path('minutosJugadosTotales',views.minutosJugadosTotales, name='minutosJugadosTotales'),
     path('minutosJugadosPromedio',views.minutosJugadosPromedio, name='minutosJugadosPromedio'),
+    path('exitoPromedio',views.exitoPromedio, name='exitoPromedio'),
+
+
+
 
 ]
