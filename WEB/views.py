@@ -105,7 +105,7 @@ def UpdateTry(request):
     id = body['id']
     deb = body['debt']
 
-    a= Sesion.objects.get(pk=id)
+    a= Try.objects.get(pk=id)
     a.debt= deb
     a.save()
     return HttpResponse("okUpdateTry")
