@@ -157,7 +157,7 @@ def minutosJugadosPromedio(request):
         prom =minutosTotales/len(star)
         return HttpResponse(prom)
 
-
+@csrf_exempt
 def exitoPromedio(request):
         result = (Day.objects.values('success').annotate(dcount=Count('success')).order_by())
         print("result")
