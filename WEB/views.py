@@ -23,6 +23,7 @@ def estadistica(request):
 def stem(request):
     return render(request, 'stem.html')
 
+#falta verificar password
 @csrf_exempt
 def SendLoginData(request):
 
@@ -42,6 +43,7 @@ def SendLoginData(request):
 
     return HttpResponse(idBD)
 
+#listo
 @csrf_exempt
 def minutosJugadosTotales(request):
         tiempo=0
@@ -57,6 +59,7 @@ def minutosJugadosTotales(request):
         return HttpResponse(minutosTotales)
 
 
+#Listo, solo que ahora no recivo el started, solo el id del usuario
 @csrf_exempt
 def StartSession(request):
 
@@ -75,21 +78,17 @@ def StartSession(request):
 
 @csrf_exempt
 def AddTry(request):
-    '''
+
     body_unicode = request.body.decode('utf-8')
     body = loads(body_unicode)
 
-    jugador_nombre = body['debt']
-    #falta lo de dice out of range
-    jugador_objeto = Try.objects.filter(debt=jugador_nombre)#select * from Reto where nombre = jugador_nombre
-    jugador_json = serializers.serialize('json',jugador_objeto)
+    session_id = body['session_id']
+    try_num = body['try_num']
 
-    debt_idBD = jugador_objeto[0].debt
-    sessionBD = jugador_objeto[0].session_id
-'''
+    s = Try(session_id = Sesion(session_id), try_num=try_num, debt=None)
+    s.save()
 
-
-    return HttpResponse(300)
+    return HttpResponse(s.id)
 
 @csrf_exempt
 def AddDay(request):
@@ -101,6 +100,7 @@ def UpdateTry(request):
     #falta código
     return HttpResponse("okUpdateTry")
 
+#listo
 @csrf_exempt
 def UpdateSession(request):
     body_unicode = request.body.decode('utf-8')
@@ -112,9 +112,7 @@ def UpdateSession(request):
     a= Sesion.objects.get(pk=jugador_id)
     a.ended= dt.now()
     a.save()
-    #jugador_objeto = Usuario.objects.filter(username=jugador_nombre)#select * from Reto where nombre = jugador_nombre
-    #jugador_json = serializers.serialize('json',jugador_objeto)
-    #falta código
+
     return HttpResponse("okUpdateSession")
 
     #a esto no le tomes ss, plox
