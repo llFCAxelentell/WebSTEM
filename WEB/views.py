@@ -160,6 +160,7 @@ def minutosJugadosPromedio(request):
 
 def exitoPromedio(request):
         result = (Day.objects.values('success').annotate(dcount=Count('success')).order_by())
+        print("result")
         print(result)
         return HttpResponse(100)
 
