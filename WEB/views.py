@@ -43,21 +43,6 @@ def SendLoginData(request):
 
     return HttpResponse(idBD)
 
-#listo
-@csrf_exempt
-def minutosJugadosTotales(request):
-        tiempo=0
-        minutosTotales=0
-        star = Sesion.objects.values_list('started', flat=True)
-        end = Sesion.objects.values_list('ended', flat=True)
-        minutosTotales =0.0
-        for i in range(len(star)):
-            tiempo = end[i] - star[i]
-            minutes = tiempo.total_seconds() / 60
-            minutosTotales += minutes
-
-        return HttpResponse(minutosTotales)
-
 
 #Listo, solo que ahora no recivo el started, solo el id del usuario
 @csrf_exempt
@@ -141,7 +126,38 @@ def UpdateSession(request):
 
     return HttpResponse("okUpdateSession")
 
-    #a esto no le tomes ss, plox
+
+#listo
+@csrf_exempt
+def minutosJugadosTotales(request):
+        tiempo=0
+        minutosTotales=0
+        star = Sesion.objects.values_list('started', flat=True)
+        end = Sesion.objects.values_list('ended', flat=True)
+        minutosTotales =0.0
+        for i in range(len(star)):
+            tiempo = end[i] - star[i]
+            minutes = tiempo.total_seconds() / 60
+            minutosTotales += minutes
+
+        return HttpResponse(minutosTotales)
+
+
+@csrf_exempt
+def minutosJugadosPromedio(request):
+        tiempo=0
+        minutosTotales=0
+        star = Sesion.objects.values_list('started', flat=True)
+        end = Sesion.objects.values_list('ended', flat=True)
+        minutosTotales =0.0
+        for i in range(len(star)):
+            tiempo = end[i] - star[i]
+            minutes = tiempo.total_seconds() / 60
+            minutosTotales += minutes
+        prom =minutosTotales/len(star)
+        return HttpResponse(prom)
+
+
 '''
 @login_required
 def minutosJugador(request):
