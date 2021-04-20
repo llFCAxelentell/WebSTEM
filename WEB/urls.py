@@ -17,6 +17,13 @@ urlpatterns = [
     path('minutosJugadosPromedio',views.minutosJugadosPromedio, name='minutosJugadosPromedio'),
     path('exitoPromedio',views.exitoPromedio, name='exitoPromedio'),
     path('scoresGlobal',views.scoresGlobal, name='scoresGlobal'),
+    path('scoresGlobal5',views.scoresGlobal5, name='scoresGlobal5'),
+    path('maxJugado',views.maxJugado, name='maxJugado'),
+    path('minJugado',views.minJugado, name='minJugado'),
+    path('tiempoCompuestos',views.tiempoCompuestos, name='tiempoCompuestos'),
+    path('tiempoEdad',views.tiempoEdad, name='tiempoEdad'),
+    path('compuestosElementos',views.compuestosElementos, name='compuestosElementos'),
+    path('nivelCompElemClieDin',views.nivelCompElemClieDin, name='nivelCompElemClieDin'),
 
 
 

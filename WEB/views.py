@@ -177,6 +177,37 @@ def scoresGlobal(request):
     return HttpResponse(100)
 
 
+@csrf_exempt
+def scoresGlobal5(request):
+    return HttpResponse(100)
+
+@csrf_exempt
+def maxJugado(request):
+    return HttpResponse(100)
+
+@csrf_exempt
+def minJugado(request):
+    return HttpResponse(100)
+
+
+###############estadística team
+
+@csrf_exempt
+def tiempoCompuestos(request):
+    return HttpResponse(100)
+
+@csrf_exempt
+def tiempoEdad(request):
+    return HttpResponse(100)
+
+@csrf_exempt
+def compuestosElementos(request):
+    return HttpResponse(100)
+
+@csrf_exempt
+def nivelCompElemClieDin(request):
+    return HttpResponse(100)
+
 
 '''
 @login_required
