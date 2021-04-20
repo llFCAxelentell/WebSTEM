@@ -170,7 +170,7 @@ def exitoPromedio(request):
 
 @csrf_exempt
 def scoresGlobal(request):
-    p =Day.objects.select_related('try_id', 'session_id')
+    p =Day.objects.select_related('try_id', 'id')
     print(p)
 
 
