@@ -103,6 +103,17 @@ def UpdateTry(request):
 
 @csrf_exempt
 def UpdateSession(request):
+    body_unicode = request.body.decode('utf-8')
+    body = loads(body_unicode)
+
+    jugador_id = body['id']
+    jugador_ended = body['ended']
+
+    a= Sesion.objects.get(pk=jugador_id)
+    a.ended= dt.now()
+    a.save()
+    #jugador_objeto = Usuario.objects.filter(username=jugador_nombre)#select * from Reto where nombre = jugador_nombre
+    #jugador_json = serializers.serialize('json',jugador_objeto)
     #falta código
     return HttpResponse("okUpdateSession")
 
