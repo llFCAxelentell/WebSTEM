@@ -92,11 +92,11 @@ def AddTry(request):
     return HttpResponse(s.id)
 
 
+#Listo
 @csrf_exempt
 def AddDay(request):
     body_unicode = request.body.decode('utf-8')
     body = loads(body_unicode)
-    #falta código
 
     try_i =body['try_id']
     dayNumbe=body['dayNumber']
