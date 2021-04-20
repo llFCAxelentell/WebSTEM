@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.core import serializers
 from datetime import datetime as dt
-from django.db.models import F, Func
+from django.db.models import F, Func, Count
 from . models import Sesion
 from django.views.decorators.csrf import csrf_exempt
 from json import loads
@@ -157,6 +157,11 @@ def minutosJugadosPromedio(request):
         prom =minutosTotales/len(star)
         return HttpResponse(prom)
 
+
+def exitoPromedio(request):
+        result = (Day.objects.values('success').annotate(dcount=Count('success')).order_by())
+        print(result)
+        return HttpResponse(100)
 
 '''
 @login_required
