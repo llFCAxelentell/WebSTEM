@@ -159,7 +159,8 @@ def minutosJugadosPromedio(request):
 
 @csrf_exempt
 def exitoPromedio(request):
-        result = (Day.objects.values('success').annotate(dcount=Count('success')).order_by())
+        result = Members.objects.raw('SELECT dayNumber,AVG(success)*100 AS PromedioExito FROM Day GROUP BY dayNumber')
+        #result = (Day.objects.values('success').annotate(dcount=Count('success')).order_by())
         print("result")
         print(result)
         for i in range(len(result)):
