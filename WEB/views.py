@@ -76,6 +76,7 @@ def StartSession(request):
     return HttpResponse(p.id)
 
 
+#Listo
 @csrf_exempt
 def AddTry(request):
 
@@ -90,6 +91,7 @@ def AddTry(request):
 
     return HttpResponse(s.id)
 
+
 @csrf_exempt
 def AddDay(request):
     #falta código
@@ -97,7 +99,15 @@ def AddDay(request):
 
 @csrf_exempt
 def UpdateTry(request):
-    #falta código
+    body_unicode = request.body.decode('utf-8')
+    body = loads(body_unicode)
+
+    id = body['id']
+    deb = body['debt']
+
+    a= Sesion.objects.get(pk=id)
+    a.debt= deb
+    a.save()
     return HttpResponse("okUpdateTry")
 
 #listo
@@ -106,10 +116,10 @@ def UpdateSession(request):
     body_unicode = request.body.decode('utf-8')
     body = loads(body_unicode)
 
-    jugador_id = body['id']
+    sesion_id = body['id']
     jugador_ended = body['ended']
 
-    a= Sesion.objects.get(pk=jugador_id)
+    a= Sesion.objects.get(pk=sesion_id)
     a.ended= dt.now()
     a.save()
 
