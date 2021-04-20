@@ -94,19 +94,21 @@ def AddTry(request):
 
 @csrf_exempt
 def AddDay(request):
+    body_unicode = request.body.decode('utf-8')
+    body = loads(body_unicode)
     #falta código
-    '''
-    try_id,
-    dayNumber,
-    success,
-    num_compounds_made,
-    num_compounds_sold,
-    num_elements_purchased,
-    customers_rejected,
-    money_generated_day
-'''
 
+    try_i =body['try_id']
+    dayNumbe=body['dayNumber']
+    succes =body['success']
+    num_compounds_mad=body['num_compounds_made']
+    num_compounds_sol=body['num_compounds_sold']
+    num_elements_purchase=body['num_elements_purchased']
+    customers_rejecte=body['customers_rejected']
+    money_generated_da=body['money_generated_day']
 
+    d = Day(try_id=Try(try_i), dayNumber=dayNumbe, success=succes, num_compounds_made=num_compounds_mad, num_compounds_sold=num_compounds_sol,  num_elements_purchased=num_elements_purchase, customers_rejected=customers_rejecte, money_generated_day=money_generated_da)
+    d.save()
 
     return HttpResponse("okAddDay")
 
