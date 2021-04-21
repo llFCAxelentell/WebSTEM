@@ -48,7 +48,7 @@ def scatter(request):
             data.append([nombre, minutos])
         print (data)
         data_formato=dumps(data) #formatear los datos en string para json
-        return render(request, 'estadistica.html', {'losDatos':data_formato}) # scatter.html
+        return render(request, 'scatter.html', {'losDatos':data_formato}) # scatter.html
     else:
         return HttpResponse("<h1>No hay registros </h1>")
 #falta verificar password
