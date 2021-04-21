@@ -37,15 +37,17 @@ def scatter(request):
     '''
     data = []
     data.append(['num_compounds_made', 'num_compounds_sold'])
-    
-    resultados= Day.objects.all()
-    for registro in resultados:
-        nombre = registro.num_compounds_made
-        minutos = registro.num_compounds_sold
-        data.append([nombre, minutos])
-    data_formato=dumps(data) #formatear los datos en string para json
-    return render(request, 'scatter.html',{'losDatos':data_formato})
 
+    resultados= Day.objects.all()
+    if len(resultados)>0:
+        for registro in resultados:
+            nombre = registro.num_compounds_made
+            minutos = registro.num_compounds_sold
+            data.append([nombre, minutos])
+        data_formato=dumps(data) #formatear los datos en string para json
+        return render(request, 'scatter.html',{'losDatos':data_formato})
+    else:
+        return HttpResponse("<h1>No hay registros </h1>")
 #falta verificar password
 @csrf_exempt
 def SendLoginData(request):
