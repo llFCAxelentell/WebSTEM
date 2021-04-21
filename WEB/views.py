@@ -46,6 +46,7 @@ def scatter(request):
             nombre = registro.num_compounds_made
             minutos = registro.num_compounds_sold
             data.append([nombre, minutos])
+        print (data)
         data_formato=dumps(data) #formatear los datos en string para json
         return render(request, 'estadisticas.html', {'losDatos':data_formato}) # scatter.html
     else:
