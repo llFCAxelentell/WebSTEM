@@ -6,7 +6,7 @@
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
-        var data = google.visualization.arrayToDataTable({{losDatos}});
+        var data = google.visualization.arrayToDataTable({{losDatos|safe}});
 
         var options = {
           title: 'Age vs. Weight comparison',
