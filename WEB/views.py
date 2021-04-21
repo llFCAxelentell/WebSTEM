@@ -51,7 +51,7 @@ def scatter(request):
     else:
         return HttpResponse("<h1>No hay registros </h1>")
 #falta verificar password
-#hola
+
 @csrf_exempt
 def SendLoginData(request):
 
