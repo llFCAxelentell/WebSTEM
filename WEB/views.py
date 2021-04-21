@@ -5,7 +5,7 @@ from datetime import datetime as dt
 from django.db.models import F, Func, Count
 from . models import Sesion
 from django.views.decorators.csrf import csrf_exempt
-from json import loads
+from json import loads, dumps
 from . models import Usuario
 from . models import Try
 from . models import Day
@@ -24,7 +24,17 @@ def stem(request):
     return render(request, 'stem.html')
 
 def scatter(request):
-    return render(request, 'scatter.html')
+    data = [
+            ['Age', 'Weight'],
+            [ 8,      12],
+            [ 4,      5.5],
+            [ 11,     14],
+            [ 4,      5],
+            [ 3,      3.5],
+            [ 6.5,    7]
+            ]
+    data_formato=dumps(data) #formatear los datos en string para json
+    return render(request, 'scatter.html',{'losDatos':data})
 
 #falta verificar password
 @csrf_exempt
