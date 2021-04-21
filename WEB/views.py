@@ -57,6 +57,7 @@ def StartSession(request):
     p = Sesion(user_id = Usuario(jugador_user_id), started=ahorita, ended=None)
     p.save()
 
+
     return HttpResponse(p.id)
 
 
