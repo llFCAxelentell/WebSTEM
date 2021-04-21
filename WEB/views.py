@@ -47,7 +47,7 @@ def scatter(request):
             minutos = registro.num_compounds_sold
             data.append([nombre, minutos])
         data_formato=dumps(data) #formatear los datos en string para json
-        return render(request, 'scatter.html',{'losDatos':data_formato},{'titulo':titulo_formato})
+        return render(request, 'scatter.html',{'losDatos':data_formato})
     else:
         return HttpResponse("<h1>No hay registros </h1>")
 #falta verificar password
