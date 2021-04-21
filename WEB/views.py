@@ -39,13 +39,15 @@ def scatter(request):
     data.append(['num_compounds_made', 'num_compounds_sold'])
 
     resultados= Day.objects.all()
+    titulo ='compounds made vs sold'
+    titulo_formato = dumps(titulo)
     if len(resultados)>0:
         for registro in resultados:
             nombre = registro.num_compounds_made
             minutos = registro.num_compounds_sold
             data.append([nombre, minutos])
         data_formato=dumps(data) #formatear los datos en string para json
-        return render(request, 'scatter.html',{'losDatos':data_formato})
+        return render(request, 'scatter.html',{'losDatos':data_formato},{'titulo':titulo_formato})
     else:
         return HttpResponse("<h1>No hay registros </h1>")
 #falta verificar password
