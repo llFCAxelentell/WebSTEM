@@ -34,7 +34,7 @@ def scatter(request):
             [ 6.5,    7]
             ]
     data_formato=dumps(data) #formatear los datos en string para json
-    return render(request, 'scatter.html',{'losDatos':data})
+    return render(request, 'scatter.html',{'losDatos':data_formato})
 
 #falta verificar password
 @csrf_exempt
