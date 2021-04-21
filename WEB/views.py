@@ -24,6 +24,7 @@ def stem(request):
     return render(request, 'stem.html')
 
 def scatter(request):
+    '''
     data = [
             ['nivel', 'exito'],
             [ 1,      90],
@@ -33,6 +34,12 @@ def scatter(request):
             [ 5,      45],
             [ 6,    30]
             ]
+    '''
+    data = []
+    data.append(['nivel', 'exito'])
+    data.append([ 1,      90])
+    data.append([ 2,      80])
+
     data_formato=dumps(data) #formatear los datos en string para json
     return render(request, 'scatter.html',{'losDatos':data_formato})
 
