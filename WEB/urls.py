@@ -24,6 +24,7 @@ urlpatterns = [
     path('tiempoEdad',views.tiempoEdad, name='tiempoEdad'),
     path('compuestosElementos',views.compuestosElementos, name='compuestosElementos'),
     path('nivelCompElemClieDin',views.nivelCompElemClieDin, name='nivelCompElemClieDin'),
+    path('scatter',views.scatter, name='scatter'),
 
 
 

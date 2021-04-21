@@ -23,6 +23,9 @@ def estadistica(request):
 def stem(request):
     return render(request, 'stem.html')
 
+def scatter(request):
+    return render(request, 'scatter.html')
+
 #falta verificar password
 @csrf_exempt
 def SendLoginData(request):
