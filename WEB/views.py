@@ -130,6 +130,7 @@ def SendLoginData(request):
     nombreBD = jugador_objeto[0].username
     passBD = jugador_objeto[0].password
     idBD = jugador_objeto[0].id
+    print(passBD)
     if passBD==jugador_pass:
         return HttpResponse(idBD)
     else:
