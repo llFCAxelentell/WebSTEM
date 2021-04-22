@@ -29,16 +29,20 @@
 
     <div class="grid-container4">
         <div>
-            <form onsubmit="return false" action="">
+            <form action="formulario" method="POST">
+                {% csrf_token %}
                 <label for="Nombre">¿Comó te llamas?</label>
-                <input class="b" type="text" id="nombre" placeholder="Ej. Francisco" \><br>
+                <input class="b" type="text" name="nombre" placeholder="Ej. Francisco" \><br>
+                
                 <label for="apellido">¿Cuál es tu apellido?</label>
-                <input type="text" id="apellido" placeholder="Ej. González" \><br>
+                <input type="text" name="apellido" placeholder="Ej. González" \><br>
+                
                 <label for="edad">¿Cuántos años tienes?</label>
-                <input class="a" type="number" id="años" min="6" max="80" placeholder="0" \><br>
+                <input class="a" type="number" name="edad" min="5" max="100" placeholder="0" \><br>
+                
                 <label for="genero">¿Cuál es tu género?</label>
 
-                <select id="genero">
+                <select name="genero">
                     <option value="" disabled selected>Elige una opcion</option>
                     <option value="hombre">Hombre</option>
                     <option value="mujer">Mujer</option>
@@ -46,17 +50,23 @@
                 </select><br>
 
                 <label for="correo">Ingresa un correo: </label>
-                <input type="email" id="correo" placeholder="Ej. francisco517@gmail.com" \><br>
+                <input type="email" name="correo" placeholder="Ej. francisco517@gmail.com" \><br>
+                
                 <label for="contraseña">Ingresa una contraseña: </label>
-                <input class="b" type="password" id="contraseña" minlength="8" maxlength="16" placeholder="*******" \><br>
+                <input class="b" type="password" name="contrasena" minlength="8" maxlength="16" placeholder="*******" \><br>
+                
                 <label for="nickname">Ingresa un nickname: </label>
-                <input class="b" type="text" id="nickname" placeholder="Ej. paco517" \><br>
+                <input class="b" type="text" name="nickname" placeholder="Ej. paco517" \><br>
 
                 <input class="enviar" type="submit" value="Enviar" onclick="enviarEncuesta()" \>
-                <p class="enviar" id="enviarDescripcion"></p>
+                
             </form>
 
-            <p id="enviarDescripcion"></p>
+            <p class="enviar">{{eviarInfo}}</p>
+            
+            
+            
+            
 
             <script src="{%static 'script.js'%}"></script>
         </div>
