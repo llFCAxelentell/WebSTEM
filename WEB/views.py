@@ -32,10 +32,14 @@ def formulario(request):
     if (nombre == "" or apellido == "" or edad == "" or genero == "" or correo == "" or contrasena == "" or nickname == ""):
         return render(request, 'juego.html', {'enviarInfo':"Faltan datos"})
     else:
-        guardar = Usuario(names= nombre, last_names=apellido, created= dt.now(), email= correo, password=pwd,username= nickname, gender= genero, birthdate= edad)
-        guardar.save()
         user = User.objects.create_user(nickname, correo, contrasena)
         user.save()
+        usuarios = User.objects.filter(username = nickname)
+        u=usuarios[0]
+        
+        guardar = Usuario(names= nombre, last_names=apellido, created= dt.now(), email= correo, password=pwd,username= u, gender= genero, birthdate= edad)
+        guardar.save()
+
         return render(request, 'juego.html',{'enviarInfo':"Registrado"})
 
 def index(request):
