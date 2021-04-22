@@ -11,6 +11,28 @@ from . models import Try
 from . models import Day
 
 
+@csrf_exempt
+def formulario(request):
+    nombre = request.POST['nombre']
+    apellido = request.POST['apellido']
+    edad = request.POST['edad']
+    genero = request.POST['genero']
+    correo = request.POST['correo']
+    contrasena = request.POST['contrasena']
+    nickname = request.POST['nickname']
+    
+    
+    info = ""
+    if (nombre == "" or apellido == "" or edad == "" or genero == "" or correo == "" or contrasena == "" or nickname == ""):
+        info = "Faltan uno o más datos"
+        return (request,{'enviarInfo':info})
+    else:
+        info = "Usuario registardo exitosamente"
+        guardar = Usuario(names= nombre, las_names=apellido, created= dt.now(), email= correo, password=contrasena,username= nickname, gender= genero, birthdate= edad)
+        guardar.save()
+        return (request,{'enviarInfo':info})
+
+
 def index(request):
     return render(request, 'index.html')
 
