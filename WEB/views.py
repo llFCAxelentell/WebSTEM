@@ -14,7 +14,7 @@ from . models import Day
 from hashlib import md5
 import psycopg2
 
-
+@login_required
 def mi_estadistica(request):
     return render(request, 'mi_estadistica.html')
 
