@@ -5,6 +5,9 @@ from datetime import datetime as dt
 from django.db.models import F, Func, Count
 from . models import Sesion
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+
 from json import loads, dumps
 from . models import Usuario
 from . models import Try
@@ -54,7 +57,7 @@ def estadistica(request):
         #return render(request, 'estadistica.html', {'losDatos':data_formato}) # scatter.html
     else:
         return HttpResponse("<h1>No hay registros </h1>")
-    
+
 # grafica num_compounds_made
     data1 = []
     tiempo=0
@@ -66,7 +69,7 @@ def estadistica(request):
         tiempo = end[i] - star[i]
         minutes = tiempo.total_seconds() / 60
         data1.append([minutes])
-    
+
     return render(request, 'estadistica.html', {'losDatos':data_formato})
     #return render(request, 'estadistica.html')
 
@@ -271,7 +274,7 @@ def minJugado(request):
 
 @csrf_exempt
 def minutosTotales(request):
-   
+
     totales = 0
     try:
         connection = psycopg2.connect(
@@ -303,7 +306,7 @@ def minutosTotales(request):
             cursor.close()
             connection.close()
             #print("PostgreSQL connection is now closed")
-    
+
     return render(request, 'minutosTotales.html', {"minutosTotales":totales})
 
 
