@@ -28,7 +28,7 @@ def formulario(request):
         return (request,{'enviarInfo':info})
     else:
         info = "Usuario registardo exitosamente"
-        guardar = Usuario(names= nombre, las_names=apellido, created= dt.now(), email= correo, password=contrasena,username= nickname, gender= genero, birthdate= edad)
+        guardar = Usuario(names= nombre, last_names=apellido, created= dt.now(), email= correo, password=contrasena,username= nickname, gender= genero, birthdate= edad)
         guardar.save()
         return (request,{'enviarInfo':info})
 
