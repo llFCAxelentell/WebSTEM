@@ -123,9 +123,9 @@ def SendLoginData(request):
     jugador_nombre = body['data_a']
     jugador_pass = body['data_b']
     print(jugador_pass)
-    aa = User.objects.filter(username=jugador_nombre)
+    jugador_objeto  = User.objects.filter(username=jugador_nombre)
     #jugador_objeto = Usuario.objects.filter(username=jugador_nombre)#select * from Reto where nombre = jugador_nombre
-    jugador_json = serializers.serialize('json',aa)
+    jugador_json = serializers.serialize('json',jugador_objeto )
 
     nombreBD = jugador_objeto[0].username
     passBD = jugador_objeto[0].password
