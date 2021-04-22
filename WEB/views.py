@@ -122,7 +122,7 @@ def SendLoginData(request):
 
     jugador_nombre = body['data_a']
     jugador_pass = body['data_b']
-    
+
     jugador_o  = User.objects.filter(username=jugador_nombre)
     print(jugador_o[0].username)
     jugador_objeto = Usuario.objects.filter(username=jugador_o[0].id)#select * from Reto where nombre = jugador_nombre
@@ -196,10 +196,10 @@ def UpdateTry(request):
     body_unicode = request.body.decode('utf-8')
     body = loads(body_unicode)
 
-    id = body['id']
+    idd = body['id']
     deb = body['debt']
 
-    a= Try.objects.get(pk=id)
+    a= Try.objects.get(pk=idd)
     a.debt= deb
     a.save()
     return HttpResponse("okUpdateTry")
