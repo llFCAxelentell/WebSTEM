@@ -274,16 +274,16 @@ def minutosTotales(request):
     totales = 0
     try:
         connection = psycopg2.connect(
-            user = "stem_user",
-            password = "stemreto",
+            user = "farmaceuticouser",
+            password = "LibroVerde23",
             host = "localhost",
             port = "5432",
-            database = "stem442"
+            database = "medchembd"
         )
         #Create a cursor connection object to a PostgreSQL instance and print the connection properties.
         cursor = connection.cursor()
         #Display the PostgreSQL version installed
-        cursor.execute("SELECT * from videojuego_reto;")
+        cursor.execute("SELECT * from WEB_Sesion;")
         rows = cursor.fetchall()
         for row in rows:
             totales += row[2]
