@@ -55,7 +55,7 @@ def mi_estadistica(request):
     print(registros)
     regist = Usuario.objects.filter(username=registros[0].id)
     print("jala1")
-    print(regist.last_names)
+    print(regist.gender)
     return render(request, 'mi_estadistica.html')
 
 def estadistica(request):
