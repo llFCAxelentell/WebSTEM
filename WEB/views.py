@@ -301,6 +301,7 @@ def minutosTotales(request):
         cursor.execute("SELECT * from \"WEB_usuario\";")
         rows = cursor.fetchall()
         print ("jala2")
+        ########## ver que onda
         for row in rows:
             totales += row[2]
 
