@@ -49,7 +49,7 @@ def estadistica(request):
             minutos = registro.num_compounds_sold
             data.append([nombre, minutos])
         data_formato=dumps(data) #formatear los datos en string para json
-        return render(request, 'estadistica.html', {'losDatos':data_formato}) # scatter.html
+        #return render(request, 'estadistica.html', {'losDatos':data_formato}) # scatter.html
     else:
         return HttpResponse("<h1>No hay registros </h1>")
     
@@ -60,13 +60,14 @@ def estadistica(request):
     minutosTotales =0.0
     resultados1 = (Day.objects.values('try_id').annotate(dcount=Count('num_compounds_made')).order_by())
     print(resultados1)
+    
     for i in range(len(star)):
         tiempo = end[i] - star[i]
         minutes = tiempo.total_seconds() / 60
         data1.append([minutes])
     
-    
-    return render(request, 'estadistica.html')
+    return render(request, 'estadistica.html', {'losDatos':data_formato})
+    #return render(request, 'estadistica.html')
 
 def stem(request):
     return render(request, 'stem.html')
