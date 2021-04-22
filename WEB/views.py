@@ -285,6 +285,7 @@ def minutosTotales(request):
         #Create a cursor connection object to a PostgreSQL instance and print the connection properties.
         cursor = connection.cursor()
         #Display the PostgreSQL version installed
+        print ("jala3")
         cursor.execute("SELECT num_compounds_sold from WEB_Day;")
         rows = cursor.fetchall()
         print ("jala2")
