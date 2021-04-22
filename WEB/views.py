@@ -36,7 +36,7 @@ def formulario(request):
         user.save()
         usuarios = User.objects.filter(username = nickname)
         u=usuarios[0]
-        
+
         guardar = Usuario(names= nombre, last_names=apellido, created= dt.now(), email= correo, password=pwd,username= u, gender= genero, birthdate= edad)
         guardar.save()
 
@@ -123,8 +123,9 @@ def SendLoginData(request):
     jugador_nombre = body['data_a']
     jugador_pass = body['data_b']
     print(jugador_pass)
-    jugador_objeto = Usuario.objects.filter(username=jugador_nombre)#select * from Reto where nombre = jugador_nombre
-    jugador_json = serializers.serialize('json',jugador_objeto)
+    aa = User.objects.filter(username=jugador_nombre)
+    #jugador_objeto = Usuario.objects.filter(username=jugador_nombre)#select * from Reto where nombre = jugador_nombre
+    jugador_json = serializers.serialize('json',aa)
 
     nombreBD = jugador_objeto[0].username
     passBD = jugador_objeto[0].password
