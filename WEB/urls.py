@@ -29,7 +29,8 @@ urlpatterns = [
     path('formulario',views.formulario, name='formulario'),
 
 ]
-
+'''
 urlpatterns += [
     path('accounts/', include('django.contrib.auth.urls')),
 ]
+'''
