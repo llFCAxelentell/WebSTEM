@@ -22,7 +22,7 @@ def formulario(request):
     contrasena = request.POST['contrasena']
     pwd = md5( contrasena.encode("utf-8") ).hexdigest()
     nickname = request.POST['nickname']
-    
+
     if (nombre == "" or apellido == "" or edad == "" or genero == "" or correo == "" or contrasena == "" or nickname == ""):
         return render(request, 'juego.html')
     else:
@@ -80,6 +80,7 @@ def SendLoginData(request):
 
     jugador_nombre = body['data_a']
     jugador_pass = body['data_b']
+    print(jugador_pass)
     jugador_objeto = Usuario.objects.filter(username=jugador_nombre)#select * from Reto where nombre = jugador_nombre
     jugador_json = serializers.serialize('json',jugador_objeto)
 
