@@ -32,7 +32,7 @@ def formulario(request):
     else:
         guardar = Usuario(names= nombre, last_names=apellido, created= dt.now(), email= correo, password=pwd,username= nickname, gender= genero, birthdate= edad)
         guardar.save()
-        user = User.objects.create_user(nickname, contrasena)
+        user = User.objects.create_user(nickname, correo, contrasena)
         user.save()
         return render(request, 'juego.html',{'enviarInfo':"Registrado"})
 
