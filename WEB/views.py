@@ -24,11 +24,11 @@ def formulario(request):
     nickname = request.POST['nickname']
 
     if (nombre == "" or apellido == "" or edad == "" or genero == "" or correo == "" or contrasena == "" or nickname == ""):
-        return render(request, 'juego.html')
+        return render(request, 'juego.html', {'enviarInfo':"Faltan datos"})
     else:
         guardar = Usuario(names= nombre, last_names=apellido, created= dt.now(), email= correo, password=pwd,username= nickname, gender= genero, birthdate= edad)
         guardar.save()
-        return render(request, 'juego.html')
+        return render(request, 'juego.html',{'enviarInfo':"Registrado"})
 
 def index(request):
     return render(request, 'index.html')
@@ -116,10 +116,10 @@ def SendLoginData(request):
     nombreBD = jugador_objeto[0].username
     passBD = jugador_objeto[0].password
     idBD = jugador_objeto[0].id
-
-    #FALTA VALIDAR LOS DATOS CON UN IF
-
-    return HttpResponse(idBD)
+    if passBD==jugador_pass:
+        return HttpResponse(idBD)
+    else:
+        return HttpResponse(-1)
 
 
 #Listo, solo que ahora no recivo el started, solo el id del usuario
