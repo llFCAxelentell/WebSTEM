@@ -54,6 +54,9 @@ def mi_estadistica(request):
     regist = Usuario.objects.filter(username=registros[0].id)
     print(regist[0].gender)
     dato= regist[0].gender
+    ##query gigantes
+
+
     return render(request, 'mi_estadistica.html', {'dato':dato})
 
 def estadistica(request):
