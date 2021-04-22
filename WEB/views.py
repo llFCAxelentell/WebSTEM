@@ -15,7 +15,7 @@ from hashlib import md5
 import psycopg2
 
 
-def mi_estadictica(request):
+def mi_estadistica(request):
     return render(request, 'mi_estadistica.html')
 
 @csrf_exempt
