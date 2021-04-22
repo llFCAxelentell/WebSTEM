@@ -32,10 +32,14 @@ def formulario(request):
     if (nombre == "" or apellido == "" or edad == "" or genero == "" or correo == "" or contrasena == "" or nickname == ""):
         return render(request, 'juego.html', {'enviarInfo':"Faltan datos"})
     else:
-        guardar = Usuario(names= nombre, last_names=apellido, created= dt.now(), email= correo, password=pwd,username= nickname, gender= genero, birthdate= edad)
-        guardar.save()
         user = User.objects.create_user(nickname, correo, contrasena)
         user.save()
+        usuarios = User.objects.filter(username = nickname)
+        u=usuarios[0]
+
+        guardar = Usuario(names= nombre, last_names=apellido, created= dt.now(), email= correo, password=pwd,username= u, gender= genero, birthdate= edad)
+        guardar.save()
+
         return render(request, 'juego.html',{'enviarInfo':"Registrado"})
 
 def index(request):
@@ -108,7 +112,7 @@ def scatter(request):
         return render(request, 'scatter.html', {'losDatos':data_formato}) # scatter.html
     else:
         return HttpResponse("<h1>No hay registros </h1>")
-#falta verificar password
+
 
 @csrf_exempt
 def SendLoginData(request):
@@ -118,13 +122,16 @@ def SendLoginData(request):
 
     jugador_nombre = body['data_a']
     jugador_pass = body['data_b']
-    print(jugador_pass)
-    jugador_objeto = Usuario.objects.filter(username=jugador_nombre)#select * from Reto where nombre = jugador_nombre
-    jugador_json = serializers.serialize('json',jugador_objeto)
+    
+    jugador_o  = User.objects.filter(username=jugador_nombre)
+    print(jugador_o[0].username)
+    jugador_objeto = Usuario.objects.filter(username=jugador_o[0].id)#select * from Reto where nombre = jugador_nombre
+
 
     nombreBD = jugador_objeto[0].username
     passBD = jugador_objeto[0].password
     idBD = jugador_objeto[0].id
+    print(passBD)
     if passBD==jugador_pass:
         return HttpResponse(idBD)
     else:
@@ -143,7 +150,6 @@ def StartSession(request):
     ahorita= dt.now()
     p = Sesion(user_id = Usuario(jugador_user_id), started=ahorita, ended=None)
     p.save()
-
 
     return HttpResponse(p.id)
 
