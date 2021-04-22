@@ -9,6 +9,7 @@ from json import loads, dumps
 from . models import Usuario
 from . models import Try
 from . models import Day
+from hashlib import md5
 
 
 @csrf_exempt
@@ -19,12 +20,13 @@ def formulario(request):
     genero = request.POST['genero']
     correo = request.POST['correo']
     contrasena = request.POST['contrasena']
+    pwd = md5( contrasena.encode("utf-8") ).hexdigest()
     nickname = request.POST['nickname']
     
     if (nombre == "" or apellido == "" or edad == "" or genero == "" or correo == "" or contrasena == "" or nickname == ""):
         return render(request, 'juego.html')
     else:
-        guardar = Usuario(names= nombre, last_names=apellido, created= dt.now(), email= correo, password=contrasena,username= nickname, gender= genero, birthdate= edad)
+        guardar = Usuario(names= nombre, last_names=apellido, created= dt.now(), email= correo, password=pwd,username= nickname, gender= genero, birthdate= edad)
         guardar.save()
         return render(request, 'juego.html')
 
