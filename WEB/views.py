@@ -21,16 +21,12 @@ def formulario(request):
     contrasena = request.POST['contrasena']
     nickname = request.POST['nickname']
     
-    
-    info = ""
     if (nombre == "" or apellido == "" or edad == "" or genero == "" or correo == "" or contrasena == "" or nickname == ""):
-        info = "Faltan uno o más datos"
-        return (request,{'enviarInfo':info})
+        return HttpResponse("<p>Faltan uno o más datos</p>") 
     else:
-        info = "Usuario registardo exitosamente"
-        guardar = Usuario(names= nombre, last_names=apellido, created= dt.now(), email= correo, password=contrasena,username= nickname, gender= genero, birthdate= edad)
+        guardar = Usuario(names= nombre, las_names=apellido, created= dt.now(), email= correo, password=contrasena,username= nickname, gender= genero, birthdate= edad)
         guardar.save()
-        return (request,{'enviarInfo':info})
+        return HttpResponse("<p>Usuario registardo exitosamente</p>")
 
 
 def index(request):
