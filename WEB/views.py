@@ -22,16 +22,13 @@ def formulario(request):
     contrasena = request.POST['contrasena']
     pwd = md5( contrasena.encode("utf-8") ).hexdigest()
     nickname = request.POST['nickname']
-    info = ""
 
     if (nombre == "" or apellido == "" or edad == "" or genero == "" or correo == "" or contrasena == "" or nickname == ""):
-        info = "Faltan datos"
-        return render(request, 'juego.html', {'enviarInfo':info})
+        return render(request, 'juego.html', {'enviarInfo':"Faltan datos"})
     else:
         guardar = Usuario(names= nombre, last_names=apellido, created= dt.now(), email= correo, password=pwd,username= nickname, gender= genero, birthdate= edad)
         guardar.save()
-         info = "Registrado"
-        return render(request, 'juego.html',{'enviarInfo':info})
+        return render(request, 'juego.html',{'enviarInfo':Registrado})
 
 def index(request):
     return render(request, 'index.html')
