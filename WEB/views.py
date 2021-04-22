@@ -28,7 +28,7 @@ def formulario(request):
     else:
         guardar = Usuario(names= nombre, last_names=apellido, created= dt.now(), email= correo, password=pwd,username= nickname, gender= genero, birthdate= edad)
         guardar.save()
-        return render(request, 'juego.html',{'enviarInfo':Registrado})
+        return render(request, 'juego.html',{'enviarInfo':"Registrado"})
 
 def index(request):
     return render(request, 'index.html')
