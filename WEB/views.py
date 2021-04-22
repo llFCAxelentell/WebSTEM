@@ -298,7 +298,7 @@ def minutosTotales(request):
         cursor = connection.cursor()
         #Display the PostgreSQL version installed
         print ("jala3")
-        cursor.execute("SELECT * from "WEB_usuario";")
+        cursor.execute("SELECT * from \"WEB_usuario\";")
         rows = cursor.fetchall()
         print ("jala2")
         for row in rows:
