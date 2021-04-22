@@ -281,11 +281,13 @@ def minutosTotales(request):
             port = "5432",
             database = "medchembd"
         )
+        print ("jala")
         #Create a cursor connection object to a PostgreSQL instance and print the connection properties.
         cursor = connection.cursor()
         #Display the PostgreSQL version installed
-        cursor.execute("SELECT num_compounds_sold from Day;")
+        cursor.execute("SELECT num_compounds_sold from WEB_Day;")
         rows = cursor.fetchall()
+        print ("jala2")
         for row in rows:
             totales += row[2]
 
