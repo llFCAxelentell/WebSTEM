@@ -284,7 +284,7 @@ def minutosTotales(request):
         #Create a cursor connection object to a PostgreSQL instance and print the connection properties.
         cursor = connection.cursor()
         #Display the PostgreSQL version installed
-        cursor.execute("SELECT num_compounds_sold from web_day;")
+        cursor.execute("SELECT num_compounds_sold from webstem_day;")
         rows = cursor.fetchall()
         for row in rows:
             totales += row[2]
