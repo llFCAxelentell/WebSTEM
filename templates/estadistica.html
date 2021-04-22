@@ -8,26 +8,6 @@
     <title>Página principal</title>
     {% load static%}
     <link href="{% static 'style.css'%}" rel="stylesheet" type="text/css" />
-    
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable({{losDatos|safe}});
-
-        var options = {
-          title: 'num_compounds_made vs num_compounds_sold',
-          hAxis: {title: 'num_compounds_made'},
-          vAxis: {title: 'num_compounds_sold'},
-          legend: 'none'
-        };
-
-        var chart = new google.visualization.ScatterChart(document.getElementById('chart_div'));
-
-        chart.draw(data, options);
-      }
-    </script>
 </head>
 
 <body>
