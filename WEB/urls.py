@@ -26,7 +26,7 @@ urlpatterns = [
     path('nivelCompElemClieDin',views.nivelCompElemClieDin, name='nivelCompElemClieDin'),
     path('scatter',views.scatter, name='scatter'),
 
-
-
-
+]
+urlpatterns += [
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
