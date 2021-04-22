@@ -7,7 +7,6 @@ from . models import Sesion
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-
 from json import loads, dumps
 from . models import Usuario
 from . models import Try
@@ -15,6 +14,9 @@ from . models import Day
 from hashlib import md5
 import psycopg2
 
+
+def mi_estadistica(request):
+    return render(request, 'mi_estadistica.html')
 
 @csrf_exempt
 def formulario(request):
@@ -32,6 +34,8 @@ def formulario(request):
     else:
         guardar = Usuario(names= nombre, last_names=apellido, created= dt.now(), email= correo, password=pwd,username= nickname, gender= genero, birthdate= edad)
         guardar.save()
+        user = User.objects.create_user(nickname, correo, contrasena)
+        user.save()
         return render(request, 'juego.html',{'enviarInfo':"Registrado"})
 
 def index(request):
