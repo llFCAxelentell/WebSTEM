@@ -37,6 +37,7 @@ def juego(request):
     return render(request, 'juego.html')
 
 def estadistica(request):
+#grafica compounds made vs sold
     data = []
     data.append(['num_compounds_made', 'num_compounds_sold'])
 
@@ -53,14 +54,13 @@ def estadistica(request):
     else:
         return HttpResponse("<h1>No hay registros </h1>")
     
+# grafica num_compounds_made
     data1 = []
     tiempo=0
-    star = Sesion.objects.values_list('started', flat=True)
-    end = Sesion.objects.values_list('ended', flat=True)
-    minutosTotales =0.0
     resultados1 = (Day.objects.values('try_id').annotate(dcount=Count('num_compounds_made')).order_by())
     print(resultados1)
-    
+    star = Sesion.objects.values_list('started', flat=True)
+    end = Sesion.objects.values_list('ended', flat=True)
     for i in range(len(star)):
         tiempo = end[i] - star[i]
         minutes = tiempo.total_seconds() / 60
@@ -267,6 +267,40 @@ def maxJugado(request):
 @csrf_exempt
 def minJugado(request):
     return HttpResponse(100)
+
+@csrf_exempt
+def minutosTotales(request):
+   
+    totales = 0
+    try:
+        connection = psycopg2.connect(
+            user = "stem_user",
+            password = "stemreto",
+            host = "localhost",
+            port = "5432",
+            database = "stem442"
+        )
+        #Create a cursor connection object to a PostgreSQL instance and print the connection properties.
+        cursor = connection.cursor()
+        #Display the PostgreSQL version installed
+        cursor.execute("SELECT * from videojuego_reto;")
+        rows = cursor.fetchall()
+        for row in rows:
+            totales += row[2]
+
+    #Handle the error throws by the command that is useful when using python while working with PostgreSQL
+    except(Exception, psycopg2.Error) as error:
+        print("Error connecting to PostgreSQL database", error)
+        connection = None
+
+    #Close the database connection
+    finally:
+        if(connection != None):
+            cursor.close()
+            connection.close()
+            #print("PostgreSQL connection is now closed")
+    
+    return render(request, 'minutosTotales.html', {"minutosTotales":totales})
 
 
 ###############estadística team
