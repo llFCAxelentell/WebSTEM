@@ -48,6 +48,9 @@ def juego(request):
 
 @login_required
 def mi_estadistica(request):
+    usuario = request.user
+    registros = Usuario.objects.filter(jugador=usuario)
+    print(registros)
     return render(request, 'mi_estadistica.html')
 
 def estadistica(request):
