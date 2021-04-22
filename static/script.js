@@ -49,3 +49,22 @@ function musicaS(x) {
         ado6.play();
     }
 }
+/*FUNCION ENCUESTA*/
+function enviarEncuesta() {
+
+    var nombre = document.getElementById("nombre").value;
+    var apellido = document.getElementById("apellido").value;
+    var años = document.getElementById("años").value;
+    var genero = document.getElementById("genero").value;
+    var correo = document.getElementById("correo").value;
+    var contraseña = document.getElementById("contraseña").value;
+    var nickname = document.getElementById("nickname").value;
+
+
+    if (nombre == "" || apellido == "" || años == "" || genero == "" || correo == "" || contraseña == "" || nickname == "") {
+        document.getElementById("enviarDescripcion").innerHTML = "Faltan uno o más datos";
+    } else {
+        document.getElementById("enviarDescripcion").innerHTML = "Usuario registardo exitosamente";
+    }
+
+}
