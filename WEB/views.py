@@ -112,7 +112,7 @@ def scatter(request):
         return render(request, 'scatter.html', {'losDatos':data_formato}) # scatter.html
     else:
         return HttpResponse("<h1>No hay registros </h1>")
-#falta verificar password
+
 
 @csrf_exempt
 def SendLoginData(request):
@@ -122,12 +122,11 @@ def SendLoginData(request):
 
     jugador_nombre = body['data_a']
     jugador_pass = body['data_b']
-    print(jugador_pass)
+    
     jugador_o  = User.objects.filter(username=jugador_nombre)
     print(jugador_o[0].username)
     jugador_objeto = Usuario.objects.filter(username=jugador_o[0].id)#select * from Reto where nombre = jugador_nombre
-    print("Jala")
-    jugador_json = serializers.serialize('json',jugador_objeto )
+
 
     nombreBD = jugador_objeto[0].username
     passBD = jugador_objeto[0].password
@@ -151,7 +150,6 @@ def StartSession(request):
     ahorita= dt.now()
     p = Sesion(user_id = Usuario(jugador_user_id), started=ahorita, ended=None)
     p.save()
-
 
     return HttpResponse(p.id)
 
