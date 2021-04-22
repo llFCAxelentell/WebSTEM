@@ -87,10 +87,10 @@ def SendLoginData(request):
     nombreBD = jugador_objeto[0].username
     passBD = jugador_objeto[0].password
     idBD = jugador_objeto[0].id
-
-    #FALTA VALIDAR LOS DATOS CON UN IF
-
-    return HttpResponse(idBD)
+    if passBD==jugador_pass:
+        return HttpResponse(idBD)
+    else:
+        return HttpResponse(-1)
 
 
 #Listo, solo que ahora no recivo el started, solo el id del usuario
