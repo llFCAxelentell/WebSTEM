@@ -10,6 +10,7 @@ from . models import Usuario
 from . models import Try
 from . models import Day
 from hashlib import md5
+import psycopg2
 
 
 @csrf_exempt
