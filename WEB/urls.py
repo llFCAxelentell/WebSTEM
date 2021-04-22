@@ -6,6 +6,7 @@ urlpatterns = [
     path('index.html',views.index, name = 'index'),
     path('juego.html',views.juego, name = 'juego'),
     path('estadistica.html',views.estadistica, name = 'estadistica'),
+    path('mi_estadistica.html',views.mi_estadistica, name = 'mi_estadistica'),
     path('stem.html',views.stem, name = 'stem'),
     path('SendLoginData',views.SendLoginData, name='SendLoginData'),
     path('StartSession',views.StartSession, name='StartSession'),
