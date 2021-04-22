@@ -14,9 +14,7 @@ from . models import Day
 from hashlib import md5
 import psycopg2
 
-@login_required
-def mi_estadistica(request):
-    return render(request, 'mi_estadistica.html')
+
 
 @csrf_exempt
 def formulario(request):
@@ -47,6 +45,10 @@ def index(request):
 
 def juego(request):
     return render(request, 'juego.html')
+
+@login_required
+def mi_estadistica(request):
+    return render(request, 'mi_estadistica.html')
 
 def estadistica(request):
 #grafica compounds made vs sold
