@@ -50,7 +50,7 @@ def juego(request):
 def mi_estadistica(request):
     usuario = request.user
     registros = Usuario.objects.filter(username=usuario)
-    print(registros)
+    print(registros.last_names)
     return render(request, 'mi_estadistica.html')
 
 def estadistica(request):
