@@ -293,8 +293,8 @@ def estadistica(request):
             database = "medchembd"
         )
         print ("jala")
-        data2 = []
-        data2.append(['time', 'compounds made'])
+        data= []
+        data.append(['time', 'compounds made'])
         #Create a cursor connection object to a PostgreSQL instance and print the connection properties.
         cursor = connection.cursor()
         cursor2 = connection.cursor()
@@ -321,9 +321,9 @@ def estadistica(request):
         for i in range(len(ota)):
             print(ota[i])
             print(ota2[i])
-            data2.append([ota[i], ota2[i]])
+            data.append([ota[i], ota2[i]])
         print(data)
-        data2_formato= dumps(data)
+        data_formato= dumps(data)
             #totales += row[2]
         totales =1000
     #Handle the error throws by the command that is useful when using python while working with PostgreSQL
@@ -338,7 +338,7 @@ def estadistica(request):
             connection.close()
             #print("PostgreSQL connection is now closed")
 
-    return render(request, 'estadistica.html', {'losDatos':data2_formato})
+    return render(request, 'estadistica.html', {'losDatos':data_formato})
 
 
 ###############estadística team
