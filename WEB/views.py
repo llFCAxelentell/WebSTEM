@@ -296,7 +296,7 @@ def estadistica(request):
         data2_formato=dumps(data2) #formatear los datos en string para json
         #return render(request, 'estadistica.html', {'losDatos':data_formato}) # scatter.html
 
-        
+
         connection = psycopg2.connect(
             user = "farmaceuticouser",
             password = "LibroVerde23",
@@ -349,7 +349,7 @@ def estadistica(request):
             connection.close()
             #print("PostgreSQL connection is now closed")
 
-    return render(request, 'estadistica.html', {'losDatos':data_formato}, {'losDatos2':data2_formato})
+    return render(request, 'estadistica.html', {'losDatos':data_formato})
 
 
 ###############estadística team
