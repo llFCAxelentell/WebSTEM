@@ -23,7 +23,7 @@ class Try(models.Model):
 
 class Day(models.Model):
     try_id = models.ForeignKey(Try, on_delete=models.SET_NULL, blank=True, null=True)
-    dayNumber = models.IntegerField()
+    day_number = models.IntegerField()
     success = models.BooleanField()
     num_compounds_made = models.IntegerField()
     num_compounds_sold = models.IntegerField()
