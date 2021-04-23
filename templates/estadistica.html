@@ -35,6 +35,8 @@
     <div>
         <h3>¿Quieres saber más sobre Medieval Chemist?
             Consulta las siguientes gráficas:</h3></div>
+
+
 <!--Prueba Grafica -->
     <div>
         <script type="text/javascript">
@@ -45,27 +47,29 @@
         var data = google.visualization.arrayToDataTable({{losDatos|safe}});
 
         var options = {
-          title: 'num_compounds_made vs num_compounds_sold',
-          hAxis: {title: 'num_compounds_made'},
-          vAxis: {title: 'num_compounds_sold'},
+          title: 'num_compounds_made vs time',
+          hAxis: {title: 'time'},
+          vAxis: {title: 'num_compounds_made'},
           legend: 'none'
         };
 
-        var chart = new google.visualization.ScatterChart(document.getElementById('chart_div_scatter'));
+        var chart = new google.visualization.ScatterChart(document.getElementById('chart_div_scatter1'));
 
         chart.draw(data, options);
       }
     </script>
     </div>
-    <div id="chart_div_scatter" style="width: 900px; height: 500px;"></div>
+    <div id="chart_div_scatter1" style="width: 900px; height: 500px;"></div>
 <!--Prueba Grafica -->
+
+
     <div class="grid-container8">
         <div id="chart_divTvC" style="width: 650px; height: 400px;"></div>
             <script src="{%static 'scriptTvC.js'%}"></script>
         <div id="chart_divEvT" style="width: 650px; height: 400px;"></div>
             <script src="{%static 'scriptEvT.js'%}"></script>
     </div>
-        
+
     <div class="grid-container8">
         <div id="chart_divCvE" style="width: 650px; height: 400px;"></div>
             <script src="{%static 'scriptCvE.js'%}"></script>
