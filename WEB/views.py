@@ -94,19 +94,9 @@ def estadistica(request):
 
 def stem(request):
     return render(request, 'stem.html')
-
+'''
 def scatter(request):
-    '''
-    data = [
-            ['nivel', 'exito'],
-            [ 1,      90],
-            [ 2,      80],
-            [ 3,     75],
-            [ 4,      50],
-            [ 5,      45],
-            [ 6,    30]
-            ]
-    '''
+
     data = []
     data.append(['num_compounds_made', 'num_compounds_sold'])
 
@@ -123,7 +113,7 @@ def scatter(request):
         return render(request, 'scatter.html', {'losDatos':data_formato}) # scatter.html
     else:
         return HttpResponse("<h1>No hay registros </h1>")
-
+'''
 
 @csrf_exempt
 def SendLoginData(request):
@@ -291,7 +281,7 @@ def minJugado(request):
     return HttpResponse(100)
 
 @csrf_exempt
-def minutosTotales(request):
+def scatter(request):
 
     totales = 0
     try:
@@ -331,7 +321,9 @@ def minutosTotales(request):
         for i in range(len(ota)):
             print(ota[i])
             print(ota2[i])
-        
+            data.append([ota[i], ota2[i]])
+        print(data)
+        data_formato= dump(data)
             #totales += row[2]
         totales =1000
     #Handle the error throws by the command that is useful when using python while working with PostgreSQL
@@ -346,7 +338,7 @@ def minutosTotales(request):
             connection.close()
             #print("PostgreSQL connection is now closed")
 
-    return render(request, 'minutosTotales.html', {"minutosTotales":totales})
+    return render(request, 'scatter.html', {'losDatos':data_formato})
 
 
 ###############estadística team
