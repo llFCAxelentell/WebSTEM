@@ -291,7 +291,7 @@ def estadistica(request):
         nombre = registro.num_compounds_made
         minutos = registro.num_compounds_sold
         data2.append([nombre, minutos])
-    data2_formato=dumps(data) #formatear los datos en string para json
+    data2_formato=dumps(data2) #formatear los datos en string para json
     #return render(request, 'estadistica.html', {'losDatos':data_formato}) # scatter.html
 
 
