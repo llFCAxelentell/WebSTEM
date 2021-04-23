@@ -303,6 +303,8 @@ def minutosTotales(request):
             database = "medchembd"
         )
         print ("jala")
+        data = []
+        data.append(['time', 'compounds made'])
         #Create a cursor connection object to a PostgreSQL instance and print the connection properties.
         cursor = connection.cursor()
         cursor2 = connection.cursor()
@@ -319,11 +321,14 @@ def minutosTotales(request):
         print (rows2)
         ########## ver que onda
 
+        for i in len(rows):
+            print(rows[0][i])
+        '''
         for row in rows:
             print(row[0])
         for rowe in rows2:
             print(rowe[0])
-
+            '''
             #totales += row[2]
         totales =1000
     #Handle the error throws by the command that is useful when using python while working with PostgreSQL
