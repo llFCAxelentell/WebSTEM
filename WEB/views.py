@@ -321,14 +321,17 @@ def minutosTotales(request):
         print (rows2)
         ########## ver que onda
 
-        for i in len(rows):
-            print(rows[i][0])
-        '''
+        ota= []
+        ota2=[]
         for row in rows:
+            ota.append(row[0])
             print(row[0])
         for rowe in rows2:
+            ota2.append(rowe[0])
             print(rowe[0])
-            '''
+
+        print(ota)
+        print(ota2)
             #totales += row[2]
         totales =1000
     #Handle the error throws by the command that is useful when using python while working with PostgreSQL
