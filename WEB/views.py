@@ -319,7 +319,8 @@ def minutosTotales(request):
         rows2= cursor2.fetchall()
 
         ########## ver que onda
-
+        print(rows)
+        print(rows2)
         ota= []
         ota2=[]
         for row in rows:
