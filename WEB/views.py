@@ -326,17 +326,11 @@ def estadistica(request):
         for rowe in rows2:
             ota2.append(rowe[0])
 
-        print(ota)
-        print(ota2)
-
         for i in range(len(ota)):
-            print(ota[i])
-            print(ota2[i])
             data.append([ota[i], ota2[i]])
-        print(data)
+
         data_formato= dumps(data)
-            #totales += row[2]
-        totales =1000
+        js = {'losDatos':data_formato,'losDatos2':data2_formato}
     #Handle the error throws by the command that is useful when using python while working with PostgreSQL
     except(Exception, psycopg2.Error) as error:
         print("Error connecting to PostgreSQL database", error)
@@ -349,7 +343,7 @@ def estadistica(request):
             connection.close()
             #print("PostgreSQL connection is now closed")
 
-    return render(request, 'estadistica.html', {'losDatos':data_formato,'losDatos2':data2_formato})
+    return render(request, 'estadistica.html', js)
 
 
 ###############estadística team
