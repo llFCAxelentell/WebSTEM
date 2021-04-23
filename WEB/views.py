@@ -331,8 +331,8 @@ def minutosTotales(request):
         print(ota)
         print(ota2)
         print(ota[1])
-        
-        for i in len(ota):
+
+        for i in range(len(ota)):
             print(i)
             '''
             print(ota[i])
