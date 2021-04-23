@@ -282,6 +282,21 @@ def minJugado(request):
 
 @csrf_exempt
 def estadistica(request):
+    data2 = []
+    data2.append(['num_compounds_made', 'num_compounds_sold'])
+
+    resultados= Day.objects.all()
+
+    titulo_formato = dumps(titulo)
+
+    for registro in resultados:
+        nombre = registro.num_compounds_made
+        minutos = registro.num_compounds_sold
+        data2.append([nombre, minutos])
+    data2_formato=dumps(data) #formatear los datos en string para json
+    #return render(request, 'estadistica.html', {'losDatos':data_formato}) # scatter.html
+
+
 
     totales = 0
     try:
@@ -338,7 +353,7 @@ def estadistica(request):
             connection.close()
             #print("PostgreSQL connection is now closed")
 
-    return render(request, 'estadistica.html', {'losDatos':data_formato})
+    return render(request, 'estadistica.html', {'losDatos':data_formato}, {'losDatos2':data2_formato})
 
 
 ###############estadística team

@@ -62,6 +62,33 @@
     <div id="chart_div_scatter1" style="width: 900px; height: 500px;"></div>
 <!--Prueba Grafica -->
 
+<!--Prueba Grafica -->
+    <div>
+        <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable({{losDatos2|safe}});
+
+        var options = {
+          title: 'num_compounds_sold vs num_compounds_made',
+          hAxis: {title: 'num_compounds_made'},
+          vAxis: {title: 'num_compounds_sold'},
+          legend: 'none'
+        };
+
+        var chart = new google.visualization.ScatterChart(document.getElementById('chart_div_scatter2'));
+
+        chart.draw(data, options);
+      }
+    </script>
+    </div>
+    <div id="chart_div_scatter2" style="width: 900px; height: 500px;"></div>
+<!--Prueba Grafica -->
+
+
+
 
     <div class="grid-container8">
         <div id="chart_divTvC" style="width: 650px; height: 400px;"></div>
