@@ -58,7 +58,7 @@ def mi_estadistica(request):
 
 
     return render(request, 'mi_estadistica.html', {'dato':dato})
-
+'''
 def estadistica(request):
 #grafica compounds made vs sold
     data = []
@@ -91,7 +91,7 @@ def estadistica(request):
 
     return render(request, 'estadistica.html', {'losDatos':data_formato})
     #return render(request, 'estadistica.html')
-
+'''
 def stem(request):
     return render(request, 'stem.html')
 '''
@@ -281,7 +281,7 @@ def minJugado(request):
     return HttpResponse(100)
 
 @csrf_exempt
-def scatter(request):
+def estadistica(request):
 
     totales = 0
     try:
@@ -293,8 +293,8 @@ def scatter(request):
             database = "medchembd"
         )
         print ("jala")
-        data = []
-        data.append(['time', 'compounds made'])
+        data2 = []
+        data2.append(['time', 'compounds made'])
         #Create a cursor connection object to a PostgreSQL instance and print the connection properties.
         cursor = connection.cursor()
         cursor2 = connection.cursor()
@@ -321,9 +321,9 @@ def scatter(request):
         for i in range(len(ota)):
             print(ota[i])
             print(ota2[i])
-            data.append([ota[i], ota2[i]])
+            data2.append([ota[i], ota2[i]])
         print(data)
-        data_formato= dumps(data)
+        data2_formato= dumps(data)
             #totales += row[2]
         totales =1000
     #Handle the error throws by the command that is useful when using python while working with PostgreSQL
@@ -338,7 +338,7 @@ def scatter(request):
             connection.close()
             #print("PostgreSQL connection is now closed")
 
-    return render(request, 'scatter.html', {'losDatos':data_formato})
+    return render(request, 'estadistica.html', {'losDatos':data2_formato})
 
 
 ###############estadística team
