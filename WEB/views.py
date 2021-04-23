@@ -317,21 +317,21 @@ def minutosTotales(request):
         #AVG(val::success)*100
         rows = cursor.fetchall()
         rows2= cursor2.fetchall()
-        print (rows)
-        print (rows2)
+
         ########## ver que onda
 
         ota= []
         ota2=[]
         for row in rows:
             ota.append(row[0])
-            print(row[0])
         for rowe in rows2:
             ota2.append(rowe[0])
-            print(rowe[0])
 
         print(ota)
         print(ota2)
+        for i in len(ota):
+            print(ota[i])
+            print(ota2[i])
             #totales += row[2]
         totales =1000
     #Handle the error throws by the command that is useful when using python while working with PostgreSQL
