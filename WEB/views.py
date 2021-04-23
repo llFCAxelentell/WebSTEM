@@ -307,7 +307,8 @@ def minutosTotales(request):
         cursor = connection.cursor()
         #Display the PostgreSQL version installed
         print ("jala3")
-        cursor.execute("SELECT day_number, avg(success::int) AS PromedioExito FROM \"WEB_day\" GROUP BY day_number;")
+        cursor.execute("SELECT DATEDIFF(minute, ended, started) AS TiempoSesion,SUM(num_compounds_made) AS SumaCompuestos FROM \"WEB_Day\" INNER JOIN \"WEB_try\" ON try_id=id INNER JOIN \"WEBs_sesion\" ON session_id= id GROUP BY session_id ORDER BY TiempoSesion ASC")
+        #cursor.execute("SELECT day_number, avg(success::int) AS PromedioExito FROM \"WEB_day\" GROUP BY day_number;")
         #AVG(val::success)*100
         rows = cursor.fetchall()
         print (rows)
