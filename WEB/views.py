@@ -330,9 +330,12 @@ def minutosTotales(request):
 
         print(ota)
         print(ota2)
+        print(ota[1])
+        '''
         for i in len(ota):
             print(ota[i])
             print(ota2[i])
+        '''
             #totales += row[2]
         totales =1000
     #Handle the error throws by the command that is useful when using python while working with PostgreSQL
