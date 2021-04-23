@@ -307,13 +307,14 @@ def minutosTotales(request):
         cursor = connection.cursor()
         #Display the PostgreSQL version installed
         print ("jala3")
-        cursor.execute("SELECT * from \"WEB_usuario\";")
+        cursor.execute("SELECT dayNumber,AVG(success)*100 AS PromedioExito FROM \"WEB_day\" GROUP BY dayNumber;")
         rows = cursor.fetchall()
         print ("jala2")
         ########## ver que onda
         for row in rows:
-            totales += row[2]
-
+            print(row[2])
+            #totales += row[2]
+        totales =1000
     #Handle the error throws by the command that is useful when using python while working with PostgreSQL
     except(Exception, psycopg2.Error) as error:
         print("Error connecting to PostgreSQL database", error)
