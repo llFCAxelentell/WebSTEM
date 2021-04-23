@@ -307,8 +307,8 @@ def minutosTotales(request):
         cursor = connection.cursor()
         #Display the PostgreSQL version installed
         print ("jala3")
-        cursor.execute("SELECT day_numberAS PromedioExito FROM \"WEB_day\" GROUP BY dayNumber;")
-        #AVG(val::success)*100 
+        cursor.execute("SELECT day_number AS PromedioExito FROM \"WEB_day\" GROUP BY dayNumber;")
+        #AVG(val::success)*100
         rows = cursor.fetchall()
         print ("jala2")
         ########## ver que onda
