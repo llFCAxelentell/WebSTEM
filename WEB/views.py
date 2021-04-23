@@ -322,7 +322,7 @@ def minutosTotales(request):
         ########## ver que onda
 
         for i in len(rows):
-            print(rows[0][i])
+            print(rows[i][0])
         '''
         for row in rows:
             print(row[0])
