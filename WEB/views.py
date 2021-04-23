@@ -323,7 +323,7 @@ def scatter(request):
             print(ota2[i])
             data.append([ota[i], ota2[i]])
         print(data)
-        data_formato= dump(data)
+        data_formato= dumps(data)
             #totales += row[2]
         totales =1000
     #Handle the error throws by the command that is useful when using python while working with PostgreSQL
