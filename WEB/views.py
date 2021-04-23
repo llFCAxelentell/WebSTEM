@@ -282,22 +282,21 @@ def minJugado(request):
 
 @csrf_exempt
 def estadistica(request):
-    data2 = []
-    data2.append(['num_compounds_made', 'num_compounds_sold'])
 
-    resultados= Day.objects.all()
-
-    for registro in resultados:
-        nombre = registro.num_compounds_made
-        minutos = registro.num_compounds_sold
-        data2.append([nombre, minutos])
-    data2_formato=dumps(data2) #formatear los datos en string para json
-    #return render(request, 'estadistica.html', {'losDatos':data_formato}) # scatter.html
-
-
-
-    totales = 0
     try:
+        data2 = []
+        data2.append(['num_compounds_made', 'num_compounds_sold'])
+
+        resultados= Day.objects.all()
+
+        for registro in resultados:
+            nombre = registro.num_compounds_made
+            minutos = registro.num_compounds_sold
+            data2.append([nombre, minutos])
+        data2_formato=dumps(data2) #formatear los datos en string para json
+        #return render(request, 'estadistica.html', {'losDatos':data_formato}) # scatter.html
+
+        
         connection = psycopg2.connect(
             user = "farmaceuticouser",
             password = "LibroVerde23",
@@ -317,7 +316,6 @@ def estadistica(request):
         cursor2.execute("SELECT SUM(num_compounds_made) FROM \"WEB_day\" INNER JOIN \"WEB_try\" ON \"WEB_day\".try_id_id=\"WEB_try\".id INNER JOIN \"WEB_sesion\" ON \"WEB_try\".session_id_id= \"WEB_sesion\".id GROUP BY \"WEB_try\".session_id_id;")
         #SUM(num_compounds_made) AS SumaCompuestos FROM \"WEB_day\" INNER JOIN \"WEB_try\" ON \"WEB_day\".try_id_id=\"WEB_try\".id INNER JOIN \"WEB_sesion\" ON \"WEB_try\".session_id_id= \"WEB_sesion\".id GROUP BY \"WEB_try\".session_id_id ORDER BY TiempoSesion ASC
         #cursor.execute("SELECT day_number, avg(success::int) AS PromedioExito FROM \"WEB_day\" GROUP BY day_number;")
-        #AVG(val::success)*100
         rows = cursor.fetchall()
         rows2= cursor2.fetchall()
 
