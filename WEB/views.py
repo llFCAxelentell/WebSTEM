@@ -318,10 +318,10 @@ def minutosTotales(request):
         print (rows)
         print (rows2)
         ########## ver que onda
-        '''
+
         for row in rows:
-            print(row[2])
-        '''
+            print(row[0])
+
             #totales += row[2]
         totales =1000
     #Handle the error throws by the command that is useful when using python while working with PostgreSQL
