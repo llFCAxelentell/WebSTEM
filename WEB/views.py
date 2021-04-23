@@ -349,7 +349,7 @@ def estadistica(request):
             connection.close()
             #print("PostgreSQL connection is now closed")
 
-    return render(request, 'estadistica.html', {'losDatos':data_formato})
+    return render(request, 'estadistica.html', {'losDatos':data_formato,'losDatos2':data2_formato})
 
 
 ###############estadística team
