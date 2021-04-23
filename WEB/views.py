@@ -310,10 +310,12 @@ def minutosTotales(request):
         cursor.execute("SELECT day_number AS PromedioExito FROM \"WEB_day\" GROUP BY day_number;")
         #AVG(val::success)*100
         rows = cursor.fetchall()
-        print ("jala2")
+        print (rows)
         ########## ver que onda
+        '''
         for row in rows:
             print(row[2])
+        '''
             #totales += row[2]
         totales =1000
     #Handle the error throws by the command that is useful when using python while working with PostgreSQL
