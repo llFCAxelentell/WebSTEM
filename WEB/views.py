@@ -287,8 +287,6 @@ def estadistica(request):
 
     resultados= Day.objects.all()
 
-    titulo_formato = dumps(titulo)
-
     for registro in resultados:
         nombre = registro.num_compounds_made
         minutos = registro.num_compounds_sold
