@@ -321,6 +321,8 @@ def minutosTotales(request):
 
         for row in rows:
             print(row[0])
+        for rowe in rows2:
+            print(rowe[0])
 
             #totales += row[2]
         totales =1000
