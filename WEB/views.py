@@ -357,7 +357,7 @@ def estadistica(request):
         cursor5.execute("SELECT day_number, avg(success::int) AS PromedioExito FROM \"WEB_day\" GROUP BY day_number;")
 
         #Top five de scores
-        cursor6.execute("SELECT \"WEB_usuario\".username, (AVG(money_generated_day)*MAX(day_number)) AS Score FROM \"WEB_usuario\" INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id GROUP BY username ORDER BY Score DESC LIMIT 5 ;")
+        cursor6.execute("SELECT \"WEB_usuario\".username_id, (AVG(money_generated_day)*MAX(day_number)) AS Score FROM \"WEB_usuario\" INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id GROUP BY username ORDER BY Score DESC LIMIT 5 ;")
 
         rows = cursor.fetchall()
         rows2= cursor2.fetchall()
