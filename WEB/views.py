@@ -100,10 +100,10 @@ def mi_estadistica(request):
             port = "5432",
             database = "medchembd"
         )
-        cursor = connection.cursor()
-        cursor.execute("SELECT * FROM auth_user WHERE auth_user.username = (%s) ;", (uu))
-        rows = cursor.fetchall()
-        print(rows)
+        #cursor = connection.cursor()
+        #cursor.execute("SELECT * FROM auth_user WHERE auth_user.username = (%s) ;", (uu))
+        #rows = cursor.fetchall()
+        #print(rows)
 
         '''
         data= []
