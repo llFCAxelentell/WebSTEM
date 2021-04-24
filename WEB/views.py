@@ -306,7 +306,7 @@ def estadistica(request):
         )
         print ("jala")
         data= []
-        data3= []
+        data4= []
         data.append(['time', 'compounds made'])
         data4.append(['age', 'time'])
         #Create a cursor connection object to a PostgreSQL instance and print the connection properties.
