@@ -55,8 +55,8 @@ def mi_estadistica(request):
         print(type(usuario))
         uuu = str(usuario)
         print(type(uuu))
-        #uu ="\'"+usuario+"\'"
-        #print(uu)
+        uu ="\'"+uuu+"\'"
+        print(uu)
         registros = User.objects.filter(username=usuario)
         print(registros)
         regist = Usuario.objects.filter(username=registros[0].id)
@@ -72,10 +72,10 @@ def mi_estadistica(request):
             port = "5432",
             database = "medchembd"
         )
-        #cursor = connection.cursor()
-        #cursor.execute("SELECT * FROM auth_user WHERE auth_user.username = (%s) ;", (uu))
-        #rows = cursor.fetchall()
-        #print(rows)
+        cursor = connection.cursor()
+        cursor.execute("SELECT * FROM auth_user WHERE auth_user.username = (%s) ;", (uu))
+        rows = cursor.fetchall()
+        print(rows)
 
         '''
         data= []
