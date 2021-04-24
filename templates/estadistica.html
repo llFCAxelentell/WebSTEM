@@ -84,11 +84,7 @@
             google.charts.setOnLoadCallback(drawChart);
 
             function drawChart() {
-                var data = google.visualization.arrayToDataTable({
-                    {
-                        losDatos2 | safe
-                    }
-                });
+                var data = google.visualization.arrayToDataTable({{losDatos2 | safe}});
 
                 var options = {
                     title: 'num_compounds_sold vs num_elements_purchased',
@@ -156,11 +152,7 @@
 
             function drawVisualization() {
                 // Some raw data (not necessarily accurate)
-                var data = google.visualization.arrayToDataTable({
-                    {
-                        losDatos3 | safe
-                    }
-                });
+                var data = google.visualization.arrayToDataTable({{losDatos3 | safe}});
 
                 var options = {
                     title: 'Promedio de indicadores por nivel',
