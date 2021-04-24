@@ -326,14 +326,10 @@ def estadistica(request):
         for rowe in rows2:
             ota2.append(rowe[0])
 
-        print(ota)
-        print(ota2)
 
         for i in range(len(ota)):
-            print(ota[i])
-            print(ota2[i])
+
             data.append([ota[i], ota2[i]])
-        print(data)
         data_formato= dumps(data)
             #totales += row[2]
         totales =1000
