@@ -358,7 +358,7 @@ def estadistica(request):
 
         #Top five de scores
         #TODO: ver que despliegue el nombre del huerco y no su username_id
-        cursor6.execute("SELECT \"WEB_user\".username, (AVG(money_generated_day)*MAX(day_number)) AS Score FROM \"WEB_user\" INNER JOIN \"WEB_usuario\" ON \"WEB_user\".username= \"WEB_usuario\".username INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id GROUP BY username_id ORDER BY Score DESC LIMIT 5 ;")
+        cursor6.execute("SELECT auth_user.username, (AVG(money_generated_day)*MAX(day_number)) AS Score FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.username= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id GROUP BY username_id ORDER BY Score DESC LIMIT 5 ;")
         #Top score global
         #falta
 
