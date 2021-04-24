@@ -37,7 +37,7 @@
             Consulta las siguientes gráficas:</h3></div>
 
 
-<!--Prueba Grafica -->
+<!--Prueba Grafica 1-->
     <div>
         <script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});
@@ -60,9 +60,9 @@
     </script>
     </div>
     <div id="chart_div_scatter1" style="width: 900px; height: 500px;"></div>
-<!--Prueba Grafica -->
+<!--Prueba Grafica1 -->
 
-<!--Prueba Grafica -->
+<!--Prueba Grafica2 -->
     <div>
         <script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});
@@ -85,9 +85,32 @@
     </script>
     </div>
     <div id="chart_div_scatter2" style="width: 900px; height: 500px;"></div>
-<!--Prueba Grafica -->
+<!--Prueba Grafica2 -->
 
+<!--Prueba Grafica 3-->
+    <div>
+        <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
 
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable({{losDatos3|safe}});
+
+        var options = {
+          title: 'time vs age',
+          hAxis: {title: 'age'},
+          vAxis: {title: 'time'},
+          legend: 'none'
+        };
+
+        var chart = new google.visualization.ScatterChart(document.getElementById('chart_div_scatter3'));
+
+        chart.draw(data, options);
+      }
+    </script>
+    </div>
+    <div id="chart_div_scatter3" style="width: 900px; height: 500px;"></div>
+<!--Prueba Grafica 3-->
 
 
     <div class="grid-container8">

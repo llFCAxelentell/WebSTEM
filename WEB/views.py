@@ -344,7 +344,7 @@ def estadistica(request):
             ota4.append(rowee[0])
             ota4.append(rowee[1])
             data3.append([rowee[0], rowee[1]])
-            
+        data3_formato = dumps(data3)
         print(ota4)
 
         for i in range(len(ota)):
@@ -365,7 +365,7 @@ def estadistica(request):
             connection.close()
             #print("PostgreSQL connection is now closed")
 
-    return render(request, 'estadistica.html', {'losDatos':data_formato,'losDatos2':data2_formato})
+    return render(request, 'estadistica.html', {'losDatos':data_formato,'losDatos2':data2_formato, 'losDatos3':data3_formato})
 
 
 ###############estadística team
