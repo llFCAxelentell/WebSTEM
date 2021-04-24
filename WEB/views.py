@@ -320,8 +320,9 @@ def estadistica(request):
         cursor.execute("SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 AS TiempoSesion FROM \"WEB_sesion\";")
 
         cursor2.execute("SELECT SUM(num_compounds_made) FROM \"WEB_day\" INNER JOIN \"WEB_try\" ON \"WEB_day\".try_id_id=\"WEB_try\".id INNER JOIN \"WEB_sesion\" ON \"WEB_try\".session_id_id= \"WEB_sesion\".id GROUP BY \"WEB_try\".session_id_id;")
-        cursor3.execute("SELECT avg(extract (epoch from (ended::timestamp - started::timestamp))::integer/60) FROM \"WEB_sesion\";")
-        cursor4.execute("SELECT  DATE_PART('year', CURRENT_DATE::date) - DATE_PART('year', birthdate::date) AS Edad, avg(extract (epoch from (ended::timestamp - started::timestamp))::integer/60) AS Tiempo FROM \"WEB_sesion\" INNER JOIN \"WEB_usuario\" ON \"WEB_sesion\".user_id_id=\"WEB_usuario\".id GROUP BY Edad ;") #
+        cursor3.execute("SELECT day_number, AVG(num_compounds_sold) AS PromCompuestosVendidos, AVG(num_elements_purchased) AS PromElementos, AVG(customers_rejected) AS PromClientesRechazados, AVG(money_generated_day) AS PromDinero FROM \"WEB_day\" GROUP BY dayNumber;") #
+
+        cursor4.execute("SELECT avg(extract (epoch from (ended::timestamp - started::timestamp))::integer/60) FROM \"WEB_sesion\";")
 
 
         #cursor3.execute("SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 AS Tiempo FROM \"WEB_sesion\" INNER JOIN \"WEB_usuario\" WHERE \"WEB_sesion\".user_id_id=\"WEB_usuario\".id;")
@@ -333,19 +334,19 @@ def estadistica(request):
         rows3= cursor3.fetchall()
         rows4= cursor4.fetchall()
 
+
+        print(rows3)
         ota= []
         ota2=[]
-        ota4=[]
         for row in rows:
             ota.append(row[0])
         for rowe in rows2:
             ota2.append(rowe[0])
-        for rowee in rows4:
-            ota4.append(rowee[0])
-            ota4.append(rowee[1])
+        for rowee in rows3:
+
             data3.append([int(rowee[0]), int(rowee[1])])
         data3_formato = dumps(data3)
-        print(ota4)
+
 
         for i in range(len(ota)):
             data.append([ota[i], ota2[i]])
