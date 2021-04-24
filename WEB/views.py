@@ -317,7 +317,7 @@ def estadistica(request):
         cursor.execute("SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 AS TiempoSesion FROM \"WEB_sesion\";")
 
         cursor2.execute("SELECT SUM(num_compounds_made) FROM \"WEB_day\" INNER JOIN \"WEB_try\" ON \"WEB_day\".try_id_id=\"WEB_try\".id INNER JOIN \"WEB_sesion\" ON \"WEB_try\".session_id_id= \"WEB_sesion\".id GROUP BY \"WEB_try\".session_id_id;")
-        cursor3.execute("SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 AS TiempoSesion FROM \"WEB_sesion\";")
+        cursor3.execute("SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 FROM \"WEB_sesion\";")
 
         #cursor3.execute("SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 AS Tiempo FROM \"WEB_sesion\" INNER JOIN \"WEB_usuario\" WHERE \"WEB_sesion\".user_id_id=\"WEB_usuario\".id;")
         #GROUP BY Edad
