@@ -311,6 +311,7 @@ def estadistica(request):
         cursor = connection.cursor()
         cursor2 = connection.cursor()
         cursor3 = connection.cursor()
+        cursor4 = connection.cursor()
 
         #Display the PostgreSQL version installed
         print ("jala3")
@@ -318,6 +319,8 @@ def estadistica(request):
 
         cursor2.execute("SELECT SUM(num_compounds_made) FROM \"WEB_day\" INNER JOIN \"WEB_try\" ON \"WEB_day\".try_id_id=\"WEB_try\".id INNER JOIN \"WEB_sesion\" ON \"WEB_try\".session_id_id= \"WEB_sesion\".id GROUP BY \"WEB_try\".session_id_id;")
         cursor3.execute("SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 FROM \"WEB_sesion\";")
+        cursor4.execute("SELECT CURRENT_DATE, AGE(timestamp birthdate) FROM \"WEB_usuario\";")
+
 
         #cursor3.execute("SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 AS Tiempo FROM \"WEB_sesion\" INNER JOIN \"WEB_usuario\" WHERE \"WEB_sesion\".user_id_id=\"WEB_usuario\".id;")
         #GROUP BY Edad
@@ -326,7 +329,8 @@ def estadistica(request):
         rows = cursor.fetchall()
         rows2= cursor2.fetchall()
         rows3= cursor3.fetchall()
-
+        rows4= cursor4.fetchall()
+        print(rows4)
         ota= []
         ota2=[]
         for row in rows:
