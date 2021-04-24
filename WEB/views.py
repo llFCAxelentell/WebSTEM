@@ -53,46 +53,15 @@ def mi_estadistica(request):
     try:
         usuario = request.user
         print(type(usuario))
-        uu ="\'"+usuario+"\'"
-        print(uu)
+        #uu ="\'"+usuario+"\'"
+        #print(uu)
         registros = User.objects.filter(username=usuario)
         print(registros)
         regist = Usuario.objects.filter(username=registros[0].id)
         print(regist[0].gender)
         dato= regist[0].gender
 
-        #################################
-        #Minutos jugados totales
-        #Duración promedio de sesión
-        #Tiempo máximo de juego por sesión
-        #Tiempo mínimo de juego por sesión
-
-        tiempos = []
-        star = Sesion.objects.values_list('started', flat=True)
-        end = Sesion.objects.values_list('ended', flat=True)
-        minutosTotales =0.0
-        for i in range(len(star)):
-            tiempo = end[i] - star[i]
-            minutes = tiempo.total_seconds() / 60
-            tiempos.append(minutes)
-            minutosTotales += minutes
-
-        maxTiempo = np.max(tiempos)
-        minTiempo = np.min(tiempos)
-        promTemp =minutosTotales/len(star)
-
-        #################################
-
-        #Compuestos vendidos vs elementos comprados
-        data2 = []
-        data2.append(['num_elements_purchased', 'num_compounds_sold'])
-        resultados= Day.objects.all()
-        for registro in resultados:
-            nombre = registro.num_elements_purchased
-            minutos = registro.num_compounds_sold
-            data2.append([nombre, minutos])
-        data2_formato=dumps(data2)
-        #############
+        
 
         connection = psycopg2.connect(
             user = "farmaceuticouser",
