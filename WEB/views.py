@@ -393,7 +393,8 @@ def estadistica(request):
         for roowe in rows6:
             data6.append([contador, roowe[0], int(roowe[1]) ])
             contador = contador+1
-            
+        data6_formato= dumps(data6)
+        
         for i in range(len(ota)):
             data.append([ota[i], ota2[i]])
 
@@ -412,7 +413,7 @@ def estadistica(request):
             connection.close()
             #print("PostgreSQL connection is now closed")
 
-    return render(request, 'estadistica.html', {'losDatos':data_formato,'losDatos2':data2_formato, 'losDatos4':data4_formato,'losDatos3':data3_formato})
+    return render(request, 'estadistica.html', {'losDatos':data_formato,'losDatos2':data2_formato, 'losDatos4':data4_formato, 'losDatos3':data3_formato, 'losDatos6':data6_formato})
 
 
 ###############estadística team
