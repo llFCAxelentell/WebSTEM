@@ -315,7 +315,7 @@ def estadistica(request):
         print ("jala3")
         cursor.execute("SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 AS TiempoSesion FROM \"WEB_sesion\";")
         cursor2.execute("SELECT SUM(num_compounds_made) FROM \"WEB_day\" INNER JOIN \"WEB_try\" ON \"WEB_day\".try_id_id=\"WEB_try\".id INNER JOIN \"WEB_sesion\" ON \"WEB_try\".session_id_id= \"WEB_sesion\".id GROUP BY \"WEB_try\".session_id_id;")
-        cursor3.execute("SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 AS Tiempo FROM \"WEB_sesion\" INNER JOIN \"WEB_usuario\" WHERE \"WEB_sesion\".user_id=\"WEB_usuario\".id")
+        cursor3.execute("SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 AS Tiempo FROM \"WEB_sesion\" INNER JOIN \"WEB_usuario\" WHERE \"WEB_sesion\".user_id_id=\"WEB_usuario\".id")
         #FLOOR(DATEDIFF(CURRENT_DATE, birthdate)/365) AS Edad, GROUP BY Edad
         #cursor.execute("SELECT day_number, avg(success::int) AS PromedioExito FROM \"WEB_day\" GROUP BY day_number;")
         rows = cursor.fetchall()
@@ -332,7 +332,6 @@ def estadistica(request):
 
         for i in range(len(ota)):
             data.append([ota[i], ota2[i]])
-
         data_formato= dumps(data)
 
     #Handle the error throws by the command that is useful when using python while working with PostgreSQL
