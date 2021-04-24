@@ -53,6 +53,8 @@ def mi_estadistica(request):
     try:
         usuario = request.user
         print(type(usuario))
+        uuu = str(usuario)
+        print(type(uuu))
         #uu ="\'"+usuario+"\'"
         #print(uu)
         registros = User.objects.filter(username=usuario)
@@ -61,7 +63,7 @@ def mi_estadistica(request):
         print(regist[0].gender)
         dato= regist[0].gender
 
-        
+
 
         connection = psycopg2.connect(
             user = "farmaceuticouser",
