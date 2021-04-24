@@ -320,12 +320,12 @@ def estadistica(request):
         cursor.execute("SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 AS TiempoSesion FROM \"WEB_sesion\";")
 
         cursor2.execute("SELECT SUM(num_compounds_made) FROM \"WEB_day\" INNER JOIN \"WEB_try\" ON \"WEB_day\".try_id_id=\"WEB_try\".id INNER JOIN \"WEB_sesion\" ON \"WEB_try\".session_id_id= \"WEB_sesion\".id GROUP BY \"WEB_try\".session_id_id;")
-        cursor4.execute("SELECT day_number, AVG(num_compounds_sold) AS PromCompuestosVendidos, AVG(num_elements_purchased) AS PromElementos, AVG(customers_rejected) AS PromClientesRechazados, AVG(money_generated_day) AS PromDinero FROM \"WEB_day\" GROUP BY day_number;") #
+        cursor3.execute("SELECT day_number, AVG(num_compounds_sold) AS PromCompuestosVendidos, AVG(num_elements_purchased) AS PromElementos, AVG(customers_rejected) AS PromClientesRechazados, AVG(money_generated_day) AS PromDinero FROM \"WEB_day\" GROUP BY day_number;") #
 
-        cursor3.execute("SELECT avg(extract (epoch from (ended::timestamp - started::timestamp))::integer/60) FROM \"WEB_sesion\";")
+        #cursor4.execute("SELECT avg(extract (epoch from (ended::timestamp - started::timestamp))::integer/60) FROM \"WEB_sesion\";")
 
 
-        #cursor3.execute("SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 AS Tiempo FROM \"WEB_sesion\" INNER JOIN \"WEB_usuario\" WHERE \"WEB_sesion\".user_id_id=\"WEB_usuario\".id;")
+        cursor4.execute("SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 AS Tiempo FROM \"WEB_sesion\" INNER JOIN \"WEB_usuario\" WHERE \"WEB_sesion\".user_id_id=\"WEB_usuario\".id;")
         #GROUP BY Edad
         #SUM(num_compounds_made) AS SumaCompuestos FROM \"WEB_day\" INNER JOIN \"WEB_try\" ON \"WEB_day\".try_id_id=\"WEB_try\".id INNER JOIN \"WEB_sesion\" ON \"WEB_try\".session_id_id= \"WEB_sesion\".id GROUP BY \"WEB_try\".session_id_id ORDER BY TiempoSesion ASC
         #cursor.execute("SELECT day_number, avg(success::int) AS PromedioExito FROM \"WEB_day\" GROUP BY day_number;")
