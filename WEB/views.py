@@ -299,6 +299,8 @@ def estadistica(request):
             minutosTotales += minutes
         maxTiempo = np.max(tiempos)
         print(maxTiempo)
+        minTiempo = np.min(tiempos)
+        print(minTiempo)
         prom =minutosTotales/len(star)
         print(prom)
         #################################
