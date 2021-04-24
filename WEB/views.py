@@ -175,7 +175,7 @@ def AddDay(request):
     body = loads(body_unicode)
 
     try_i =body['try_id']
-    dayNumbe=body['dayNumber']
+    day_numbe=body['day_number']
     succes =body['success']
     num_compounds_mad=body['num_compounds_made']
     num_compounds_sol=body['num_compounds_sold']
@@ -183,7 +183,7 @@ def AddDay(request):
     customers_rejecte=body['customers_rejected']
     money_generated_da=body['money_generated_day']
 
-    d = Day(try_id=Try(try_i), dayNumber=dayNumbe, success=succes, num_compounds_made=num_compounds_mad, num_compounds_sold=num_compounds_sol,  num_elements_purchased=num_elements_purchase, customers_rejected=customers_rejecte, money_generated_day=money_generated_da)
+    d = Day(try_id=Try(try_i), day_number=day_numbe, success=succes, num_compounds_made=num_compounds_mad, num_compounds_sold=num_compounds_sol,  num_elements_purchased=num_elements_purchase, customers_rejected=customers_rejecte, money_generated_day=money_generated_da)
     d.save()
 
     return HttpResponse("okAddDay")
