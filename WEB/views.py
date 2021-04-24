@@ -282,7 +282,7 @@ def minJugado(request):
 
 @csrf_exempt
 def estadistica(request):
-
+    js={}
     try:
         data2 = []
         data2.append(['num_compounds_made', 'num_compounds_sold'])
