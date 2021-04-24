@@ -114,7 +114,7 @@
 <!--Prueba Grafica 4-->
 <div>
         <script type="text/javascript">
-google.charts.load('current', {
+        google.charts.load('current', {
     'packages': ['corechart']
 });
 google.charts.setOnLoadCallback(drawVisualization);
@@ -139,15 +139,15 @@ function drawVisualization() {
             title: 'Nivel'
         },
         seriesType: 'bars',
-    
+
     };
 
-    var chart = new google.visualization.ComboChart(document.getElementById('chart_divscatter5'));
+    var chart = new google.visualization.ComboChart(document.getElementById('chart_divNvI'));
     chart.draw(data, options);
 }
     </script>
 </div>
-<div id="chart_div_scatter5" style="width: 900px; height: 500px;"></div>
+  <div id="chart_divNvI" style="width: 900px; height: 500px;"></div>
 <!--Prueba Grafica 4-->
 
 
