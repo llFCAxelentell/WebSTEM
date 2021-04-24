@@ -328,6 +328,7 @@ def estadistica(request):
         cursor3 = connection.cursor()
         cursor4 = connection.cursor()
         cursor5 = connection.cursor()
+        cursor6 = connection.cursor()
 
         print ("jala3")
         #Tiempo jugado vs compuestos hechos
@@ -341,16 +342,21 @@ def estadistica(request):
         #Edad vs tiempo jugado
         cursor4.execute("SELECT  DATE_PART('year', CURRENT_DATE::date) - DATE_PART('year', birthdate::date) AS Edad, avg(extract (epoch from (ended::timestamp - started::timestamp))::integer/60) AS Tiempo FROM \"WEB_sesion\" INNER JOIN \"WEB_usuario\" ON \"WEB_sesion\".user_id_id=\"WEB_usuario\".id GROUP BY Edad ;") #
 
+        #Promedio de éxito / fallo por nivel
         cursor5.execute("SELECT day_number, avg(success::int) AS PromedioExito FROM \"WEB_day\" GROUP BY day_number;")
+
+        #Tiempo máximo de juego por sesión
+        cursor6.execute("SELECT max(extract (epoch from (ended::timestamp - started::timestamp))::integer/60) AS MaxTiempo FROM \"WEB_sesion\";")
 
         rows = cursor.fetchall()
         rows2= cursor2.fetchall()
         rows3= cursor3.fetchall()
         rows4= cursor4.fetchall()
         rows5= cursor5.fetchall()
+        rows6= cursor6.fetchall()
 
-        print(rows4)
         print(rows5)
+        print(rows6)
         ota= []
         ota2=[]
         for row in rows:
