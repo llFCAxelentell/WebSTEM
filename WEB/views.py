@@ -284,18 +284,29 @@ def minJugado(request):
 def estadistica(request):
 
     try:
+        #################################
+        #Minutos jugados totales y Duración promedio de sesión
+        tiempo=0
+        minutosTotales=0
+        star = Sesion.objects.values_list('started', flat=True)
+        end = Sesion.objects.values_list('ended', flat=True)
+        minutosTotales =0.0
+        for i in range(len(star)):
+            tiempo = end[i] - star[i]
+            minutes = tiempo.total_seconds() / 60
+            minutosTotales += minutes
+        prom =minutosTotales/len(star)
+        #################################
+        #Compuestos vendidos vs elementos comprados
         data2 = []
         data2.append(['num_elements_purchased', 'num_compounds_sold'])
-
         resultados= Day.objects.all()
-
         for registro in resultados:
             nombre = registro.num_elements_purchased
             minutos = registro.num_compounds_sold
             data2.append([nombre, minutos])
-        data2_formato=dumps(data2) #formatear los datos en string para json
-        #return render(request, 'estadistica.html', {'losDatos':data_formato}) # scatter.html
-
+        data2_formato=dumps(data2)
+        #############
 
         connection = psycopg2.connect(
             user = "farmaceuticouser",
@@ -316,30 +327,30 @@ def estadistica(request):
         cursor2 = connection.cursor()
         cursor3 = connection.cursor()
         cursor4 = connection.cursor()
-
+        cursor5 = connection.cursor()
 
         print ("jala3")
+        #Tiempo jugado vs compuestos hechos
         cursor.execute("SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 AS TiempoSesion FROM \"WEB_sesion\";")
         cursor2.execute("SELECT SUM(num_compounds_made) FROM \"WEB_day\" INNER JOIN \"WEB_try\" ON \"WEB_day\".try_id_id=\"WEB_try\".id INNER JOIN \"WEB_sesion\" ON \"WEB_try\".session_id_id= \"WEB_sesion\".id GROUP BY \"WEB_try\".session_id_id;")
 
+        #Nivel vs (compuestos, elementos, clientes, dinero)
+        #la gigante
         cursor3.execute("SELECT day_number, AVG(num_compounds_sold) AS PromCompuestosVendidos, AVG(num_elements_purchased) AS PromElementos, AVG(customers_rejected) AS PromClientesRechazados, AVG(money_generated_day) AS PromDinero FROM \"WEB_day\" GROUP BY day_number;") #
 
-        #cursor4.execute("SELECT avg(extract (epoch from (ended::timestamp - started::timestamp))::integer/60) FROM \"WEB_sesion\";")
-
+        #Edad vs tiempo jugado
         cursor4.execute("SELECT  DATE_PART('year', CURRENT_DATE::date) - DATE_PART('year', birthdate::date) AS Edad, avg(extract (epoch from (ended::timestamp - started::timestamp))::integer/60) AS Tiempo FROM \"WEB_sesion\" INNER JOIN \"WEB_usuario\" ON \"WEB_sesion\".user_id_id=\"WEB_usuario\".id GROUP BY Edad ;") #
 
-        #cursor4.execute("SELECT avg(extract (epoch from (ended::timestamp - started::timestamp))::integer/60) AS Tiempo FROM \"WEB_sesion\" INNER JOIN \"WEB_usuario\" ON \"WEB_sesion\".user_id_id=\"WEB_usuario\".id;")
-        #GROUP BY Edad
-        #SUM(num_compounds_made) AS SumaCompuestos FROM \"WEB_day\" INNER JOIN \"WEB_try\" ON \"WEB_day\".try_id_id=\"WEB_try\".id INNER JOIN \"WEB_sesion\" ON \"WEB_try\".session_id_id= \"WEB_sesion\".id GROUP BY \"WEB_try\".session_id_id ORDER BY TiempoSesion ASC
-        #cursor.execute("SELECT day_number, avg(success::int) AS PromedioExito FROM \"WEB_day\" GROUP BY day_number;")
+        cursor5.execute("SELECT day_number, avg(success::int) AS PromedioExito FROM \"WEB_day\" GROUP BY day_number;")
+
         rows = cursor.fetchall()
         rows2= cursor2.fetchall()
         rows3= cursor3.fetchall()
         rows4= cursor4.fetchall()
+        rows5= cursor5.fetchall()
 
-
-        print(rows3)
         print(rows4)
+        print(rows5)
         ota= []
         ota2=[]
         for row in rows:
