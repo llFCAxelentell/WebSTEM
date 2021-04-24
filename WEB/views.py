@@ -308,7 +308,7 @@ def estadistica(request):
         data= []
         data3= []
         data.append(['time', 'compounds made'])
-        data3.append(['age', 'time'])
+        data4.append(['age', 'time'])
         #Create a cursor connection object to a PostgreSQL instance and print the connection properties.
         cursor = connection.cursor()
         cursor2 = connection.cursor()
@@ -336,16 +336,17 @@ def estadistica(request):
 
 
         print(rows3)
+        print(rows4)
         ota= []
         ota2=[]
         for row in rows:
             ota.append(row[0])
         for rowe in rows2:
             ota2.append(rowe[0])
-        for rowee in rows3:
+        for rowee in rows4:
 
-            data3.append([int(rowee[0]), int(rowee[1])])
-        data3_formato = dumps(data3)
+            data4.append([int(rowee[0]), int(rowee[1])])
+        data4_formato = dumps(data4)
 
 
         for i in range(len(ota)):
@@ -366,7 +367,7 @@ def estadistica(request):
             connection.close()
             #print("PostgreSQL connection is now closed")
 
-    return render(request, 'estadistica.html', {'losDatos':data_formato,'losDatos2':data2_formato, 'losDatos3':data3_formato})
+    return render(request, 'estadistica.html', {'losDatos':data_formato,'losDatos2':data2_formato, 'losDatos4':data4_formato})
 
 
 ###############estadística team
