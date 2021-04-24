@@ -31,131 +31,203 @@
         <h3>¿Te encuentras dentro de los mejores? </h3>
         <div id="table_div"></div>
         <script src="{%static 'scriptTable.js'%}"></script>
+    <!--Prueba Leaderboard-->
+        <div>
+            <script type="text/javascript">
+                google.charts.load('current', {
+                    'packages': ['table']
+                });
+                google.charts.setOnLoadCallback(drawTable);
+
+                function drawTable() {
+                    var data = new google.visualization.DataTable();
+                    data.addColumn('number', 'Top');
+                    data.addColumn('string', 'Nickname');
+                    data.addColumn('number', 'Score');
+                    data.addColumn('number', 'Max Level');
+                    data.addRows([
+                        [1, 'Mike123', 1250, 10],
+                        [2, 'Rockstar', 1000, 9],
+                        [3, 'TheBest', 980, 8],
+                        [4, 'BobPro', 950, 8]
+                    ]);
+
+                    var table = new google.visualization.Table(document.getElementById('table_div'));
+
+                    table.draw(data, {
+                        width: '100%',
+                        height: '100%',
+                        TableColorFormat: 'red'
+                    });
+                }
+
+            </script>
+        </div>
+        <!--Prueba Leaderboard-->
     </div>
     <div>
         <h3>¿Quieres saber más sobre Medieval Chemist?
-            Consulta las siguientes gráficas:</h3></div>
+            Consulta las siguientes gráficas:</h3>
+    </div>
 
 
-<!--Prueba Grafica 1-->
+    <!--Prueba Grafica 1-->
     <div>
         <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
+            google.charts.load('current', {
+                'packages': ['corechart']
+            });
+            google.charts.setOnLoadCallback(drawChart);
 
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable({{losDatos|safe}});
+            function drawChart() {
+                var data = google.visualization.arrayToDataTable({
+                    {
+                        losDatos | safe
+                    }
+                });
 
-        var options = {
-          title: 'num_compounds_made vs time',
-          hAxis: {title: 'time'},
-          vAxis: {title: 'num_compounds_made'},
-          legend: 'none'
-        };
+                var options = {
+                    title: 'num_compounds_made vs time',
+                    hAxis: {
+                        title: 'time'
+                    },
+                    vAxis: {
+                        title: 'num_compounds_made'
+                    },
+                    legend: 'none'
+                };
 
-        var chart = new google.visualization.ScatterChart(document.getElementById('chart_div_scatter1'));
+                var chart = new google.visualization.ScatterChart(document.getElementById('chart_div_scatter1'));
 
-        chart.draw(data, options);
-      }
-    </script>
+                chart.draw(data, options);
+            }
+
+        </script>
     </div>
     <div id="chart_div_scatter1" style="width: 900px; height: 500px;"></div>
-<!--Prueba Grafica1 -->
+    <!--Prueba Grafica1 -->
 
-<!--Prueba Grafica2 -->
+    <!--Prueba Grafica2 -->
     <div>
         <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
+            google.charts.load('current', {
+                'packages': ['corechart']
+            });
+            google.charts.setOnLoadCallback(drawChart);
 
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable({{losDatos2|safe}});
+            function drawChart() {
+                var data = google.visualization.arrayToDataTable({
+                    {
+                        losDatos2 | safe
+                    }
+                });
 
-        var options = {
-          title: 'num_compounds_sold vs num_elements_purchased',
-          hAxis: {title: 'num_elements_purchased'},
-          vAxis: {title: 'num_compounds_sold'},
-          legend: 'none'
-        };
+                var options = {
+                    title: 'num_compounds_sold vs num_elements_purchased',
+                    hAxis: {
+                        title: 'num_elements_purchased'
+                    },
+                    vAxis: {
+                        title: 'num_compounds_sold'
+                    },
+                    legend: 'none'
+                };
 
-        var chart = new google.visualization.ScatterChart(document.getElementById('chart_div_scatter2'));
+                var chart = new google.visualization.ScatterChart(document.getElementById('chart_div_scatter2'));
 
-        chart.draw(data, options);
-      }
-    </script>
+                chart.draw(data, options);
+            }
+
+        </script>
     </div>
     <div id="chart_div_scatter2" style="width: 900px; height: 500px;"></div>
-<!--Prueba Grafica2 -->
+    <!--Prueba Grafica2 -->
 
-<!--Prueba Grafica 3-->
+    <!--Prueba Grafica 3-->
     <div>
         <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
+            google.charts.load('current', {
+                'packages': ['corechart']
+            });
+            google.charts.setOnLoadCallback(drawChart);
 
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable({{losDatos4|safe}});
+            function drawChart() {
+                var data = google.visualization.arrayToDataTable({
+                    {
+                        losDatos4 | safe
+                    }
+                });
 
-        var options = {
-          title: 'time vs age',
-          hAxis: {title: 'age'},
-          vAxis: {title: 'time'},
-          legend: 'none'
-        };
+                var options = {
+                    title: 'time vs age',
+                    hAxis: {
+                        title: 'age'
+                    },
+                    vAxis: {
+                        title: 'time'
+                    },
+                    legend: 'none'
+                };
 
-        var chart = new google.visualization.ScatterChart(document.getElementById('chart_div_scatter4'));
+                var chart = new google.visualization.ScatterChart(document.getElementById('chart_div_scatter4'));
 
-        chart.draw(data, options);
-      }
-    </script>
+                chart.draw(data, options);
+            }
+
+        </script>
     </div>
     <div id="chart_div_scatter4" style="width: 900px; height: 500px;"></div>
-<!--Prueba Grafica 3-->
-<!--Prueba Grafica 4-->
-<div>
+    <!--Prueba Grafica 3-->
+    <!--Prueba Grafica 4-->
+    <div>
         <script type="text/javascript">
-        google.charts.load('current', {
-    'packages': ['corechart']
-});
-google.charts.setOnLoadCallback(drawVisualization);
+            google.charts.load('current', {
+                'packages': ['corechart']
+            });
+            google.charts.setOnLoadCallback(drawVisualization);
 
-function drawVisualization() {
-    // Some raw data (not necessarily accurate)
-    var data = google.visualization.arrayToDataTable({{losDatos3|safe}});
+            function drawVisualization() {
+                // Some raw data (not necessarily accurate)
+                var data = google.visualization.arrayToDataTable({
+                    {
+                        losDatos3 | safe
+                    }
+                });
 
-    var options = {
-        title: 'Promedio de indicadores por nivel',
-        vAxis: {
-            title: 'Indicadores'
-        },
-        hAxis: {
-            title: 'Nivel'
-        },
-        seriesType: 'bars',
+                var options = {
+                    title: 'Promedio de indicadores por nivel',
+                    vAxis: {
+                        title: 'Indicadores'
+                    },
+                    hAxis: {
+                        title: 'Nivel'
+                    },
+                    seriesType: 'bars',
 
-    };
+                };
 
-    var chart = new google.visualization.ComboChart(document.getElementById('chart_divNvIn'));
-    chart.draw(data, options);
-}
-    </script>
-</div>
-  <div id="chart_divNvIn" style="width: 900px; height: 500px;"></div>
-<!--Prueba Grafica 4-->
+                var chart = new google.visualization.ComboChart(document.getElementById('chart_divNvIn'));
+                chart.draw(data, options);
+            }
+
+        </script>
+    </div>
+    <div id="chart_divNvIn" style="width: 900px; height: 500px;"></div>
+    <!--Prueba Grafica 4-->
 
 
     <div class="grid-container8">
         <div id="chart_divTvC" style="width: 650px; height: 400px;"></div>
-            <script src="{%static 'scriptTvC.js'%}"></script>
+        <script src="{%static 'scriptTvC.js'%}"></script>
         <div id="chart_divEvT" style="width: 650px; height: 400px;"></div>
-            <script src="{%static 'scriptEvT.js'%}"></script>
+        <script src="{%static 'scriptEvT.js'%}"></script>
     </div>
 
     <div class="grid-container8">
         <div id="chart_divCvE" style="width: 650px; height: 400px;"></div>
-            <script src="{%static 'scriptCvE.js'%}"></script>
+        <script src="{%static 'scriptCvE.js'%}"></script>
         <div id="chart_divNvI" style="width: 650px; height: 400px;"></div>
-            <script src="{%static 'scriptNvI.js'%}"></script>
+        <script src="{%static 'scriptNvI.js'%}"></script>
     </div>
     <br> <br>
 
