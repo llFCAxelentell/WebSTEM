@@ -331,7 +331,7 @@ def estadistica(request):
         data3 =[]
         data4= []
         data.append(['Tiempo', 'Compuestos hechos'])
-        data3.append(['Nivel','Compuestos','Elementos', 'Clientes', 'Dinero'])
+        data3.append(['Nivel','Compuestos','Elementos', 'Clientes'])
         data4.append(['Edad', 'Tiempo'])
 
         cursor = connection.cursor()
@@ -348,7 +348,7 @@ def estadistica(request):
 
         #Nivel vs (compuestos, elementos, clientes, dinero)
         #la gigante
-        cursor3.execute("SELECT day_number, AVG(num_compounds_sold) AS PromCompuestosVendidos, AVG(num_elements_purchased) AS PromElementos, AVG(customers_rejected) AS PromClientesRechazados, AVG(money_generated_day) AS PromDinero FROM \"WEB_day\" GROUP BY day_number;") #
+        cursor3.execute("SELECT day_number, AVG(num_compounds_sold) AS PromCompuestosVendidos, AVG(num_elements_purchased) AS PromElementos, AVG(customers_rejected) AS PromClientesRechazados FROM \"WEB_day\" GROUP BY day_number;") #
 
         #Edad vs tiempo jugado
         cursor4.execute("SELECT  DATE_PART('year', CURRENT_DATE::date) - DATE_PART('year', birthdate::date) AS Edad, avg(extract (epoch from (ended::timestamp - started::timestamp))::integer/60) AS Tiempo FROM \"WEB_sesion\" INNER JOIN \"WEB_usuario\" ON \"WEB_sesion\".user_id_id=\"WEB_usuario\".id GROUP BY Edad ;") #
@@ -380,7 +380,7 @@ def estadistica(request):
             ota2.append(rowe[0])
 
         for roweee in rows3:
-            data3.append([int(roweee[0]), int(roweee[1]), int(roweee[2]), int(roweee[3]), int(roweee[4])])
+            data3.append([int(roweee[0]), int(roweee[1]), int(roweee[2]), int(roweee[3])])
 
         data3_formato = dumps(data3)
         print(data3)
