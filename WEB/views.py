@@ -306,8 +306,10 @@ def estadistica(request):
         )
         print ("jala")
         data= []
+        data3 =[]
         data4= []
         data.append(['time', 'compounds made'])
+        data3.append(['nivel','compuestos','elemntos', 'clientes', 'dinero'])
         data4.append(['age', 'time'])
         #Create a cursor connection object to a PostgreSQL instance and print the connection properties.
         cursor = connection.cursor()
@@ -344,8 +346,11 @@ def estadistica(request):
             ota.append(row[0])
         for rowe in rows2:
             ota2.append(rowe[0])
-        for rowee in rows4:
 
+        for roweee in rows3:
+            data3.append([int(roweee[0]), int(roweee[1]), int(roweee[2]), int(roweee[3]), int(roweee[4])])
+
+        for rowee in rows4:
             data4.append([int(rowee[0]), int(rowee[1])])
         data4_formato = dumps(data4)
 
