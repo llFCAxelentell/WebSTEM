@@ -330,6 +330,7 @@ def estadistica(request):
         data= []
         data3 =[]
         data4= []
+        data6 = []
         data.append(['Tiempo', 'Compuestos hechos'])
         data3.append(['Nivel','Compuestos','Elementos', 'Clientes'])
         data4.append(['Edad', 'Tiempo'])
@@ -387,8 +388,12 @@ def estadistica(request):
         for rowee in rows4:
             data4.append([int(rowee[0]), int(rowee[1])])
         data4_formato = dumps(data4)
-
-
+        
+        contador = 1
+        for roowe in rows6:
+            data6.append([contador, int(roowe[0]), int(roowe[1]) ])
+            contador = contador+1
+            
         for i in range(len(ota)):
             data.append([ota[i], ota2[i]])
 

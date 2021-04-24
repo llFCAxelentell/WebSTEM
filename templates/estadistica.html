@@ -33,10 +33,6 @@
         <script src="{%static 'scriptTable.js'%}"></script>
 
     </div>
-    <div>
-        <h3>¿Quieres saber más sobre Medieval Chemist?
-            Consulta las siguientes gráficas:</h3>
-    </div>
     <!--Prueba Leaderboard-->
     <div>
             <script type="text/javascript">
@@ -50,13 +46,7 @@
                     data.addColumn('number', 'Top');
                     data.addColumn('string', 'Nickname');
                     data.addColumn('number', 'Score');
-                    data.addColumn('number', 'Max Level');
-                    data.addRows([
-                        [1, 'Mike123', 1250, 10],
-                        [2, 'Rockstar', 1000, 9],
-                        [3, 'TheBest', 980, 8],
-                        [4, 'BobPro', 950, 8]
-                    ]);
+                    data.addRows({{losDatos6|safe}});
 
                     var table = new google.visualization.Table(document.getElementById('table_div_1'));
 
@@ -70,7 +60,12 @@
             </script>
         </div>
         <div id="table_div_1" style="width: 95%; height: auto;"></div>
-        <!--Prueba Leaderboard-->
+    <!--Prueba Leaderboard-->
+    <div>
+        <h3>¿Quieres saber más sobre Medieval Chemist?
+            Consulta las siguientes gráficas:</h3>
+    </div>
+    
 
     <!--Prueba Grafica 1-->
     <div>
