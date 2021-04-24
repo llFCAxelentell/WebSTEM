@@ -286,7 +286,11 @@ def estadistica(request):
 
     try:
         #################################
-        #Minutos jugados totales y Duración promedio de sesión
+        #Minutos jugados totales
+        #Duración promedio de sesión
+        #Tiempo máximo de juego por sesión
+        #Tiempo mínimo de juego por sesión
+
         tiempos = []
 
         star = Sesion.objects.values_list('started', flat=True)
@@ -329,7 +333,7 @@ def estadistica(request):
         data.append(['time', 'compounds made'])
         data3.append(['nivel','compuestos','elemntos', 'clientes', 'dinero'])
         data4.append(['age', 'time'])
-        #Create a cursor connection object to a PostgreSQL instance and print the connection properties.
+
         cursor = connection.cursor()
         cursor2 = connection.cursor()
         cursor3 = connection.cursor()
@@ -352,8 +356,8 @@ def estadistica(request):
         #Promedio de éxito / fallo por nivel
         cursor5.execute("SELECT day_number, avg(success::int) AS PromedioExito FROM \"WEB_day\" GROUP BY day_number;")
 
-        #Tiempo máximo de juego por sesión
-        cursor6.execute("SELECT max(extract (epoch from (ended::timestamp - started::timestamp))::integer/60) AS MaxTiempo FROM \"WEB_sesion\";")
+        #Top five de scores
+        cursor6.execute("SELECT \"WEB_usuario\".username, (AVG(money_generated_day)*MAX(day_number)) AS Score FROM \"WEB_usuario\" INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id GROUP BY username ORDER BY Score DESC LIMIT 5 ;")
 
         rows = cursor.fetchall()
         rows2= cursor2.fetchall()
