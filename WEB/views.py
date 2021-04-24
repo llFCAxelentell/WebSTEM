@@ -285,12 +285,12 @@ def estadistica(request):
 
     try:
         data2 = []
-        data2.append(['num_compounds_made', 'num_compounds_sold'])
+        data2.append(['num_elements_purchased', 'num_compounds_sold'])
 
         resultados= Day.objects.all()
 
         for registro in resultados:
-            nombre = registro.num_compounds_made
+            nombre = registro.num_elements_purchased
             minutos = registro.num_compounds_sold
             data2.append([nombre, minutos])
         data2_formato=dumps(data2) #formatear los datos en string para json
