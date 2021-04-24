@@ -13,7 +13,7 @@ from . models import Try
 from . models import Day
 from hashlib import md5
 import psycopg2
-import numpy as np
+
 
 
 @csrf_exempt
@@ -296,8 +296,8 @@ def estadistica(request):
             tiempos.append(tiempo)
             minutes = tiempo.total_seconds() / 60
             minutosTotales += minutes
-        maxTiempo = np.max(tiempos)
-        print(maxTiempo)
+        #maxTiempo = np.max(tiempos)
+        #print(maxTiempo)
         prom =minutosTotales/len(star)
         print(prom)
         #################################
