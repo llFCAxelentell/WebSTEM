@@ -310,18 +310,14 @@ def estadistica(request):
         #Create a cursor connection object to a PostgreSQL instance and print the connection properties.
         cursor = connection.cursor()
         cursor2 = connection.cursor()
-        cursor3 = connection.cursor()
         #Display the PostgreSQL version installed
         print ("jala3")
         cursor.execute("SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 AS TiempoSesion FROM \"WEB_sesion\";")
         cursor2.execute("SELECT SUM(num_compounds_made) FROM \"WEB_day\" INNER JOIN \"WEB_try\" ON \"WEB_day\".try_id_id=\"WEB_try\".id INNER JOIN \"WEB_sesion\" ON \"WEB_try\".session_id_id= \"WEB_sesion\".id GROUP BY \"WEB_try\".session_id_id;")
-        cursor3.execute("SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 AS Tiempo FROM \"WEB_sesion\" INNER JOIN \"WEB_usuario\" WHERE \"WEB_sesion\".user_id_id=\"WEB_usuario\".id")
-        #FLOOR(DATEDIFF(CURRENT_DATE, birthdate)/365) AS Edad, GROUP BY Edad
+        #SUM(num_compounds_made) AS SumaCompuestos FROM \"WEB_day\" INNER JOIN \"WEB_try\" ON \"WEB_day\".try_id_id=\"WEB_try\".id INNER JOIN \"WEB_sesion\" ON \"WEB_try\".session_id_id= \"WEB_sesion\".id GROUP BY \"WEB_try\".session_id_id ORDER BY TiempoSesion ASC
         #cursor.execute("SELECT day_number, avg(success::int) AS PromedioExito FROM \"WEB_day\" GROUP BY day_number;")
         rows = cursor.fetchall()
         rows2= cursor2.fetchall()
-        rows3= cursor3.fetchall()
-        print(rows3)
 
         ota= []
         ota2=[]
@@ -330,10 +326,17 @@ def estadistica(request):
         for rowe in rows2:
             ota2.append(rowe[0])
 
-        for i in range(len(ota)):
-            data.append([ota[i], ota2[i]])
-        data_formato= dumps(data)
+        print(ota)
+        print(ota2)
 
+        for i in range(len(ota)):
+            print(ota[i])
+            print(ota2[i])
+            data.append([ota[i], ota2[i]])
+        print(data)
+        data_formato= dumps(data)
+            #totales += row[2]
+        totales =1000
     #Handle the error throws by the command that is useful when using python while working with PostgreSQL
     except(Exception, psycopg2.Error) as error:
         print("Error connecting to PostgreSQL database", error)
