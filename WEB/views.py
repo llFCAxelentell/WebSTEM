@@ -341,7 +341,7 @@ def estadistica(request):
         for rowe in rows2:
             ota2.append(rowe[0])
         for rowee in rows4:
-            ota4.append(int(rowee[0])
+            ota4.append(int(rowee[0]))
             ota4.append(int(rowee[1]))
             data3.append([rowee[0], rowee[1]])
         data3_formato = dumps(data3)
