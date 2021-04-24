@@ -370,7 +370,7 @@ def estadistica(request):
         rows6= cursor6.fetchall()
 
 
-        print(rows3)
+        #print(rows3)
         #print(rows6)
         ota= []
         ota2=[]
@@ -383,6 +383,7 @@ def estadistica(request):
             data3.append([int(roweee[0]), int(roweee[1]), int(roweee[2]), int(roweee[3]), int(roweee[4])])
 
         data3_formato = dumps(data3)
+        print(data3)
         for rowee in rows4:
             data4.append([int(rowee[0]), int(rowee[1])])
         data4_formato = dumps(data4)
