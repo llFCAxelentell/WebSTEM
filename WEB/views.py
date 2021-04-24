@@ -298,8 +298,8 @@ def estadistica(request):
         minutosTotales =0.0
         for i in range(len(star)):
             tiempo = end[i] - star[i]
-            tiempos.append(tiempo)
             minutes = tiempo.total_seconds() / 60
+            tiempos.append(minutes)
             minutosTotales += minutes
         maxTiempo = np.max(tiempos)
         print(maxTiempo)
