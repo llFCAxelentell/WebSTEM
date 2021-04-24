@@ -282,7 +282,7 @@ def minJugado(request):
 
 @csrf_exempt
 def estadistica(request):
-    js={}
+
     try:
         data2 = []
         data2.append(['num_compounds_made', 'num_compounds_sold'])
@@ -334,7 +334,7 @@ def estadistica(request):
             data.append([ota[i], ota2[i]])
 
         data_formato= dumps(data)
-        js = {'losDatos':data_formato,'losDatos2':data2_formato}
+    
     #Handle the error throws by the command that is useful when using python while working with PostgreSQL
     except(Exception, psycopg2.Error) as error:
         print("Error connecting to PostgreSQL database", error)
@@ -347,7 +347,7 @@ def estadistica(request):
             connection.close()
             #print("PostgreSQL connection is now closed")
 
-    return render(request, 'estadistica.html', js)
+    return render(request, 'estadistica.html', {'losDatos':data_formato,'losDatos2':data2_formato})
 
 
 ###############estadística team
