@@ -307,7 +307,7 @@ def estadistica(request):
         prom =minutosTotales/len(star)
         print(prom)
         #################################
-        
+
         #Compuestos vendidos vs elementos comprados
         data2 = []
         data2.append(['num_elements_purchased', 'num_compounds_sold'])
@@ -370,8 +370,8 @@ def estadistica(request):
         rows6= cursor6.fetchall()
 
 
-        print(rows5)
-        print(rows6)
+        print(rows3)
+        #print(rows6)
         ota= []
         ota2=[]
         for row in rows:
