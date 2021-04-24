@@ -292,14 +292,13 @@ def estadistica(request):
         #Tiempo mínimo de juego por sesión
 
         tiempos = []
-
         star = Sesion.objects.values_list('started', flat=True)
         end = Sesion.objects.values_list('ended', flat=True)
         minutosTotales =0.0
         for i in range(len(star)):
             tiempo = end[i] - star[i]
-            tiempos.append(tiempo)
             minutes = tiempo.total_seconds() / 60
+            tiempos.append(minutes)
             minutosTotales += minutes
         maxTiempo = np.max(tiempos)
         print(maxTiempo)
@@ -308,6 +307,7 @@ def estadistica(request):
         prom =minutosTotales/len(star)
         print(prom)
         #################################
+        
         #Compuestos vendidos vs elementos comprados
         data2 = []
         data2.append(['num_elements_purchased', 'num_compounds_sold'])
@@ -361,12 +361,14 @@ def estadistica(request):
         cursor6.execute("SELECT \"WEB_usuario\".username_id, (AVG(money_generated_day)*MAX(day_number)) AS Score FROM \"WEB_usuario\" INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id GROUP BY username_id ORDER BY Score DESC LIMIT 5 ;")
         #Top score global
         #falta
+
         rows = cursor.fetchall()
         rows2= cursor2.fetchall()
         rows3= cursor3.fetchall()
         rows4= cursor4.fetchall()
         rows5= cursor5.fetchall()
         rows6= cursor6.fetchall()
+
 
         print(rows5)
         print(rows6)
