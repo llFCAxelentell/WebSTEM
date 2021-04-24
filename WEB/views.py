@@ -371,7 +371,7 @@ def estadistica(request):
 
 
         #print(rows3)
-        #print(rows6)
+        print(rows6)
         ota= []
         ota2=[]
         for row in rows:
