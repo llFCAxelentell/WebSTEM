@@ -13,7 +13,7 @@ from . models import Try
 from . models import Day
 from hashlib import md5
 import psycopg2
-
+import numpy as np
 
 
 @csrf_exempt
@@ -286,16 +286,20 @@ def estadistica(request):
     try:
         #################################
         #Minutos jugados totales y Duración promedio de sesión
-        tiempo=0
-        minutosTotales=0
+        tiempos = []
+
         star = Sesion.objects.values_list('started', flat=True)
         end = Sesion.objects.values_list('ended', flat=True)
         minutosTotales =0.0
         for i in range(len(star)):
             tiempo = end[i] - star[i]
+            tiempos.append(tiempo)
             minutes = tiempo.total_seconds() / 60
             minutosTotales += minutes
+        maxTiempo = np.max(tiempos)
+        print(maxTiempo)
         prom =minutosTotales/len(star)
+        print(prom)
         #################################
         #Compuestos vendidos vs elementos comprados
         data2 = []
