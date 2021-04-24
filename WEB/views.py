@@ -98,7 +98,12 @@ def mi_estadistica(request):
             port = "5432",
             database = "medchembd"
         )
+        cursor = connection.cursor()
+        cursor.execute("SELECT * FROM auth_user WHERE user = request.user;")
+        rows = cursor.fetchall()
+        print(rows)
 
+        '''
         data= []
         data3 =[]
 
@@ -155,7 +160,7 @@ def mi_estadistica(request):
 
         data3_formato = dumps(data3)
 
-    
+
 
         contador = 1
         for roowe in rows6:
@@ -168,7 +173,7 @@ def mi_estadistica(request):
 
         data_formato= dumps(data)
             #totales += row[2]
-
+            '''
     #Handle the error throws by the command that is useful when using python while working with PostgreSQL
     except(Exception, psycopg2.Error) as error:
         print("Error connecting to PostgreSQL database", error)
