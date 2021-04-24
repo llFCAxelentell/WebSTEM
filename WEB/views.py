@@ -334,12 +334,15 @@ def estadistica(request):
         print(rows4)
         ota= []
         ota2=[]
+        ota4=[]
         for row in rows:
             ota.append(row[0])
         for rowe in rows2:
             ota2.append(rowe[0])
-
-
+        for rowee in rows4:
+            ota4.append(rowee[0])
+            ota4.append(rowee[1])
+        print(ota4)
         for i in range(len(ota)):
 
             data.append([ota[i], ota2[i]])
