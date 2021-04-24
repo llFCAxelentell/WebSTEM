@@ -415,7 +415,7 @@ def estadistica(request):
             connection.close()
             #print("PostgreSQL connection is now closed")
 
-    return render(request, 'estadistica.html', {'losDatos':data_formato,'losDatos2':data2_formato, 'losDatos4':data4_formato, 'losDatos3':data3_formato, 'losDatos6':data6_formato,'minutosTotales':minutosTotales ,'promTemp':promTemp, 'maxTiempo':maxTiempo, 'minTiempo':minTiempo})
+    return render(request, 'estadistica.html', {'losDatos':data_formato,'losDatos2':data2_formato, 'losDatos4':data4_formato, 'losDatos3':data3_formato, 'losDatos6':data6_formato,'minutosTotales':str(round(minutosTotales, 2)) ,'promTemp':promTemp, 'maxTiempo':maxTiempo, 'minTiempo':minTiempo})
 
 
 ###############estadística team
