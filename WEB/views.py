@@ -300,12 +300,12 @@ def estadistica(request):
             minutes = tiempo.total_seconds() / 60
             tiempos.append(minutes)
             minutosTotales += minutes
-        '''
+
         maxTiempo = np.max(tiempos)
         print(maxTiempo)
         minTiempo = np.min(tiempos)
         print(minTiempo)
-        '''
+
         prom =minutosTotales/len(star)
         print(prom)
         #################################
@@ -328,7 +328,7 @@ def estadistica(request):
             port = "5432",
             database = "medchembd"
         )
-        print ("jala")
+
         data= []
         data3 =[]
         data4= []
@@ -344,7 +344,7 @@ def estadistica(request):
         cursor5 = connection.cursor()
         cursor6 = connection.cursor()
 
-        print ("jala3")
+
         #Tiempo jugado vs compuestos hechos
         cursor.execute("SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 AS TiempoSesion FROM \"WEB_sesion\";")
         cursor2.execute("SELECT SUM(num_compounds_made) FROM \"WEB_day\" INNER JOIN \"WEB_try\" ON \"WEB_day\".try_id_id=\"WEB_try\".id INNER JOIN \"WEB_sesion\" ON \"WEB_try\".session_id_id= \"WEB_sesion\".id GROUP BY \"WEB_try\".session_id_id;")
@@ -374,7 +374,7 @@ def estadistica(request):
 
 
         #print(rows3)
-        print(rows6)
+        #print(rows6)
         ota= []
         ota2=[]
         for row in rows:
