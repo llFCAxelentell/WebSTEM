@@ -52,6 +52,7 @@ def mi_estadistica(request):
 
     try:
         usuario = request.user
+        print(type(usuario))
         uu ="\'"+usuario+"\'"
         print(uu)
         registros = User.objects.filter(username=usuario)
