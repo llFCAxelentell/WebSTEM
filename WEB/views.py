@@ -52,7 +52,7 @@ def mi_estadistica(request):
 
     try:
         usuario = request.user
-        #\set uu request.user
+        uu =request.user
         registros = User.objects.filter(username=usuario)
         print(registros)
         regist = Usuario.objects.filter(username=registros[0].id)
@@ -100,7 +100,7 @@ def mi_estadistica(request):
             database = "medchembd"
         )
         cursor = connection.cursor()
-        cursor.execute("SELECT * FROM auth_user WHERE auth_user.username ='hola';")
+        cursor.execute("SELECT * FROM auth_user WHERE auth_user.username ='%s';", uu)
         rows = cursor.fetchall()
         print(rows)
 
