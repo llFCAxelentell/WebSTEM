@@ -101,7 +101,7 @@ def mi_estadistica(request):
 
         data= []
         data3 =[]
-        
+
         data6 = []
         data.append(['Tiempo', 'Compuestos hechos'])
         data3.append(['Nivel','Compuestos','Elementos', 'Clientes'])
@@ -137,7 +137,6 @@ def mi_estadistica(request):
         rows = cursor.fetchall()
         rows2= cursor2.fetchall()
         rows3= cursor3.fetchall()
-        rows4= cursor4.fetchall()
         rows5= cursor5.fetchall()
         rows6= cursor6.fetchall()
         rows7= cursor7.fetchall()
@@ -156,9 +155,7 @@ def mi_estadistica(request):
 
         data3_formato = dumps(data3)
 
-        for rowee in rows4:
-            data4.append([int(rowee[0]), int(rowee[1])])
-        data4_formato = dumps(data4)
+    
 
         contador = 1
         for roowe in rows6:
