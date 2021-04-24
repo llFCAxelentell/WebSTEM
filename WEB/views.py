@@ -391,7 +391,7 @@ def estadistica(request):
         
         contador = 1
         for roowe in rows6:
-            data6.append([contador, int(roowe[0]), int(roowe[1]) ])
+            data6.append([contador, roowe[0], int(roowe[1]) ])
             contador = contador+1
             
         for i in range(len(ota)):
