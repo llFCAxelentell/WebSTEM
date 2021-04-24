@@ -31,13 +31,13 @@
         <h3>¿Te encuentras dentro de los mejores? </h3>
         <div id="table_div"></div>
         <script src="{%static 'scriptTable.js'%}"></script>
-        
+
     </div>
     <div>
         <h3>¿Quieres saber más sobre Medieval Chemist?
             Consulta las siguientes gráficas:</h3>
     </div>
-    
+
 
     <!--Prueba Grafica 1-->
     <div>
@@ -48,11 +48,7 @@
             google.charts.setOnLoadCallback(drawChart);
 
             function drawChart() {
-                var data = google.visualization.arrayToDataTable({
-                    {
-                        losDatos | safe
-                    }
-                });
+                var data = google.visualization.arrayToDataTable({{losDatos|safe}});
 
                 var options = {
                     title: 'num_compounds_made vs time',
