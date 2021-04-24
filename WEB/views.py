@@ -300,10 +300,12 @@ def estadistica(request):
             minutes = tiempo.total_seconds() / 60
             tiempos.append(minutes)
             minutosTotales += minutes
+        '''
         maxTiempo = np.max(tiempos)
         print(maxTiempo)
         minTiempo = np.min(tiempos)
         print(minTiempo)
+        '''
         prom =minutosTotales/len(star)
         print(prom)
         #################################
@@ -384,17 +386,17 @@ def estadistica(request):
             data3.append([int(roweee[0]), int(roweee[1]), int(roweee[2]), int(roweee[3])])
 
         data3_formato = dumps(data3)
-        
+
         for rowee in rows4:
             data4.append([int(rowee[0]), int(rowee[1])])
         data4_formato = dumps(data4)
-        
+
         contador = 1
         for roowe in rows6:
             data6.append([contador, roowe[0], int(roowe[1]) ])
             contador = contador+1
         data6_formato= dumps(data6)
-        
+
         for i in range(len(ota)):
             data.append([ota[i], ota2[i]])
 
