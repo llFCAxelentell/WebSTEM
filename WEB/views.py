@@ -306,7 +306,9 @@ def estadistica(request):
         )
         print ("jala")
         data= []
+        data3= []
         data.append(['time', 'compounds made'])
+        data3.append(['age', 'time'])
         #Create a cursor connection object to a PostgreSQL instance and print the connection properties.
         cursor = connection.cursor()
         cursor2 = connection.cursor()
@@ -330,8 +332,7 @@ def estadistica(request):
         rows2= cursor2.fetchall()
         rows3= cursor3.fetchall()
         rows4= cursor4.fetchall()
-        print(rows3)
-        print(rows4)
+
         ota= []
         ota2=[]
         ota4=[]
@@ -342,13 +343,16 @@ def estadistica(request):
         for rowee in rows4:
             ota4.append(rowee[0])
             ota4.append(rowee[1])
+            data3.append([rowee[0], rowee[1]])
+            
         print(ota4)
-        for i in range(len(ota)):
 
+        for i in range(len(ota)):
             data.append([ota[i], ota2[i]])
+
         data_formato= dumps(data)
             #totales += row[2]
-        totales =1000
+
     #Handle the error throws by the command that is useful when using python while working with PostgreSQL
     except(Exception, psycopg2.Error) as error:
         print("Error connecting to PostgreSQL database", error)
