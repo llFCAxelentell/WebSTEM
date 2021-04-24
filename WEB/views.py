@@ -52,7 +52,7 @@ def mi_estadistica(request):
 
     try:
         usuario = request.user
-        \set uu = request.user
+        \set uu request.user
         registros = User.objects.filter(username=usuario)
         print(registros)
         regist = Usuario.objects.filter(username=registros[0].id)
