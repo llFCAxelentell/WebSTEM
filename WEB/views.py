@@ -49,13 +49,140 @@ def juego(request):
 
 @login_required
 def mi_estadistica(request):
-    usuario = request.user
-    registros = User.objects.filter(username=usuario)
-    print(registros)
-    regist = Usuario.objects.filter(username=registros[0].id)
-    print(regist[0].gender)
-    dato= regist[0].gender
-    ##query gigantes
+
+    try:
+        usuario = request.user
+        registros = User.objects.filter(username=usuario)
+        print(registros)
+        regist = Usuario.objects.filter(username=registros[0].id)
+        print(regist[0].gender)
+        dato= regist[0].gender
+
+        #################################
+        #Minutos jugados totales
+        #Duración promedio de sesión
+        #Tiempo máximo de juego por sesión
+        #Tiempo mínimo de juego por sesión
+
+        tiempos = []
+        star = Sesion.objects.values_list('started', flat=True)
+        end = Sesion.objects.values_list('ended', flat=True)
+        minutosTotales =0.0
+        for i in range(len(star)):
+            tiempo = end[i] - star[i]
+            minutes = tiempo.total_seconds() / 60
+            tiempos.append(minutes)
+            minutosTotales += minutes
+
+        maxTiempo = np.max(tiempos)
+        minTiempo = np.min(tiempos)
+        promTemp =minutosTotales/len(star)
+
+        #################################
+
+        #Compuestos vendidos vs elementos comprados
+        data2 = []
+        data2.append(['num_elements_purchased', 'num_compounds_sold'])
+        resultados= Day.objects.all()
+        for registro in resultados:
+            nombre = registro.num_elements_purchased
+            minutos = registro.num_compounds_sold
+            data2.append([nombre, minutos])
+        data2_formato=dumps(data2)
+        #############
+
+        connection = psycopg2.connect(
+            user = "farmaceuticouser",
+            password = "LibroVerde23",
+            host = "localhost",
+            port = "5432",
+            database = "medchembd"
+        )
+
+        data= []
+        data3 =[]
+        
+        data6 = []
+        data.append(['Tiempo', 'Compuestos hechos'])
+        data3.append(['Nivel','Compuestos','Elementos', 'Clientes'])
+
+
+        cursor = connection.cursor()
+        cursor2 = connection.cursor()
+        cursor3 = connection.cursor()
+
+        cursor5 = connection.cursor()
+        cursor6 = connection.cursor()
+        cursor7 = connection.cursor()
+
+
+        #Tiempo jugado vs compuestos hechos
+        cursor.execute("SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 AS TiempoSesion FROM \"WEB_sesion\";")
+        cursor2.execute("SELECT SUM(num_compounds_made) FROM \"WEB_day\" INNER JOIN \"WEB_try\" ON \"WEB_day\".try_id_id=\"WEB_try\".id INNER JOIN \"WEB_sesion\" ON \"WEB_try\".session_id_id= \"WEB_sesion\".id GROUP BY \"WEB_try\".session_id_id;")
+
+        #Nivel vs (compuestos, elementos, clientes, dinero)
+        #la gigante
+        cursor3.execute("SELECT day_number, AVG(num_compounds_sold) AS PromCompuestosVendidos, AVG(num_elements_purchased) AS PromElementos, AVG(customers_rejected) AS PromClientesRechazados FROM \"WEB_day\" GROUP BY day_number;") #
+
+
+        #Promedio de éxito / fallo por nivel
+        cursor5.execute("SELECT day_number, avg(success::int) AS PromedioExito FROM \"WEB_day\" GROUP BY day_number;")
+
+        #Top five de scores
+        cursor6.execute("SELECT auth_user.username, (AVG(money_generated_day)*MAX(day_number)) AS Score FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id GROUP BY username ORDER BY Score DESC LIMIT 5 ;")
+        #Top score global
+        cursor7.execute("SELECT auth_user.username, (AVG(money_generated_day)*MAX(day_number)) AS Score FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id GROUP BY username ORDER BY Score DESC LIMIT 1 ;")
+
+
+        rows = cursor.fetchall()
+        rows2= cursor2.fetchall()
+        rows3= cursor3.fetchall()
+        rows4= cursor4.fetchall()
+        rows5= cursor5.fetchall()
+        rows6= cursor6.fetchall()
+        rows7= cursor7.fetchall()
+
+        #print(rows3)
+        #print(rows6)
+        ota= []
+        ota2=[]
+        for row in rows:
+            ota.append(row[0])
+        for rowe in rows2:
+            ota2.append(rowe[0])
+
+        for roweee in rows3:
+            data3.append([int(roweee[0]), int(roweee[1]), int(roweee[2]), int(roweee[3])])
+
+        data3_formato = dumps(data3)
+
+        for rowee in rows4:
+            data4.append([int(rowee[0]), int(rowee[1])])
+        data4_formato = dumps(data4)
+
+        contador = 1
+        for roowe in rows6:
+            data6.append([contador, roowe[0], int(roowe[1]) ])
+            contador = contador+1
+        data6_formato= dumps(data6)
+
+        for i in range(len(ota)):
+            data.append([ota[i], ota2[i]])
+
+        data_formato= dumps(data)
+            #totales += row[2]
+
+    #Handle the error throws by the command that is useful when using python while working with PostgreSQL
+    except(Exception, psycopg2.Error) as error:
+        print("Error connecting to PostgreSQL database", error)
+        connection = None
+
+    #Close the database connection
+    finally:
+        if(connection != None):
+            cursor.close()
+            connection.close()
+            #print("PostgreSQL connection is now closed")
 
 
     return render(request, 'mi_estadistica.html', {'dato':dato})
@@ -302,12 +429,9 @@ def estadistica(request):
             minutosTotales += minutes
 
         maxTiempo = np.max(tiempos)
-        print(maxTiempo)
         minTiempo = np.min(tiempos)
-        print(minTiempo)
-
         promTemp =minutosTotales/len(star)
-        print(promTemp)
+
         #################################
 
         #Compuestos vendidos vs elementos comprados
@@ -343,6 +467,7 @@ def estadistica(request):
         cursor4 = connection.cursor()
         cursor5 = connection.cursor()
         cursor6 = connection.cursor()
+        cursor7 = connection.cursor()
 
 
         #Tiempo jugado vs compuestos hechos
@@ -360,10 +485,10 @@ def estadistica(request):
         cursor5.execute("SELECT day_number, avg(success::int) AS PromedioExito FROM \"WEB_day\" GROUP BY day_number;")
 
         #Top five de scores
-        #TODO: ver que despliegue el nombre del huerco y no su username_id
         cursor6.execute("SELECT auth_user.username, (AVG(money_generated_day)*MAX(day_number)) AS Score FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id GROUP BY username ORDER BY Score DESC LIMIT 5 ;")
         #Top score global
-        #falta
+        cursor7.execute("SELECT auth_user.username, (AVG(money_generated_day)*MAX(day_number)) AS Score FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id GROUP BY username ORDER BY Score DESC LIMIT 1 ;")
+
 
         rows = cursor.fetchall()
         rows2= cursor2.fetchall()
@@ -371,7 +496,7 @@ def estadistica(request):
         rows4= cursor4.fetchall()
         rows5= cursor5.fetchall()
         rows6= cursor6.fetchall()
-
+        rows7= cursor7.fetchall()
 
         #print(rows3)
         #print(rows6)
