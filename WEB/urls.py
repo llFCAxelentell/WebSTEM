@@ -18,7 +18,7 @@ urlpatterns = [
     path('minutosJugadosPromedio',views.minutosJugadosPromedio, name='minutosJugadosPromedio'),
     path('exitoPromedio',views.exitoPromedio, name='exitoPromedio'),
     path('scoresGlobal',views.scoresGlobal, name='scoresGlobal'),
-    path('sinRegistros',views.sinRegistros, name='sinRegistros'),
+    #path('sinRegistros',views.sinRegistros, name='sinRegistros'),
 
     #path('scatter',views.scatter, name='scatter'),
     #path('minutosTotales',views.minutosTotales, name='minutosTotales'),
