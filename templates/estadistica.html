@@ -23,7 +23,7 @@
             <li><a href="index.html">Principal</a></li>
             <li><a href="juego.html">Juega</a></li>
             <li><a href="estadistica.html">Estadísticas</a></li>
-            <li><a href="mi_estadistica.html">Mi Estadísticas</a></li>
+            <li><a href="mi_estadistica.html">Mis Estadísticas</a></li>
             <li><a href="stem.html">STEM</a></li>
         </ul>
     </div>
@@ -82,21 +82,21 @@
                 var data = google.visualization.arrayToDataTable({{losDatos|safe}});
 
                 var options = {
-                    title: 'num_compounds_made vs time',
+                    title: 'Tiempo jugado vs Compuestos hechos',
                     hAxis: {
-                        title: 'time'
+                        title: 'Tiempo (min)'
                     },
                     vAxis: {
-                        title: 'num_compounds_made'
+                        title: '# Compuesto hechos'
                     },
                     legend: 'none'
                 };
-                var chart = new google.visualization.ScatterChart(document.getElementById('chart_div_scatter1'));
+                var chart = new google.visualization.ScatterChart(document.getElementById('chart_TvC'));
                 chart.draw(data, options);
             }
         </script>  
     
-    <div id="chart_div_scatter1" style="width: 900px; height: 500px;"></div>
+    <div id="chart_TvC" style="width: 650px; height: 400px;"></div>
 
     <!--Prueba Grafica2 -->
         <script type="text/javascript">
@@ -109,23 +109,23 @@
                 var data = google.visualization.arrayToDataTable({{losDatos2 | safe}});
 
                 var options = {
-                    title: 'num_compounds_sold vs num_elements_purchased',
+                    title: 'Compuestos vendidos vs Elementos Comprados',
                     hAxis: {
-                        title: 'num_elements_purchased'
+                        title: '# Elementos comprados'
                     },
                     vAxis: {
-                        title: 'num_compounds_sold'
+                        title: '# Compuestos vendidos'
                     },
                     legend: 'none'
                 };
 
-                var chart = new google.visualization.ScatterChart(document.getElementById('chart_div_scatter2'));
+                var chart = new google.visualization.ScatterChart(document.getElementById('chart_CvE'));
 
                 chart.draw(data, options);
             }
         </script>
     
-    <div id="chart_div_scatter2" style="width: 900px; height: 500px;"></div>
+    <div id="chart_CvE" style="width: 650px; height: 400px;"></div>
     
 </div>
 
@@ -141,23 +141,24 @@
                 var data = google.visualization.arrayToDataTable({{losDatos4|safe}});
 
                 var options = {
-                    title: 'time vs age',
+                    title: 'Tiempo jugado vs edad',
                     hAxis: {
-                        title: 'age'
+                        title: 'Edad'
                     },
                     vAxis: {
-                        title: 'time'
+                        title: 'Tiempo (min)'
                     },
                     legend: 'none'
                 };
 
-                var chart = new google.visualization.ScatterChart(document.getElementById('chart_div_scatter4'));
+                var chart = new google.visualization.ScatterChart(document.getElementById('chart_TvE'));
 
                 chart.draw(data, options);
             }
 
         </script>
-    <div id="chart_div_scatter4" style="width: 900px; height: 500px;"></div>
+    
+    <div id="chart_TvE" style="width: 650px; height: 400px;"></div>
 
     <!--Prueba Grafica 4-->
         <script type="text/javascript">
@@ -182,14 +183,16 @@
 
                 };
 
-                var chart = new google.visualization.ComboChart(document.getElementById('chart_divNvIn'));
+                var chart = new google.visualization.ComboChart(document.getElementById('chart_PvN'));
                 chart.draw(data, options);
             }
 
         </script>
-    <div id="chart_divNvIn" style="width: 900px; height: 500px;"></div>
+    
+    <div id="chart_PvN" style="width: 650px; height: 400px;"></div>
+    
 </div>
-
+    
     <br> <br>
 
     <div class="grid-container3">
