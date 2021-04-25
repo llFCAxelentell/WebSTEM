@@ -76,7 +76,7 @@ def mi_estadistica(request):
 
         rows = cursor.fetchall()
 
-        print(rows[0])
+        print(rows)
 
 
     except(Exception, psycopg2.Error) as error:
