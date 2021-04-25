@@ -22,7 +22,7 @@
         <li><a href="index.html">Principal</a></li>
         <li><a href="juego.html">Juega</a></li>
         <li><a href="estadistica.html">Estadísticas</a></li>
-        <li><a href="mi_estadistica.html">Mi Estadísticas</a></li>
+        <li><a href="mi_estadistica.html">Mis Estadísticas</a></li>
         <li><a href="stem.html">STEM</a></li>
       </ul>
   </div>
@@ -32,15 +32,14 @@
 {% block content %}
 
   {% if form.errors %}
-    <p class = "enviar">Your username and password didn't match. Please try again.</p>
+    <p class = "enviar">Tu usuario y contraseña no coinciden. Por favor, intenta de nuevo.</p>
   {% endif %}
 
   {% if next %}
     {% if user.is_authenticated %}
-      <p class = "enviar">Your account doesn't have access to this page. To proceed,
-      please login with an account that has access.</p>
+      <p class = "enviar"> Para tener acceso a las estadísticas individuales, ingresa tu usuario (tu nickname) y contraseña.</p>
     {% else %}
-      <p class = "enviar">Please login to see this page.</p>
+      <p class = "enviar">Ingresa tu usuario (tu nickname) y contraseña, para ver tus estadísticas individuales</p>
     {% endif %}
   {% endif %}
 
