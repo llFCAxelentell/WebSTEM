@@ -91,7 +91,7 @@ def mi_estadistica(request):
         myQuery7="SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 AS TiempoSesion FROM \"WEB_sesion\";"
         #myQuery8="SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 AS TiempoSesion FROM \"WEB_sesion\";"
 
-        myQuery8="SELECT SUM(num_compounds_made), auth_user.username FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id WHERE auth_user.username = "+ uu+ "GROUP BY \"WEB_sesion\".id;"
+        myQuery8="SELECT SUM(num_compounds_made) FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id WHERE auth_user.username = "+ uu+ "GROUP BY \"WEB_sesion\".id;"
 #cursor2.execute("SELECT SUM(num_compounds_made) FROM \"WEB_day\" INNER JOIN \"WEB_try\" ON \"WEB_day\".try_id_id=\"WEB_try\".id INNER JOIN \"WEB_sesion\" ON \"WEB_try\".session_id_id= \"WEB_sesion\".id GROUP BY \"WEB_try\".session_id_id;")
 
 
