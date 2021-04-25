@@ -68,13 +68,28 @@ def mi_estadistica(request):
             database = "medchembd"
         )
         cursor = connection.cursor()
+        cursor2 = connection.cursor()
+        cursor3 = connection.cursor()
+        cursor4 = connection.cursor()
+
 
         #myQuery= "SELECT * FROM auth_user WHERE auth_user.username = "+ uu+ ";"
         myQuery="SELECT sum(extract (epoch from (ended::timestamp - started::timestamp))::integer/60) AS TiempoSes, auth_user.username FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id WHERE auth_user.username = "+ uu+ "GROUP BY auth_user.username;"
+        myQuery2="SELECT avg(extract (epoch from (ended::timestamp - started::timestamp))::integer/60) AS TiempoSes, auth_user.username FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id WHERE auth_user.username = "+ uu+ "GROUP BY auth_user.username;"
+        myQuer3="SELECT min(extract (epoch from (ended::timestamp - started::timestamp))::integer/60) AS TiempoSes, auth_user.username FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id WHERE auth_user.username = "+ uu+ "GROUP BY auth_user.username;"
+        myQuer4="SELECT max(extract (epoch from (ended::timestamp - started::timestamp))::integer/60) AS TiempoSes, auth_user.username FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id WHERE auth_user.username = "+ uu+ "GROUP BY auth_user.username;"
+
+
         #SELECT auth_user.username, (AVG(money_generated_day)*MAX(day_number)) AS Score FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id
         cursor.execute(myQuery)
+        cursor2.execute(myQuery2)
+        cursor3.execute(myQuery3)
+        cursor4.execute(myQuery4)
 
         rows = cursor.fetchall()
+        rows2 = cursor2.fetchall()
+        rows3 = cursor3.fetchall()
+        rows4 = cursor4.fetchall()
 
         print(rows[0][0])
 
@@ -88,7 +103,7 @@ def mi_estadistica(request):
             cursor.close()
             connection.close()
 
-    return render(request, 'mi_estadistica.html', {'nombre':uuu,'tiempoTot':rows[0][0] })
+    return render(request, 'mi_estadistica.html', {'nombre':uuu,'tiempoTot':rows[0][0], 'tiempoProm':rows2[0][0], 'tiempoMin':rows3[0][0], 'tiempoMax':rows4[0][0]})
 
 '''
 def estadistica(request):
