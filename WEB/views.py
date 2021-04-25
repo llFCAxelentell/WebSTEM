@@ -73,8 +73,8 @@ def mi_estadistica(request):
             database = "medchembd"
         )
         cursor = connection.cursor()
-
-        cursor.execute("SELECT * FROM auth_user WHERE auth_user.username = (%s,) ;", (uu,))
+        muquery= "SELECT * FROM auth_user WHERE auth_user.username = "+ uu+ ";"
+        cursor.execute(muquery)
         rows = cursor.fetchall()
         print(rows)
 
