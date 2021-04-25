@@ -61,7 +61,7 @@ def mi_estadistica(request):
         dato= regist[0].gender
         print(dato)
         verificar = Sesion.objects.all()
-        if len(verificar)>0:
+        if len(verificar)>1:
             print("jala")
         else:
             return HttpResponse("<h1> No hay registros a mostrar :(</h1>")
