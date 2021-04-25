@@ -226,20 +226,17 @@ h3 {
     grid-gap: 2%;
     margin-top: 2%;
 }
-
 .grid-container8 > div {
     text-align: center;
 }
-
-.grid-container_ani {
+.grid-container_20 {
     display: grid;
     grid-template-columns:  30% 30% 30%;
-    grid-gap: 3%;
+    grid-gap: 2%;
     margin-top: 2%;
 }
 
-.grid-container_ani > div {
-    text-align: center;
+.grid-container_20 > div {
 }
 
 div.izq {
