@@ -83,6 +83,7 @@ def mi_estadistica(request):
         cursor7 = connection.cursor()
         cursor8 = connection.cursor()
         cursor9 = connection.cursor()
+        cursor10 = connection.cursor()
 
         #Tiempo y nivel
         myQuery="SELECT sum(extract (epoch from (ended::timestamp - started::timestamp))::integer/60) AS TiempoSes, auth_user.username FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id WHERE auth_user.username = "+ uu+ "GROUP BY auth_user.username;"
@@ -101,7 +102,9 @@ def mi_estadistica(request):
 
         #Compuestos vendidos vs Elementos Comprados
         myQuery9="SELECT num_compounds_sold, num_elements_purchased FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id WHERE auth_user.username = "+ uu+ ";"
-
+        
+        myQuery10 ="SELECT day_number, AVG(num_compounds_sold) AS PromCompuestosVendidos, AVG(num_elements_purchased) AS PromElementos, AVG(customers_rejected) AS PromClientesRechazados, auth_user.username FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id WHERE auth_user.username = "+ uu+ " GROUP BY day_number;"
+        
         #inidicadores por nivel, Nivel vs (compuestos, elementos, clientes)
 
 
@@ -115,6 +118,7 @@ def mi_estadistica(request):
         cursor7.execute(myQuery7)
         cursor8.execute(myQuery8)
         cursor9.execute(myQuery9)
+        cursor10.execute(myQuery10)
 
         rows = cursor.fetchall()
         rows2 = cursor2.fetchall()
@@ -125,6 +129,8 @@ def mi_estadistica(request):
         rows7 = cursor7.fetchall()
         rows8 = cursor8.fetchall()
         rows9 = cursor9.fetchall()
+        rows10 = cursor10.fetchall()
+        print(rows10)
 
         #print(rows9)
         print(rows6)
