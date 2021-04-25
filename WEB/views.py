@@ -91,7 +91,6 @@ def mi_estadistica(request):
         rows3 = cursor3.fetchall()
         rows4 = cursor4.fetchall()
 
-        print(rows[0][0])
 
 
     except(Exception, psycopg2.Error) as error:
@@ -103,7 +102,7 @@ def mi_estadistica(request):
             cursor.close()
             connection.close()
 
-    return render(request, 'mi_estadistica.html', {'nombre':uuu,'tiempoTot':rows[0][0], 'tiempoProm':rows2[0][0], 'tiempoMin':rows3[0][0], 'tiempoMax':rows4[0][0]})
+    return render(request, 'mi_estadistica.html', {'nombre':uuu,'tiempoTot':rows[0][0], 'tiempoProm':str(round(rows2[0][0], 2)), 'tiempoMin':rows3[0][0], 'tiempoMax':rows4[0][0]})
 
 '''
 def estadistica(request):
