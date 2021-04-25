@@ -339,7 +339,8 @@ h1.a {
     color: #2d486c;
     text-align: center;
     font-family: cursive;
-    background-color: #2d486c;
+    background-color: #999999;
+    opacity: 0.8;
 }
 
 
