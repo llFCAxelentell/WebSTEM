@@ -334,8 +334,12 @@ form.a {
     text-align: center;
     margin-top: 2%;
 }
-table{
+h1.a {
+    font-size: 50px;
+    color: #2d486c;
     text-align: center;
+    font-family: cursive;
+    background-color: #2d486c;
 }
 
 
