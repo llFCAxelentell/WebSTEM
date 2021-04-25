@@ -236,13 +236,15 @@ h3 {
 }
 .grid-container12 {
     display: grid;
-    grid-template-columns:  30% 30% 30%;
-    grid-gap: 2%;
+    grid-template-columns:  33% 33% 33%;
+    grid-gap: 0.3%;
     margin-top: 2%;
 }
 
 .grid-container12 > div {
     text-align: center;
+    font-size: 25px;
+    color: white;
 }
 
 div.izq {
@@ -255,8 +257,10 @@ div.izq {
 }
 
 @keyframes izquierda {
-  0%   {background-color: white;}
-  100% {background-color: blue;}
+  25%   {background-color: #c9d7e8;}
+  50%   {background-color: #93aed2;}
+  75%   {background-color: #446ca2;}
+  100% {background-color: #2d486c;}
 }
 
 div.cen {
@@ -269,8 +273,10 @@ div.cen {
 }
 
 @keyframes centro {
-  0%   {background-color: white;}
-  100% {background-color: blue;}
+  25%   {background-color: #c9d7e8;}
+  50%   {background-color: #93aed2;}
+  75%   {background-color: #446ca2;}
+  100% {background-color: #2d486c;}
 }
 
 div.der {
@@ -284,8 +290,10 @@ div.der {
 }
 
 @keyframes derecha {
-  0%   {background-color: white;}
-  100% {background-color: blue;}
+  25%   {background-color: #c9d7e8;}
+  50%   {background-color: #93aed2;}
+  75%   {background-color: #446ca2;}
+  100% {background-color: #2d486c;}
 }
 
 /*-------------PAGINA STEM-------------*/
