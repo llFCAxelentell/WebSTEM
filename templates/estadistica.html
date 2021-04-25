@@ -70,9 +70,8 @@
             Consulta las siguientes gráficas:</h3>
     </div>
 
-
+<div class="grid-container8">
     <!--Prueba Grafica 1-->
-    <div>
         <script type="text/javascript">
             google.charts.load('current', {
                 'packages': ['corechart']
@@ -92,19 +91,14 @@
                     },
                     legend: 'none'
                 };
-
                 var chart = new google.visualization.ScatterChart(document.getElementById('chart_div_scatter1'));
-
                 chart.draw(data, options);
             }
-
-        </script>
-    </div>
+        </script>  
+    
     <div id="chart_div_scatter1" style="width: 900px; height: 500px;"></div>
-    <!--Prueba Grafica1 -->
 
     <!--Prueba Grafica2 -->
-    <div>
         <script type="text/javascript">
             google.charts.load('current', {
                 'packages': ['corechart']
@@ -129,14 +123,14 @@
 
                 chart.draw(data, options);
             }
-
         </script>
-    </div>
+    
     <div id="chart_div_scatter2" style="width: 900px; height: 500px;"></div>
-    <!--Prueba Grafica2 -->
+    
+</div>
 
+<div class="grid-container8">
     <!--Prueba Grafica 3-->
-    <div>
         <script type="text/javascript">
             google.charts.load('current', {
                 'packages': ['corechart']
@@ -163,11 +157,9 @@
             }
 
         </script>
-    </div>
     <div id="chart_div_scatter4" style="width: 900px; height: 500px;"></div>
-    <!--Prueba Grafica 3-->
+
     <!--Prueba Grafica 4-->
-    <div>
         <script type="text/javascript">
             google.charts.load('current', {
                 'packages': ['corechart']
@@ -195,24 +187,9 @@
             }
 
         </script>
-    </div>
     <div id="chart_divNvIn" style="width: 900px; height: 500px;"></div>
-    <!--Prueba Grafica 4-->
+</div>
 
-
-    <div class="grid-container8">
-        <div id="chart_divTvC" style="width: 650px; height: 400px;"></div>
-        <script src="{%static 'scriptTvC.js'%}"></script>
-        <div id="chart_divEvT" style="width: 650px; height: 400px;"></div>
-        <script src="{%static 'scriptEvT.js'%}"></script>
-    </div>
-
-    <div class="grid-container8">
-        <div id="chart_divCvE" style="width: 650px; height: 400px;"></div>
-        <script src="{%static 'scriptCvE.js'%}"></script>
-        <div id="chart_divNvI" style="width: 650px; height: 400px;"></div>
-        <script src="{%static 'scriptNvI.js'%}"></script>
-    </div>
     <br> <br>
 
     <div class="grid-container3">
