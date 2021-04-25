@@ -245,6 +245,49 @@ h3 {
     text-align: center;
 }
 
+div.izq {
+   width: 100%;
+  height: 100%;
+  animation-name: izquierda;
+  animation-duration: 3s;
+  animation-delay: 2s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes izquierda {
+  0%   {background-color: white;}
+  100% {background-color: blue;}
+}
+
+div.cen {
+  width: 100%;
+  height: 100%;
+  animation-name: centro;
+  animation-delay: 5s;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes centro {
+  0%   {background-color: white;}
+  100% {background-color: blue;}
+}
+
+div.der {
+  width: 100%;
+  height: 100%;
+    text-align: center;
+  animation-name: derecha;
+     animation-delay: 8s;
+  animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes derecha {
+  0%   {background-color: white;}
+  100% {background-color: blue;}
+}
+
 /*-------------PAGINA STEM-------------*/
 /*STEM*/
 .grid-container6 {
