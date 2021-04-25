@@ -27,14 +27,19 @@
             <li><a href="stem.html">STEM</a></li>
         </ul>
     </div>
-
-    <div class="grid-container8">
-        <div class = "der">
+{% load static%}
+    <link href="{% static 'style.css'%}" rel="stylesheet" type="text/css" />
+    <div class="grid-container20">
+        <div class = "izq">
             <p>Se ha juagado {{minutosTotales}} minutos</p>
         </div>
 
         <div class = "cen">
             <p>En promedio se juegan {{promTemp}} minutos</p>
+        </div>
+
+        <div class ="der">
+            <p>Maximo tiempo de juego {{maxTiempo}} minutos</p>
         </div>
 
     </div>
