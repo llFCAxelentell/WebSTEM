@@ -478,7 +478,6 @@ def estadistica(request):
         rows6= cursor6.fetchall()
         rows7= cursor7.fetchall()
 
-        print(rows7)
         ota= []
         ota2=[]
         for row in rows:
@@ -508,6 +507,7 @@ def estadistica(request):
         for rowaa in rows7:
             data7.append([rowaa[0],rowaa[1]])
         data7_formato= dumps(data7)
+        print(data7)
 
         for i in range(len(ota)):
             data.append([ota[i], ota2[i]])
