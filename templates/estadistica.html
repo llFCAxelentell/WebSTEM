@@ -27,23 +27,23 @@
             <li><a href="stem.html">STEM</a></li>
         </ul>
     </div>
-    
+
     div class="grid-container12">
         <div class ="izq">
             <p>Se ha juagado {{minutosTotales}} minutos</p>
         </div>
-        
+
         <div class ="cen">
             <p>En promedio se juegan {{promTemp}} minutos</p>
         </div>
-        
+
         <div class ="der">
             <p>Maximo tiempo de juego {{maxTiempo}} minutos</p>
         </div>
-        
+
     </div>
 
-        
+
     <div>
         <h3>¿Te encuentras dentro de los mejores? </h3>
     </div>
@@ -92,7 +92,7 @@
                 var data = google.visualization.arrayToDataTable({{losDatos|safe}});
 
                 var options = {
-                    title: 'Tiempo jugado vs Compuestos hechos',
+                    title: 'promedio exito por nivel',
                     hAxis: {
                         title: 'Tiempo (min)'
                     },
@@ -104,8 +104,8 @@
                 var chart = new google.visualization.ScatterChart(document.getElementById('chart_TvC'));
                 chart.draw(data, options);
             }
-        </script>  
-    
+        </script>
+
     <div id="chart_TvC" style="width: 650px; height: 400px;"></div>
 
     <!--Prueba Grafica2 -->
@@ -134,9 +134,9 @@
                 chart.draw(data, options);
             }
         </script>
-    
+
     <div id="chart_CvE" style="width: 650px; height: 400px;"></div>
-    
+
 </div>
 
 <div class="grid-container8">
@@ -167,7 +167,7 @@
             }
 
         </script>
-    
+
     <div id="chart_TvE" style="width: 650px; height: 400px;"></div>
 
     <!--Prueba Grafica 4-->
@@ -198,11 +198,11 @@
             }
 
         </script>
-    
+
     <div id="chart_PvN" style="width: 650px; height: 400px;"></div>
-    
+
 </div>
-    
+
     <br> <br>
 
     <div class="grid-container3">
