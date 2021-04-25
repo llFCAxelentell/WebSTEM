@@ -52,14 +52,13 @@ def mi_estadistica(request):
 
     try:
         usuario = request.user
-        print(type(usuario))
         uuu = str(usuario)
-        print(type(uuu))
         uu ="\'"+uuu+"\'"
-        print(uu)
+
         registros = User.objects.filter(username=usuario)
         regist = Usuario.objects.filter(username=registros[0].id)
         dato= regist[0].gender
+
 
         connection = psycopg2.connect(
             user = "farmaceuticouser",
@@ -69,12 +68,16 @@ def mi_estadistica(request):
             database = "medchembd"
         )
         cursor = connection.cursor()
-        muquery= "SELECT * FROM auth_user WHERE auth_user.username = "+ uu+ ";"
-        cursor.execute(muquery)
+
+        myQuery= "SELECT * FROM auth_user WHERE auth_user.username = "+ uu+ ";"
+
+        cursor.execute(myQuery)
+
         rows = cursor.fetchall()
+
         print(rows)
 
-        
+
     except(Exception, psycopg2.Error) as error:
         print("Error connecting to PostgreSQL database", error)
         connection = None
@@ -84,7 +87,8 @@ def mi_estadistica(request):
             cursor.close()
             connection.close()
 
-    return render(request, 'mi_estadistica.html', {'dato':dato})
+    return render(request, 'mi_estadistica.html', {'nombre':uu})
+
 '''
 def estadistica(request):
 #grafica compounds made vs sold
