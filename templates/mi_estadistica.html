@@ -144,15 +144,15 @@
 
             function drawVisualization() {
                 // Some raw data (not necessarily accurate)
-                var data = google.visualization.arrayToDataTable({{losDatos5 | safe}});
+                var data = google.visualization.arrayToDataTable({{datos10 | safe}});
 
                 var options = {
-                    title: 'Ejemplo 4',
+                    title: 'Nivel vs Compuestos, Elementos y Clientes',
                     vAxis: {
-                        title: '4u'
+                        title: 'Indicadores'
                     },
                     hAxis: {
-                        title: '4'
+                        title: 'Nivel'
                     },
                     seriesType: 'bars',
 
