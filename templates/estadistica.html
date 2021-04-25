@@ -79,7 +79,7 @@
         <h3>¿Quieres saber más sobre Medieval Chemist?
             Consulta las siguientes gráficas:</h3>
     </div>
-
+    
 <div class="grid-container8">
     <!--Prueba Grafica 1-->
         <script type="text/javascript">
@@ -137,10 +137,71 @@
     
     <div id="chart_CvE" style="width: 650px; height: 400px;"></div>
     
-</div>
+</div>    
+    
+    
 
 <div class="grid-container8">
     <!--Prueba Grafica 3-->
+        <script type="text/javascript">
+            google.charts.load('current', {
+                'packages': ['corechart']
+            });
+            google.charts.setOnLoadCallback(drawChart);
+
+            function drawChart() {
+                var data = google.visualization.arrayToDataTable({{losDatos|safe}});
+
+                var options = {
+                    title: 'Tiempo jugado vs Compuestos hechos',
+                    hAxis: {
+                        title: 'Tiempo (min)'
+                    },
+                    vAxis: {
+                        title: '# Compuesto hechos'
+                    },
+                    legend: 'none'
+                };
+                var chart = new google.visualization.ScatterChart(document.getElementById('chart_TvC'));
+                chart.draw(data, options);
+            }
+        </script>  
+    
+    <div id="chart_TvC" style="width: 650px; height: 400px;"></div>
+
+    <!--Prueba Grafica4 -->
+        <script type="text/javascript">
+            google.charts.load('current', {
+                'packages': ['corechart']
+            });
+            google.charts.setOnLoadCallback(drawChart);
+
+            function drawChart() {
+                var data = google.visualization.arrayToDataTable({{losDatos2 | safe}});
+
+                var options = {
+                    title: 'Compuestos vendidos vs Elementos Comprados',
+                    hAxis: {
+                        title: '# Elementos comprados'
+                    },
+                    vAxis: {
+                        title: '# Compuestos vendidos'
+                    },
+                    legend: 'none'
+                };
+
+                var chart = new google.visualization.ScatterChart(document.getElementById('chart_CvE'));
+
+                chart.draw(data, options);
+            }
+        </script>
+    
+    <div id="chart_CvE" style="width: 650px; height: 400px;"></div>
+    
+</div>
+
+<div class="grid-container8">
+    <!--Prueba Grafica 5-->
         <script type="text/javascript">
             google.charts.load('current', {
                 'packages': ['corechart']
@@ -170,7 +231,7 @@
     
     <div id="chart_TvE" style="width: 650px; height: 400px;"></div>
 
-    <!--Prueba Grafica 4-->
+    <!--Prueba Grafica 6-->
         <script type="text/javascript">
             google.charts.load('current', {
                 'packages': ['corechart']
