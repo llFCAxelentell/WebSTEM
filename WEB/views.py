@@ -87,7 +87,7 @@ def mi_estadistica(request):
             cursor.close()
             connection.close()
 
-    return render(request, 'mi_estadistica.html', {'nombre':uu})
+    return render(request, 'mi_estadistica.html', {'nombre':uuu})
 
 '''
 def estadistica(request):
