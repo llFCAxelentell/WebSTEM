@@ -88,12 +88,7 @@
 
       function drawChart() {
 
-        var data = google.visualization.arrayToDataTable([
-          ['Genero', 'Porcentaje'],
-          ['Hombre',     11],
-          ['Mujer',      2],
-          ['Prefiero no decir',  2]
-        ]);
+        var data = google.visualization.arrayToDataTable({{losDatos7|safe}});
 
         var options = {
           title: 'Genero vs Porcentaje'
