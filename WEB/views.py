@@ -94,6 +94,7 @@ def mi_estadistica(request):
         rows4 = cursor4.fetchall()
         rows5 = cursor5.fetchall()
 
+        print(rows5)
 
     except(Exception, psycopg2.Error) as error:
         print("Error connecting to PostgreSQL database", error)
