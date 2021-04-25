@@ -103,6 +103,72 @@
 
 </div>
 
+    <div class="grid-container8">
+    <!--Prueba Grafica 3-->
+    <script type="text/javascript">
+            google.charts.load('current', {
+                'packages': ['corechart']
+            });
+            google.charts.setOnLoadCallback(drawVisualization);
+
+            function drawVisualization() {
+                // Some raw data (not necessarily accurate)
+                var data = google.visualization.arrayToDataTable({{losDatos5 | safe}});
+
+                var options = {
+                    title: 'Ejemplo 3',
+                    vAxis: {
+                        title: '3'
+                    },
+                    hAxis: {
+                        title: '3'
+                    },
+                    seriesType: 'bars',
+
+                };
+
+                var chart = new google.visualization.ComboChart(document.getElementById('chart_3'));
+                chart.draw(data, options);
+            }
+
+        </script>
+
+    <div id="chart_3" style="width: 650px; height: 400px;"></div>
+
+    <!--Prueba Grafica4 -->
+       <script type="text/javascript">
+            google.charts.load('current', {
+                'packages': ['corechart']
+            });
+            google.charts.setOnLoadCallback(drawVisualization);
+
+            function drawVisualization() {
+                // Some raw data (not necessarily accurate)
+                var data = google.visualization.arrayToDataTable({{losDatos5 | safe}});
+
+                var options = {
+                    title: 'Ejemplo 4',
+                    vAxis: {
+                        title: '4'
+                    },
+                    hAxis: {
+                        title: '4'
+                    },
+                    seriesType: 'bars',
+
+                };
+
+                var chart = new google.visualization.ComboChart(document.getElementById('chart_4'));
+                chart.draw(data, options);
+            }
+
+        </script>
+
+    <div id="chart_4" style="width: 650px; height: 400px;"></div>
+
+</div>
+
+    
 
     <a href="http://40.124.40.241:8000/accounts/logout/">LOG OUT</a>
 
