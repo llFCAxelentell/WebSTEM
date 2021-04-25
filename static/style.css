@@ -386,3 +386,9 @@ div.cinco {
   animation-delay: 14s;
   animation-iteration-count: infinite;
 }
+
+a.b{
+    font-size: 20px;
+    font-family: cursive;
+    text-align: center;
+}
