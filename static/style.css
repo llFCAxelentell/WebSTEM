@@ -235,7 +235,7 @@ h3 {
 
 .grid-container12 {
     display: grid;
-    grid-template-columns: 33% 33% 33%;
+    grid-template-columns: 30% 30% 30%;
     grid-gap: 0.3%;
     margin-top: 2%;
 }
