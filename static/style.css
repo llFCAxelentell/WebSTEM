@@ -235,13 +235,14 @@ h3 {
 
 .grid-container12 {
     display: grid;
-    grid-template-columns: 30% 30% 30%;
-    grid-gap: 0.3%;
+    grid-template-columns: 25% 25% 25%;
+    grid-gap: 1%;
     margin-top: 2%;
 }
 
 .grid-container12 > div {
     text-align: center;
+    font-size: 18px;
 }
 div.izq {
    width: 100%;
