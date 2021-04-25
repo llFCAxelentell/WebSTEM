@@ -160,40 +160,7 @@ def mi_estadistica(request):
 
     return render(request, 'mi_estadistica.html', {'nombre':uuu,'tiempoTot':rows[0][0], 'tiempoProm':str(round(rows2[0][0], 2)), 'tiempoMin':rows3[0][0], 'tiempoMax':rows4[0][0], 'nivelMax':rows5[0][0],'datos6':data6_formato, 'datos7':data7_formato, 'datos9':data9_formato})
 
-'''
-def estadistica(request):
-#grafica compounds made vs sold
-    data = []
-    data.append(['num_compounds_made', 'num_compounds_sold'])
 
-    resultados= Day.objects.all()
-    titulo ='compounds made vs sold'
-    titulo_formato = dumps(titulo)
-    if len(resultados)>0:
-        for registro in resultados:
-            nombre = registro.num_compounds_made
-            minutos = registro.num_compounds_sold
-            data.append([nombre, minutos])
-        data_formato=dumps(data) #formatear los datos en string para json
-        #return render(request, 'estadistica.html', {'losDatos':data_formato}) # scatter.html
-    else:
-        return HttpResponse("<h1>No hay registros </h1>")
-
-# grafica num_compounds_made
-    data1 = []
-    tiempo=0
-    resultados1 = (Day.objects.values('try_id').annotate(dcount=Count('num_compounds_made')).order_by())
-    print(resultados1)
-    star = Sesion.objects.values_list('started', flat=True)
-    end = Sesion.objects.values_list('ended', flat=True)
-    for i in range(len(star)):
-        tiempo = end[i] - star[i]
-        minutes = tiempo.total_seconds() / 60
-        data1.append([minutes])
-
-    return render(request, 'estadistica.html', {'losDatos':data_formato})
-    #return render(request, 'estadistica.html')
-'''
 def stem(request):
     return render(request, 'stem.html')
 '''
@@ -515,15 +482,3 @@ def estadistica(request):
             #print("PostgreSQL connection is now closed")
 
     return render(request, 'estadistica.html', {'losDatos':data_formato,'losDatos2':data2_formato, 'losDatos4':data4_formato, 'losDatos3':data3_formato, 'losDatos5':data5_formato, 'losDatos6':data6_formato, 'losDatos7':data7_formato, 'minutosTotales':str(round(minutosTotales, 2)) ,'promTemp':str(round(promTemp, 2)), 'maxTiempo':str(round(maxTiempo, 2)), 'minTiempo':str(round(minTiempo, 2))})
-
-
-
-
-'''
-@login_required
-def minutosJugador(request):
-    usuario = request.user
-    registros = Minutos.objects.filter(jugador=usuario)
-    minutos = registros[0].minutos
-    return render(request,'minutosJugador.html',{'minutos':minutos} )
-    '''
