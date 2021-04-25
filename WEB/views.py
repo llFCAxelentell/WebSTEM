@@ -127,11 +127,13 @@ def mi_estadistica(request):
         rows9 = cursor9.fetchall()
 
         print(rows9)
-
-        for rowq in rows6:
-            data6.append([rowq[0], int(rowq[1]*100)])
-        data6_formato = dumps(data6)
-
+        print(rows6)
+        if len(rows6)>0:
+            for rowq in rows6:
+                data6.append([rowq[0], int(rowq[1]*100)])
+            data6_formato = dumps(data6)
+        else:
+            return HttpResponse("<h1> No hay registros a mostrar</h1>")
         ota= []
         ota2=[]
         for row in rows7:
