@@ -236,7 +236,7 @@ h3 {
 }
 .grid-container12 {
     display: grid;
-    grid-template-columns:  30% 30% 30%;
+    grid-template-columns:  33% 33% 33%;
     grid-gap: 2%;
     margin-top: 2%;
 }
@@ -249,8 +249,8 @@ div.izq {
    width: 100%;
   height: 100%;
   animation-name: izquierda;
-  animation-duration: 3s;
-  animation-delay: 2s;
+  animation-duration: 5s;
+  animation-delay: 3s;
   animation-iteration-count: infinite;
 }
 
@@ -263,8 +263,8 @@ div.cen {
   width: 100%;
   height: 100%;
   animation-name: centro;
-  animation-delay: 5s;
-  animation-duration: 3s;
+  animation-delay: 8s;
+  animation-duration: 5s;
   animation-iteration-count: infinite;
 }
 
@@ -278,8 +278,8 @@ div.der {
   height: 100%;
     text-align: center;
   animation-name: derecha;
-     animation-delay: 8s;
-  animation-duration: 3s;
+     animation-delay: 13s;
+  animation-duration: 5s;
     animation-iteration-count: infinite;
 }
 
