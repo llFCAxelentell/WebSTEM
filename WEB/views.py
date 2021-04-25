@@ -55,7 +55,7 @@ def mi_estadistica(request):
         print(type(usuario))
         uuu = str(usuario)
         print(type(uuu))
-        uu =uuu
+        uu ="\'"+uuu+"\'"
         print(uu)
         registros = User.objects.filter(username=usuario)
         #print(registros)
@@ -74,7 +74,7 @@ def mi_estadistica(request):
         )
         cursor = connection.cursor()
 
-        cursor.execute("SELECT * FROM auth_user WHERE auth_user.username = (\"%s\") ;", (uu))
+        cursor.execute("SELECT * FROM auth_user WHERE auth_user.username = (%s,) ;", (uu,))
         rows = cursor.fetchall()
         print(rows)
 
