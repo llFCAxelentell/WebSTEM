@@ -494,7 +494,7 @@ def estadistica(request):
         data4_formato = dumps(data4)
 
         for rowa in rows5:
-            data5.append([rowa[0], int(rowa[0])])
+            data5.append([rowa[0], int(rowa[1])])
         data5_formato = dumps(data5)
         print(data5)
 
