@@ -53,15 +53,15 @@
             google.charts.setOnLoadCallback(drawChart);
 
             function drawChart() {
-                var data = google.visualization.arrayToDataTable({{datos6|safe}});
+                var data = google.visualization.arrayToDataTable({{datos9|safe}});
 
                 var options = {
-                    title: 'porcnetaje de exito x nivel',
+                    title: 'compuestos vs elemntos',
                     hAxis: {
-                        title: 'nivel'
+                        title: 'compuestos'
                     },
                     vAxis: {
-                        title: 'exito'
+                        title: 'elemntos'
                     },
                     legend: 'none'
                 };
@@ -113,15 +113,15 @@
 
             function drawVisualization() {
                 // Some raw data (not necessarily accurate)
-                var data = google.visualization.arrayToDataTable({{datos9 | safe}});
+                var data = google.visualization.arrayToDataTable({{datos6 | safe}});
 
                 var options = {
-                    title: 'Ejemplo 3',
+                    title: 'porcnetaje de exito x nivel',
                     vAxis: {
-                        title: '3'
+                        title: 'nivel'
                     },
                     hAxis: {
-                        title: '3'
+                        title: 'exito'
                     },
                     seriesType: 'bars',
 
@@ -149,7 +149,7 @@
                 var options = {
                     title: 'Ejemplo 4',
                     vAxis: {
-                        title: '4'
+                        title: '4u'
                     },
                     hAxis: {
                         title: '4'
