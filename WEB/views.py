@@ -433,10 +433,12 @@ def estadistica(request):
         data= []
         data3 =[]
         data4= []
+        data5=[]
         data6 = []
         data.append(['Tiempo', 'Compuestos hechos'])
         data3.append(['Nivel','Compuestos','Elementos', 'Clientes'])
         data4.append(['Edad', 'Tiempo'])
+        data5.append(['dia ', 'exito'])
 
         cursor = connection.cursor()
         cursor2 = connection.cursor()
@@ -492,6 +494,10 @@ def estadistica(request):
             data4.append([int(rowee[0]), int(rowee[1])])
         data4_formato = dumps(data4)
 
+        for rowa in rows5:
+            data5.append([rowa[0], int(rowa[0])])
+        data5_formato = dumps(data5)
+
         contador = 1
         for roowe in rows6:
             data6.append([contador, roowe[0], int(roowe[1]) ])
@@ -516,7 +522,7 @@ def estadistica(request):
             connection.close()
             #print("PostgreSQL connection is now closed")
 
-    return render(request, 'estadistica.html', {'losDatos':data_formato,'losDatos2':data2_formato, 'losDatos4':data4_formato, 'losDatos3':data3_formato, 'losDatos6':data6_formato,'minutosTotales':str(round(minutosTotales, 2)) ,'promTemp':str(round(promTemp, 2)), 'maxTiempo':str(round(maxTiempo, 2)), 'minTiempo':str(round(minTiempo, 2))})
+    return render(request, 'estadistica.html', {'losDatos':data_formato,'losDatos2':data2_formato, 'losDatos4':data4_formato, 'losDatos3':data3_formato, 'losDatos5':data5_formato,'losDatos6':data6_formato,'minutosTotales':str(round(minutosTotales, 2)) ,'promTemp':str(round(promTemp, 2)), 'maxTiempo':str(round(maxTiempo, 2)), 'minTiempo':str(round(minTiempo, 2))})
 
 
 ###############estadística team
