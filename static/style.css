@@ -220,8 +220,6 @@ h3 {
     text-align: center;
     overflow: hidden;
 }
-
-
 .grid-container8 {
     display: grid;
     grid-template-columns: 48% 48%;
@@ -233,14 +231,14 @@ h3 {
     text-align: center;
 }
 
-.grid-container12 {
+.grid-container_ani {
     display: grid;
-    grid-template-columns: 33% 33% 33%;
-    grid-gap: 0.3%;
+    grid-template-columns:  30% 30% 30%;
+    grid-gap: 3%;
     margin-top: 2%;
 }
 
-.grid-container12 > div {
+.grid-container_ani > div {
     text-align: center;
 }
 
