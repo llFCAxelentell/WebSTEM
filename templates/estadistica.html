@@ -52,7 +52,7 @@
                     data.addColumn('number', 'Score');
                     data.addRows({{losDatos6|safe}});
 
-                    var table = new google.visualization.Table(document.getElementById('table_div_1'));
+                    var table = new google.visualization.Table(document.getElementById('leaderboard'));
 
                     table.draw(data, {
                         width: '100%',
@@ -63,7 +63,7 @@
 
             </script>
         </div>
-        <div id="table_div_1" style="width: 95%; height: auto;"></div>
+        <div id="leaderboard" ></div>
     <!--Prueba Leaderboard-->
     <div>
         <h3>¿Quieres saber más sobre Medieval Chemist?
