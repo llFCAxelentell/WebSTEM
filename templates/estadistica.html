@@ -47,7 +47,6 @@
         <h3>¿Te encuentras dentro de los mejores? </h3>
     </div>
     <!--Prueba Leaderboard-->
-    <div>
             <script type="text/javascript">
                 google.charts.load('current', {
                     'packages': ['table']
@@ -71,7 +70,7 @@
                 }
 
             </script>
-        </div>
+  
         <div id="leaderboard" ></div>
     <!--Prueba Leaderboard-->
     <div>
@@ -81,60 +80,62 @@
 
 <div class="grid-container8">
     <!--Prueba Grafica 1-->
-        <script type="text/javascript">
-            google.charts.load('current', {
-                'packages': ['corechart']
-            });
-            google.charts.setOnLoadCallback(drawChart);
+       <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
 
-            function drawChart() {
-                var data = google.visualization.arrayToDataTable({{losDatos5|safe}});
+      function drawChart() {
 
-                var options = {
-                    title: 'nivel vs exito promedio',
-                    hAxis: {
-                        title: 'nivel'
-                    },
-                    vAxis: {
-                        title: 'exito %'
-                    },
-                    legend: 'none'
-                };
-                var chart = new google.visualization.ScatterChart(document.getElementById('chart_ejemplo1'));
-                chart.draw(data, options);
-            }
-        </script>
+        var data = google.visualization.arrayToDataTable([
+          ['Genero', 'Porcentaje'],
+          ['Hombre',     11],
+          ['Mujer',      2],
+          ['Prefiero no decir',  2]
+        ]);
 
-    <div id="chart_ejemplo1" style="width: 650px; height: 400px;"></div>
+        var options = {
+          title: 'Genero vs Porcentaje'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('char_genero'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+
+    <div id="chart_genero" style="width: 650px; height: 400px;"></div>
 
     <!--Prueba Grafica2 -->
-        <script type="text/javascript">
+       <script type="text/javascript">
             google.charts.load('current', {
                 'packages': ['corechart']
             });
-            google.charts.setOnLoadCallback(drawChart);
+            google.charts.setOnLoadCallback(drawVisualization);
 
-            function drawChart() {
-                var data = google.visualization.arrayToDataTable({{losDatos2 | safe}});
+            function drawVisualization() {
+                // Some raw data (not necessarily accurate)
+                var data = google.visualization.arrayToDataTable({{losDatos3 | safe}});
 
                 var options = {
-                    title: 'Compuestos vendidos vs Elementos Comprados',
-                    hAxis: {
-                        title: '# Elementos comprados'
-                    },
+                    title: 'Promedio de indicadores por nivel',
                     vAxis: {
-                        title: '# Compuestos vendidos'
+                        title: 'Indicadores'
                     },
-                    legend: 'none'
+                    hAxis: {
+                        title: 'Nivel'
+                    },
+                    seriesType: 'bars',
+
                 };
 
-                var chart = new google.visualization.ScatterChart(document.getElementById('chart_ejemplo2'));
-
+                var chart = new google.visualization.ComboChart(document.getElementById('chart_barras'));
                 chart.draw(data, options);
             }
+
         </script>
 
-    <div id="chart_ejemplo2" style="width: 650px; height: 400px;"></div>
+    <div id="chart_barras" style="width: 650px; height: 400px;"></div>
 
 </div>
 
