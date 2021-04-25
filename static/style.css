@@ -44,7 +44,7 @@ li a:hover {
 
 /*GENERAL */
 body {
-   background: blue;
+    background-image: url("fondo6.jpg");
     margin: 1%;
     font-family: cursive;
 }
