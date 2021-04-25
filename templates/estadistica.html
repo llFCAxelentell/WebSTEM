@@ -27,23 +27,31 @@
             <li><a href="stem.html">STEM</a></li>
         </ul>
     </div>
-
-    div class="grid-container12">
+    
+    <div class="grid-container12">
+        <div class ="izq"><p>Se ha juagado {{minutosTotales}} minutos</p></div>
+        
+        <div class ="cen"><p>En promedio se juegan {{promTemp}} minutos</p></div>
+        
+        <div class ="der"><p>Maximo tiempo de juego {{maxTiempo}} minutos</p></div>
+    </div>
+    
+    <div class="grid-container12">
         <div class ="izq">
-            <p>Se ha juagado {{minutosTotales}} minutos</p>
+            <p>HOLA</p>
         </div>
-
+        
         <div class ="cen">
-            <p>En promedio se juegan {{promTemp}} minutos</p>
+            <p>HOLA</p>
         </div>
-
+        
         <div class ="der">
-            <p>Maximo tiempo de juego {{maxTiempo}} minutos</p>
+            <p>HOLA</p>
         </div>
-
+        
     </div>
 
-
+        
     <div>
         <h3>¿Te encuentras dentro de los mejores? </h3>
     </div>
@@ -79,7 +87,7 @@
         <h3>¿Quieres saber más sobre Medieval Chemist?
             Consulta las siguientes gráficas:</h3>
     </div>
-
+    
 <div class="grid-container8">
     <!--Prueba Grafica 1-->
         <script type="text/javascript">
@@ -92,7 +100,68 @@
                 var data = google.visualization.arrayToDataTable({{losDatos|safe}});
 
                 var options = {
-                    title: 'promedio exito por nivel',
+                    title: 'Tiempo jugado vs Compuestos hechos',
+                    hAxis: {
+                        title: 'Tiempo (min)'
+                    },
+                    vAxis: {
+                        title: '# Compuesto hechos'
+                    },
+                    legend: 'none'
+                };
+                var chart = new google.visualization.ScatterChart(document.getElementById('chart_ejemplo1'));
+                chart.draw(data, options);
+            }
+        </script>  
+    
+    <div id="chart_ejemplo1" style="width: 650px; height: 400px;"></div>
+
+    <!--Prueba Grafica2 -->
+        <script type="text/javascript">
+            google.charts.load('current', {
+                'packages': ['corechart']
+            });
+            google.charts.setOnLoadCallback(drawChart);
+
+            function drawChart() {
+                var data = google.visualization.arrayToDataTable({{losDatos2 | safe}});
+
+                var options = {
+                    title: 'Compuestos vendidos vs Elementos Comprados',
+                    hAxis: {
+                        title: '# Elementos comprados'
+                    },
+                    vAxis: {
+                        title: '# Compuestos vendidos'
+                    },
+                    legend: 'none'
+                };
+
+                var chart = new google.visualization.ScatterChart(document.getElementById('chart_ejemplo2'));
+
+                chart.draw(data, options);
+            }
+        </script>
+    
+    <div id="chart_ejemplo2" style="width: 650px; height: 400px;"></div>
+    
+</div>    
+    
+    
+
+<div class="grid-container8">
+    <!--Prueba Grafica 3-->
+        <script type="text/javascript">
+            google.charts.load('current', {
+                'packages': ['corechart']
+            });
+            google.charts.setOnLoadCallback(drawChart);
+
+            function drawChart() {
+                var data = google.visualization.arrayToDataTable({{losDatos|safe}});
+
+                var options = {
+                    title: 'Tiempo jugado vs Compuestos hechos',
                     hAxis: {
                         title: 'Tiempo (min)'
                     },
@@ -104,11 +173,11 @@
                 var chart = new google.visualization.ScatterChart(document.getElementById('chart_TvC'));
                 chart.draw(data, options);
             }
-        </script>
-
+        </script>  
+    
     <div id="chart_TvC" style="width: 650px; height: 400px;"></div>
 
-    <!--Prueba Grafica2 -->
+    <!--Prueba Grafica4 -->
         <script type="text/javascript">
             google.charts.load('current', {
                 'packages': ['corechart']
@@ -134,13 +203,13 @@
                 chart.draw(data, options);
             }
         </script>
-
+    
     <div id="chart_CvE" style="width: 650px; height: 400px;"></div>
-
+    
 </div>
 
 <div class="grid-container8">
-    <!--Prueba Grafica 3-->
+    <!--Prueba Grafica 5-->
         <script type="text/javascript">
             google.charts.load('current', {
                 'packages': ['corechart']
@@ -167,10 +236,10 @@
             }
 
         </script>
-
+    
     <div id="chart_TvE" style="width: 650px; height: 400px;"></div>
 
-    <!--Prueba Grafica 4-->
+    <!--Prueba Grafica 6-->
         <script type="text/javascript">
             google.charts.load('current', {
                 'packages': ['corechart']
@@ -198,11 +267,11 @@
             }
 
         </script>
-
+    
     <div id="chart_PvN" style="width: 650px; height: 400px;"></div>
-
+    
 </div>
-
+    
     <br> <br>
 
     <div class="grid-container3">
