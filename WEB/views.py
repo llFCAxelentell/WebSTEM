@@ -435,10 +435,12 @@ def estadistica(request):
         data4= []
         data5=[]
         data6 = []
+        data7= []
         data.append(['Tiempo', 'Compuestos hechos'])
         data3.append(['Nivel','Compuestos','Elementos', 'Clientes'])
         data4.append(['Edad', 'Tiempo'])
         data5.append(['dia ', 'exito'])
+        dat7.append(['genero','numero'])
 
         cursor = connection.cursor()
         cursor2 = connection.cursor()
@@ -475,7 +477,7 @@ def estadistica(request):
         rows5= cursor5.fetchall()
         rows6= cursor6.fetchall()
         rows7= cursor7.fetchall()
-        print(rows5)
+
         print(rows7)
         ota= []
         ota2=[]
@@ -496,13 +498,16 @@ def estadistica(request):
         for rowa in rows5:
             data5.append([rowa[0], int(rowa[1]*100)])
         data5_formato = dumps(data5)
-        print(data5)
 
         contador = 1
         for roowe in rows6:
             data6.append([contador, roowe[0], int(roowe[1]) ])
             contador = contador+1
         data6_formato= dumps(data6)
+
+        for rowaa in rows7:
+            data7.append([rowaa[0],rowaa[1]])
+        data7_formato= dumps(data7)
 
         for i in range(len(ota)):
             data.append([ota[i], ota2[i]])
@@ -522,7 +527,7 @@ def estadistica(request):
             connection.close()
             #print("PostgreSQL connection is now closed")
 
-    return render(request, 'estadistica.html', {'losDatos':data_formato,'losDatos2':data2_formato, 'losDatos4':data4_formato, 'losDatos3':data3_formato, 'losDatos5':data5_formato,'losDatos6':data6_formato,'minutosTotales':str(round(minutosTotales, 2)) ,'promTemp':str(round(promTemp, 2)), 'maxTiempo':str(round(maxTiempo, 2)), 'minTiempo':str(round(minTiempo, 2))})
+    return render(request, 'estadistica.html', {'losDatos':data_formato,'losDatos2':data2_formato, 'losDatos4':data4_formato, 'losDatos3':data3_formato, 'losDatos5':data5_formato, 'losDatos6':data6_formato, 'losDatos7':data7_formato, 'minutosTotales':str(round(minutosTotales, 2)) ,'promTemp':str(round(promTemp, 2)), 'maxTiempo':str(round(maxTiempo, 2)), 'minTiempo':str(round(minTiempo, 2))})
 
 
 ###############estadística team
