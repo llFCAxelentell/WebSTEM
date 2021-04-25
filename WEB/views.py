@@ -135,7 +135,7 @@ def mi_estadistica(request):
         ota2=[]
         for row in rows7:
             ota.append(row[0])
-        for rowe in rows7:
+        for rowe in rows8:
             ota2.append(rowe[0])
         for i in range(len(ota)):
             data7.append([ota[i], ota2[i]])
