@@ -245,8 +245,8 @@ h3 {
     font-size: 18px;
 }
 div.izq {
-   width: 100%;
-  height: 100%;
+   width: auto;
+  height: auto;
   animation-name: izquierda;
   animation-duration: 3s;
   animation-delay: 2s;
@@ -259,8 +259,8 @@ div.izq {
 }
 
 div.cen {
-  width: 100%;
-  height: 100%;
+  width: auto;
+  height: auto;
   animation-name: centro;
   animation-delay: 5s;
   animation-duration: 3s;
@@ -273,8 +273,8 @@ div.cen {
 }
 
 div.der {
-  width: 100%;
-  height: 100%;
+  width: auto;
+  height: auto;
     text-align: center;
   animation-name: derecha;
      animation-delay: 8s;
