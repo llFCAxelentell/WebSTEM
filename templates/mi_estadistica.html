@@ -39,8 +39,72 @@
     <h1>en promedio has jugado{{tiempoProm}} minutos</h1>
     <h1>el mínimos tiempo es {{tiempoMin}} minutos</h1>
     <h1>el maximo tiempo es {{tiempoMax}} minutos</h1>
+<<<<<<< HEAD
     <h1>el maximo nivel alcanzado es {{nivelMax}} </h1>
 
+=======
+    
+    <div class="grid-container8">
+    <!--Prueba Grafica 1-->
+        <script type="text/javascript">
+            google.charts.load('current', {
+                'packages': ['corechart']
+            });
+            google.charts.setOnLoadCallback(drawChart);
+
+            function drawChart() {
+                var data = google.visualization.arrayToDataTable({{losDatos|safe}});
+
+                var options = {
+                    title: 'Ejemplo 1',
+                    hAxis: {
+                        title: 'Tiempo (min)'
+                    },
+                    vAxis: {
+                        title: '# Compuesto hechos'
+                    },
+                    legend: 'none'
+                };
+                var chart = new google.visualization.ScatterChart(document.getElementById('chart_1'));
+                chart.draw(data, options);
+            }
+        </script>
+
+    <div id="chart_1" style="width: 650px; height: 400px;"></div>
+
+    <!--Prueba Grafica2 -->
+        <script type="text/javascript">
+            google.charts.load('current', {
+                'packages': ['corechart']
+            });
+            google.charts.setOnLoadCallback(drawChart);
+
+            function drawChart() {
+                var data = google.visualization.arrayToDataTable({{losDatos2 | safe}});
+
+                var options = {
+                    title: 'Ejemplo 2',
+                    hAxis: {
+                        title: '# Elementos comprados'
+                    },
+                    vAxis: {
+                        title: '# Compuestos vendidos'
+                    },
+                    legend: 'none'
+                };
+
+                var chart = new google.visualization.ScatterChart(document.getElementById('chart_2'));
+
+                chart.draw(data, options);
+            }
+        </script>
+
+    <div id="chart_2" style="width: 650px; height: 400px;"></div>
+
+</div>
+    
+    
+>>>>>>> e862b22c15d8b7026d6fb946d5aaf30d4b58692f
     <a href="http://40.124.40.241:8000/accounts/logout/">LOG OUT</a>
 
 
