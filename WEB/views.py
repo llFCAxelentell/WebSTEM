@@ -475,7 +475,7 @@ def estadistica(request):
         rows5= cursor5.fetchall()
         rows6= cursor6.fetchall()
         rows7= cursor7.fetchall()
-
+        print(rows5)
         print(rows7)
         ota= []
         ota2=[]
