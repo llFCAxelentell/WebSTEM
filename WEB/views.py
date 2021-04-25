@@ -463,9 +463,8 @@ def estadistica(request):
 
         #Top five de scores
         cursor6.execute("SELECT auth_user.username, (AVG(money_generated_day)*MAX(day_number)) AS Score FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id GROUP BY username ORDER BY Score DESC LIMIT 5 ;")
-        #Top score global
-        cursor7.execute("SELECT auth_user.username, (AVG(money_generated_day)*MAX(day_number)) AS Score FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id GROUP BY username ORDER BY Score DESC LIMIT 1 ;")
-
+        #genero
+        cursor7.execute("SELECT gender FROM \"WEB_usuario\" ;")
 
         rows = cursor.fetchall()
         rows2= cursor2.fetchall()
@@ -476,7 +475,7 @@ def estadistica(request):
         rows7= cursor7.fetchall()
 
         #print(rows3)
-        #print(rows6)
+        print(rows7)
         ota= []
         ota2=[]
         for row in rows:
