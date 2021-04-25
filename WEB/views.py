@@ -54,10 +54,12 @@ def mi_estadistica(request):
         usuario = request.user
         uuu = str(usuario)
         uu ="\'"+uuu+"\'"
+        print(uu)
 
         registros = User.objects.filter(username=usuario)
         regist = Usuario.objects.filter(username=registros[0].id)
         dato= regist[0].gender
+        print(dato)
         verificar = Sesion.objects.all()
         if len(verificar)>0:
             print("jala")
