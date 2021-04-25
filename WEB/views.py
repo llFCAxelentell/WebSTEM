@@ -507,7 +507,7 @@ def estadistica(request):
         for rowaa in rows7:
             data7.append([rowaa[0],rowaa[1]])
         data7_formato= dumps(data7)
-        print(data7)
+        
 
         for i in range(len(ota)):
             data.append([ota[i], ota2[i]])

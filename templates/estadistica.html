@@ -27,19 +27,19 @@
             <li><a href="stem.html">STEM</a></li>
         </ul>
     </div>
-    
+
     <div class="grid-container8">
         <div class = "der">
             <p>Se ha juagado {{minutosTotales}} minutos</p>
         </div>
-        
+
         <div class = "cen">
             <p>En promedio se juegan {{promTemp}} minutos</p>
         </div>
-      
+
     </div>
 
-        
+
     <div>
         <h3>¿Te encuentras dentro de los mejores? </h3>
     </div>
@@ -75,7 +75,7 @@
         <h3>¿Quieres saber más sobre Medieval Chemist?
             Consulta las siguientes gráficas:</h3>
     </div>
-    
+
 <div class="grid-container8">
     <!--Prueba Grafica 1-->
         <script type="text/javascript">
@@ -85,10 +85,10 @@
             google.charts.setOnLoadCallback(drawChart);
 
             function drawChart() {
-                var data = google.visualization.arrayToDataTable({{losDatos|safe}});
+                var data = google.visualization.arrayToDataTable({{losDatos5|safe}});
 
                 var options = {
-                    title: 'Tiempo jugado vs Compuestos hechos',
+                    title: 'nivel vs exito promedio',
                     hAxis: {
                         title: 'Tiempo (min)'
                     },
@@ -100,8 +100,8 @@
                 var chart = new google.visualization.ScatterChart(document.getElementById('chart_ejemplo1'));
                 chart.draw(data, options);
             }
-        </script>  
-    
+        </script>
+
     <div id="chart_ejemplo1" style="width: 650px; height: 400px;"></div>
 
     <!--Prueba Grafica2 -->
@@ -130,12 +130,12 @@
                 chart.draw(data, options);
             }
         </script>
-    
+
     <div id="chart_ejemplo2" style="width: 650px; height: 400px;"></div>
-    
-</div>    
-    
-    
+
+</div>
+
+
 
 <div class="grid-container8">
     <!--Prueba Grafica 3-->
@@ -161,8 +161,8 @@
                 var chart = new google.visualization.ScatterChart(document.getElementById('chart_TvC'));
                 chart.draw(data, options);
             }
-        </script>  
-    
+        </script>
+
     <div id="chart_TvC" style="width: 650px; height: 400px;"></div>
 
     <!--Prueba Grafica4 -->
@@ -191,9 +191,9 @@
                 chart.draw(data, options);
             }
         </script>
-    
+
     <div id="chart_CvE" style="width: 650px; height: 400px;"></div>
-    
+
 </div>
 
 <div class="grid-container8">
@@ -224,7 +224,7 @@
             }
 
         </script>
-    
+
     <div id="chart_TvE" style="width: 650px; height: 400px;"></div>
 
     <!--Prueba Grafica 6-->
@@ -255,11 +255,11 @@
             }
 
         </script>
-    
+
     <div id="chart_PvN" style="width: 650px; height: 400px;"></div>
-    
+
 </div>
-    
+
     <br> <br>
 
     <div class="grid-container3">
