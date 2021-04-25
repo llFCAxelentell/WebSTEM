@@ -59,12 +59,6 @@ def mi_estadistica(request):
         registros = User.objects.filter(username=usuario)
         regist = Usuario.objects.filter(username=registros[0].id)
         dato= regist[0].gender
-        print(dato)
-        verificar = Sesion.objects.all()
-        if len(verificar)>1:
-            print("jala")
-        else:
-            return HttpResponse("<h1> No hay registros a mostrar :(</h1>")
 
         connection = psycopg2.connect(
             user = "farmaceuticouser",
@@ -139,7 +133,7 @@ def mi_estadistica(request):
                 data6.append([rowq[0], int(rowq[1]*100)])
             data6_formato = dumps(data6)
         else:
-            return HttpResponse("<h1> No hay registros a mostrar</h1>")
+            return render(request, 'sinRegistros.html')
 
         ota= []
         ota2=[]
