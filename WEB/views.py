@@ -133,7 +133,7 @@ def mi_estadistica(request):
                 data6.append([rowq[0], int(rowq[1]*100)])
             data6_formato = dumps(data6)
         else:
-            return render(request, 'sinRegistros.html')
+            return render(request, 'sinRegistros.html', {'nombre':uuu})
 
         ota= []
         ota2=[]
