@@ -68,7 +68,10 @@ def mi_estadistica(request):
             database = "medchembd"
         )
         data6=[]
+        data7=[]
         data6.append(['nivel', 'exito'])
+        data7.append(['tiempo', 'compuestos'])
+
         cursor = connection.cursor()
         cursor2 = connection.cursor()
         cursor3 = connection.cursor()
@@ -124,10 +127,19 @@ def mi_estadistica(request):
         print(rows7)
         print(rows8)
 
-        for row in rows6:
-            data6.append([row[0], int(row[1]*100)])
+        for rowq in rows6:
+            data6.append([rowq[0], int(rowq[1]*100)])
         data6_formato = dumps(data6)
 
+        ota= []
+        ota2=[]
+        for row in rows7:
+            ota.append(row[0])
+        for rowe in rows7:
+            ota2.append(rowe[0])
+        for i in range(len(ota)):
+            data7.append([ota[i], ota2[i]])
+        data7_formato= dumps(data7)
 
     except(Exception, psycopg2.Error) as error:
         print("Error connecting to PostgreSQL database", error)
@@ -138,7 +150,7 @@ def mi_estadistica(request):
             cursor.close()
             connection.close()
 
-    return render(request, 'mi_estadistica.html', {'nombre':uuu,'tiempoTot':rows[0][0], 'tiempoProm':str(round(rows2[0][0], 2)), 'tiempoMin':rows3[0][0], 'tiempoMax':rows4[0][0], 'nivelMax':rows5[0][0],'datos6':data6_formato})
+    return render(request, 'mi_estadistica.html', {'nombre':uuu,'tiempoTot':rows[0][0], 'tiempoProm':str(round(rows2[0][0], 2)), 'tiempoMin':rows3[0][0], 'tiempoMax':rows4[0][0], 'nivelMax':rows5[0][0],'datos6':data6_formato, 'datos7':data7_formato})
 
 '''
 def estadistica(request):

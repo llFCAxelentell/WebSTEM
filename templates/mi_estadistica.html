@@ -35,7 +35,7 @@
 
 
     <h3>Hola {{nombre}}, aquí están tus estadísticas </h1>
-    
+
     <div class="grid-container11">
         <div class = "uno"><p>Has jugado: {{tiempoTot}} min</p></div>
         <div class = "dos"><p>En promedio (por Sesión) has jugado: {{tiempoProm}} min</p></div>
@@ -80,7 +80,7 @@
             google.charts.setOnLoadCallback(drawChart);
 
             function drawChart() {
-                var data = google.visualization.arrayToDataTable({{datos6 | safe}});
+                var data = google.visualization.arrayToDataTable({{datos7 | safe}});
 
                 var options = {
                     title: 'Ejemplo 2',
@@ -168,7 +168,7 @@
 
 </div>
 
-    
+
 
     <a class "b" href="http://40.124.40.241:8000/accounts/logout/">LOG OUT</a>
 
