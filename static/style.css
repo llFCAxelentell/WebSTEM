@@ -392,3 +392,18 @@ li.b{
     font-family: cursive;
     text-align: center;
 }
+
+div.imagen {
+   width: 100%;
+  height: 100%;
+  animation-name: imagen;
+  animation-duration: 15s;
+  animation-iteration-count: infinite;
+}
+@keyframes cambio {
+  00%   {background-image: url("ss5.png");}
+  25%   {background-image: url("ss4.png");}
+  50%   {background-image: url("ss3.png");}
+  75%   {background-image: url("ss2.png");}
+  100% {background-image: url("ss1.png");}
+}
