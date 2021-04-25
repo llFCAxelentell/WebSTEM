@@ -70,6 +70,7 @@ def mi_estadistica(request):
         cursor = connection.cursor()
 
         myQuery= "SELECT * FROM auth_user WHERE auth_user.username = "+ uu+ ";"
+        cursor.execute("SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 AS TiempoSesion FROM \"WEB_sesion\" INNER JOIN \"WEB_usuario\" ON \"WEB_usuario\".username_id= \"WEB_sesion\".id;")
 
         cursor.execute(myQuery)
 
