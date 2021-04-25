@@ -234,6 +234,7 @@ h3 {
     grid-template-columns:  30% 30% 30%;
     grid-gap: 2%;
     margin-top: 2%;
+    background: white;
 }
 
 .grid-container_20 > div {
