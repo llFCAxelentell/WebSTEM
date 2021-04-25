@@ -64,7 +64,7 @@ def mi_estadistica(request):
         if len(verificar)>0:
             print("jala")
         else:
-            return HttpResponse("<h1> No hay registros a mostrar</h1>")
+            return HttpResponse("<h1> No hay registros a mostrar :(</h1>")
 
         connection = psycopg2.connect(
             user = "farmaceuticouser",
