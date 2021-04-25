@@ -1,6 +1,7 @@
 /*-------------PAGINA PRINCIPAL-------------*/
 /*BARRA NAVEGADOR */
 div.navegador {
+    background-image: url("fondoNB.jpg");
     background-color: #4d4d4d;
     overflow: hidden;
 }
