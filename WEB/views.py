@@ -102,7 +102,7 @@ def mi_estadistica(request):
         #Compuestos vendidos vs Elementos Comprados
         myQuery9="SELECT num_compounds_sold, num_elements_purchased FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id WHERE auth_user.username = "+ uu+ ";"
 
-        #inidicadores por nivel
+        #inidicadores por nivel, Nivel vs (compuestos, elementos, clientes)
 
 
         #SELECT ''''' FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id
@@ -470,7 +470,7 @@ def estadistica(request):
             ota2.append(rowe[0])
 
         for roweee in rows3:
-            data3.append([int(roweee[0]), int(roweee[1]), int(roweee[2]), int(roweee[3])])
+            data3.append([int(roweee[0]), int(roweee[1]), int(roweee[2])/10, int(roweee[3])])
 
         data3_formato = dumps(data3)
 
