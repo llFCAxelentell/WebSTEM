@@ -84,31 +84,28 @@ def mi_estadistica(request):
         cursor8 = connection.cursor()
         cursor9 = connection.cursor()
 
-        #myQuery= "SELECT * FROM auth_user WHERE auth_user.username = "+ uu+ ";"
+        #Tiempo y nivel
         myQuery="SELECT sum(extract (epoch from (ended::timestamp - started::timestamp))::integer/60) AS TiempoSes, auth_user.username FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id WHERE auth_user.username = "+ uu+ "GROUP BY auth_user.username;"
-        myQuery2="SELECT avg(extract (epoch from (ended::timestamp - started::timestamp))::integer/60) AS TiempoSes, auth_user.username FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id WHERE auth_user.username = "+ uu+ "GROUP BY auth_user.username;"
-        myQuery3="SELECT min(extract (epoch from (ended::timestamp - started::timestamp))::integer/60) AS TiempoSes, auth_user.username FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id WHERE auth_user.username = "+ uu+ "GROUP BY auth_user.username;"
-        myQuery4="SELECT max(extract (epoch from (ended::timestamp - started::timestamp))::integer/60) AS TiempoSes, auth_user.username FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id WHERE auth_user.username = "+ uu+ "GROUP BY auth_user.username;"
+        myQuery2="SELECT avg(extract (epoch from (ended::timestamp - started::timestamp))::integer/60) AS TiempoProm, auth_user.username FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id WHERE auth_user.username = "+ uu+ "GROUP BY auth_user.username;"
+        myQuery3="SELECT min(extract (epoch from (ended::timestamp - started::timestamp))::integer/60) AS TiempoMin, auth_user.username FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id WHERE auth_user.username = "+ uu+ "GROUP BY auth_user.username;"
+        myQuery4="SELECT max(extract (epoch from (ended::timestamp - started::timestamp))::integer/60) AS TiempoMax, auth_user.username FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id WHERE auth_user.username = "+ uu+ "GROUP BY auth_user.username;"
         myQuery5="SELECT max(day_number), auth_user.username FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id WHERE auth_user.username = "+ uu+ "GROUP BY auth_user.username;"
+
         #promedio exito fallo por nivel
         myQuery6="SELECT day_number, avg(success::int) FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id WHERE auth_user.username = "+ uu+ "GROUP BY day_number ORDER BY day_number;"
+
         #tiempo jugado vs compuestos hechos
         #myQuery7="SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 AS TiempoSesion, SUM(num_compounds_made) FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id WHERE auth_user.username = "+ uu+ "GROUP BY \"WEB_try\".session_id_id;"
         myQuery7="SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 AS TiempoSesion FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id WHERE auth_user.username = "+ uu+ "GROUP BY \"WEB_sesion\".id;"
-        #myQuery8="SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 AS TiempoSesion FROM \"WEB_sesion\";"
-
         myQuery8="SELECT SUM(num_compounds_made) FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id WHERE auth_user.username = "+ uu+ "GROUP BY \"WEB_sesion\".id;"
-#cursor2.execute("SELECT SUM(num_compounds_made) FROM \"WEB_day\" INNER JOIN \"WEB_try\" ON \"WEB_day\".try_id_id=\"WEB_try\".id INNER JOIN \"WEB_sesion\" ON \"WEB_try\".session_id_id= \"WEB_sesion\".id GROUP BY \"WEB_try\".session_id_id;")
-
 
         #Compuestos vendidos vs Elementos Comprados
         myQuery9="SELECT num_compounds_sold, num_elements_purchased FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id WHERE auth_user.username = "+ uu+ ";"
+
         #inidicadores por nivel
 
-        #cursor5.execute("SELECT day_number, avg(success::int) AS PromedioExito FROM \"WEB_day\" GROUP BY day_number ORDER BY day_number;")
 
-
-        #SELECT  FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id
+        #SELECT ''''' FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id
         cursor.execute(myQuery)
         cursor2.execute(myQuery2)
         cursor3.execute(myQuery3)
@@ -500,7 +497,7 @@ def estadistica(request):
             data.append([ota[i], ota2[i]])
 
         data_formato= dumps(data)
-            #totales += row[2]
+
 
     #Handle the error throws by the command that is useful when using python while working with PostgreSQL
     except(Exception, psycopg2.Error) as error:
