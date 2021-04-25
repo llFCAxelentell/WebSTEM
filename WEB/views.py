@@ -370,17 +370,6 @@ def scoresGlobal(request):
     return HttpResponse(100)
 
 
-@csrf_exempt
-def scoresGlobal5(request):
-    return HttpResponse(100)
-
-@csrf_exempt
-def maxJugado(request):
-    return HttpResponse(100)
-
-@csrf_exempt
-def minJugado(request):
-    return HttpResponse(100)
 
 @csrf_exempt
 def estadistica(request):
@@ -528,23 +517,6 @@ def estadistica(request):
     return render(request, 'estadistica.html', {'losDatos':data_formato,'losDatos2':data2_formato, 'losDatos4':data4_formato, 'losDatos3':data3_formato, 'losDatos5':data5_formato, 'losDatos6':data6_formato, 'losDatos7':data7_formato, 'minutosTotales':str(round(minutosTotales, 2)) ,'promTemp':str(round(promTemp, 2)), 'maxTiempo':str(round(maxTiempo, 2)), 'minTiempo':str(round(minTiempo, 2))})
 
 
-###############estadística team
-
-@csrf_exempt
-def tiempoCompuestos(request):
-    return HttpResponse(100)
-
-@csrf_exempt
-def tiempoEdad(request):
-    return HttpResponse(100)
-
-@csrf_exempt
-def compuestosElementos(request):
-    return HttpResponse(100)
-
-@csrf_exempt
-def nivelCompElemClieDin(request):
-    return HttpResponse(100)
 
 
 '''
