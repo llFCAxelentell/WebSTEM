@@ -77,7 +77,7 @@
             google.charts.setOnLoadCallback(drawChart);
 
             function drawChart() {
-                var data = google.visualization.arrayToDataTable({{losDatos7 | safe}});
+                var data = google.visualization.arrayToDataTable({{losDatos | safe}});
 
                 var options = {
                     title: 'Ejemplo 2',
