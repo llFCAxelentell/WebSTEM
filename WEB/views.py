@@ -76,6 +76,7 @@ def mi_estadistica(request):
         cursor5 = connection.cursor()
         cursor6 = connection.cursor()
         cursor7 = connection.cursor()
+        cursor8 = connection.cursor()
 
         #myQuery= "SELECT * FROM auth_user WHERE auth_user.username = "+ uu+ ";"
         myQuery="SELECT sum(extract (epoch from (ended::timestamp - started::timestamp))::integer/60) AS TiempoSes, auth_user.username FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id WHERE auth_user.username = "+ uu+ "GROUP BY auth_user.username;"
@@ -88,6 +89,7 @@ def mi_estadistica(request):
         #tiempo jugado vs compuestos hechos
         #myQuery7="SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 AS TiempoSesion, SUM(num_compounds_made) FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id WHERE auth_user.username = "+ uu+ "GROUP BY \"WEB_try\".session_id_id;"
         myQuery7="SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 AS TiempoSesion FROM \"WEB_sesion\";"
+        myQuery8="SELECT SUM(num_compounds_made) FROM \"WEB_day\" INNER JOIN \"WEB_try\" ON \"WEB_day\".try_id_id=\"WEB_try\".id INNER JOIN \"WEB_sesion\" ON \"WEB_try\".session_id_id= \"WEB_sesion\".id WHERE auth_user.username = "+ uu+ "GROUP BY \"WEB_try\".session_id_id;"
 #cursor.execute("SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 AS TiempoSesion FROM \"WEB_sesion\";")
 #cursor2.execute("SELECT SUM(num_compounds_made) FROM \"WEB_day\" INNER JOIN \"WEB_try\" ON \"WEB_day\".try_id_id=\"WEB_try\".id INNER JOIN \"WEB_sesion\" ON \"WEB_try\".session_id_id= \"WEB_sesion\".id GROUP BY \"WEB_try\".session_id_id;")
 
@@ -107,6 +109,7 @@ def mi_estadistica(request):
         cursor5.execute(myQuery5)
         cursor6.execute(myQuery6)
         cursor7.execute(myQuery7)
+        cursor8.execute(myQuery8)
 
         rows = cursor.fetchall()
         rows2 = cursor2.fetchall()
@@ -115,13 +118,15 @@ def mi_estadistica(request):
         rows5 = cursor5.fetchall()
         rows6 = cursor6.fetchall()
         rows7 = cursor7.fetchall()
+        rows8 = cursor8.fetchall()
 
         print(rows7)
+        print(rows8)
 
         for row in rows6:
             data6.append([row[0], int(row[1]*100)])
         data6_formato = dumps(data6)
-        print(data6)
+
 
     except(Exception, psycopg2.Error) as error:
         print("Error connecting to PostgreSQL database", error)
