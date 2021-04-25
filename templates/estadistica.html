@@ -91,7 +91,8 @@
         var data = google.visualization.arrayToDataTable({{losDatos7|safe}});
 
         var options = {
-          title: 'Genero vs Porcentaje'
+          title: 'Genero vs Porcentaje',
+           pieHole: 0.4,
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('char_genero'));
