@@ -476,7 +476,6 @@ def estadistica(request):
         rows6= cursor6.fetchall()
         rows7= cursor7.fetchall()
 
-        print(rows5)
         print(rows7)
         ota= []
         ota2=[]
@@ -497,6 +496,7 @@ def estadistica(request):
         for rowa in rows5:
             data5.append([rowa[0], int(rowa[0])])
         data5_formato = dumps(data5)
+        print(data5)
 
         contador = 1
         for roowe in rows6:
