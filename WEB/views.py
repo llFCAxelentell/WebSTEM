@@ -440,7 +440,7 @@ def estadistica(request):
         data3.append(['Nivel','Compuestos','Elementos', 'Clientes'])
         data4.append(['Edad', 'Tiempo'])
         data5.append(['dia ', 'exito'])
-        dat7.append(['genero','numero'])
+        data7.append(['genero','numero'])
 
         cursor = connection.cursor()
         cursor2 = connection.cursor()
