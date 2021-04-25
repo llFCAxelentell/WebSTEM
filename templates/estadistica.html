@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
     <title>Página principal</title>
     {% load static%}
     <link href="{% static 'style.css'%}" rel="stylesheet" type="text/css" />
@@ -94,7 +95,7 @@
            pieHole: 0.4,
         };
 
-        var chart = new google.visualization.PieChart(document.getElementById('char_genero'));
+        var chart = new google.visualization.PieChart(document.getElementById('chart_genero'));
 
         chart.draw(data, options);
       }
