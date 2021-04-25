@@ -69,10 +69,10 @@ def mi_estadistica(request):
         )
         cursor = connection.cursor()
 
-        myQuery= "SELECT * FROM auth_user WHERE auth_user.username = "+ uu+ ";"
-        cursor.execute("SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 AS TiempoSesion, auth_user.username FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id  ;")
+        #myQuery= "SELECT * FROM auth_user WHERE auth_user.username = "+ uu+ ";"
+        myQuery="SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 AS TiempoSesion, auth_user.username FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id WHERE auth_user.username = "+ uu+ ";"
         #SELECT auth_user.username, (AVG(money_generated_day)*MAX(day_number)) AS Score FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id
-        #cursor.execute(myQuery)
+        cursor.execute(myQuery)
 
         rows = cursor.fetchall()
 
