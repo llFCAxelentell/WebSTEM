@@ -480,4 +480,4 @@ def estadistica(request):
             connection.close()
             #print("PostgreSQL connection is now closed")
 
-    return render(request, 'estadistica.html', elJson)
+    return render(request, 'estadistica.html', {'losDatos':data_formato})
