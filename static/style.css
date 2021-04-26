@@ -420,13 +420,12 @@ div.cinco {
 }
 
 li.b{
-    font-size: 20px;
     font-family: cursive;
     text-align: center;
-    color:white;
 }
 p.salir{
     color:white;
+   font-size: 25px;
 }
 div.fecha {
   width: 20%;
