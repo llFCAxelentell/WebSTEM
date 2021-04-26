@@ -150,8 +150,8 @@ def mi_estadistica(request):
         for rowq in rows6:
             data6.append([rowq[0], int(rowq[1]*100)])
         data6_formato = dumps(data6)
-        
-            '''
+
+        '''
         ota= []
         ota2=[]
         for row in rows7:
