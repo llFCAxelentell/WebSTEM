@@ -144,7 +144,7 @@ def mi_estadistica(request):
             dat8.append([tt[1]])
 
         finSes= np.max(data8)- timedelta(hours=5)
-        x = finSes - dt.timedelta(microseconds=finSes.microsecond)
+        x = finSes - datetime.timedelta(microseconds=finSes.microsecond)
         print(x)
         inicioSes= np.max(dat8)- timedelta(hours=5)
 
