@@ -250,6 +250,64 @@ h3 {
   100% {background-color: #2d486c;}
 }
 
+.first-place{
+	background-color: #04305d;
+	height: 100px;
+	width: 20%;
+	margin: 0 auto;
+	line-height: 500%;
+	font-size: 18px;
+	font-weight: 1000;
+	color: white;
+}
+
+
+.second-place{
+	background-color: #334350;
+	height: 100px;
+	width: 20%;
+	margin: 0 auto;
+	line-height: 500%;
+	font-size: 18px;
+	font-weight: 1000;
+	color: white;
+	display: inline-block;
+}
+
+.third-place{
+	background-color: #0754a0;
+	height: 100px;
+	width: 20%;
+	margin: 0 auto;
+	margin-left: -4px;
+	line-height: 500%;
+	font-size: 18px;
+	font-weight: 1000;
+	color: white;
+	display: inline-block;
+}
+
+.first-place:hover{
+	transform: translate(0px,-20px);
+	transition: ease-in-out 0.1s;
+}
+
+.second-place:hover{
+	transform: translate(-20px,20px);
+	transition: ease-in-out 0.1s;
+}
+
+.third-place:hover{
+	transform: translate(20px,20px);
+	transition: ease-in-out 0.1s;
+}
+
+h1.p{
+    text-transform: uppercase;
+    text-align: center;
+	font-family: Open Sans;
+    color: #2c3e50;
+}
 
 /*-------------PAGINA STEM-------------*/
 /*STEM*/
