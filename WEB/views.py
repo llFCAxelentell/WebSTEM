@@ -17,7 +17,6 @@ import psycopg2
 import numpy as np
 
 
-
 @csrf_exempt
 def formulario(request):
     nombre = request.POST['nombre']
@@ -137,15 +136,18 @@ def mi_estadistica(request):
         rows10 = cursor10.fetchall()
 
         dat8=[]
-        for tt in rows8:
-            data8.append([tt[0]])
-            dat8.append([tt[1]])
+        if len(rows6)>0:
+            for tt in rows8:
+                data8.append([tt[0]])
+                dat8.append([tt[1]])
 
-        finSes= np.max(data8)- timedelta(hours=5)
+            finSes= np.max(data8)- timedelta(hours=5)
 
-        print(finSes)
-        inicioSes= np.max(dat8)- timedelta(hours=5)
-        print(inicioSes)
+            print(finSes)
+            inicioSes= np.max(dat8)- timedelta(hours=5)
+            print(inicioSes)
+        else:
+            return render(request, 'sinRegistros.html', {'nombre':uuu})
 
         if len(rows6)>0:
             for rowq in rows6:
