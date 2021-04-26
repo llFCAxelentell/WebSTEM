@@ -425,7 +425,9 @@ li.b{
     text-align: center;
     color:white;
 }
-
+p.salir{
+    color:white;
+}
 div.fecha {
   width: 20%;
   height: 20%;
