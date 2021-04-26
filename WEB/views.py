@@ -357,7 +357,7 @@ def estadistica(request):
         maxTiempo = np.max(tiempos)
         minTiempo = np.min(tiempos)
         promTemp =minutosTotales/len(star)
-
+        print(360)
         #################################
 
         #Compuestos vendidos vs elementos comprados
@@ -370,7 +370,7 @@ def estadistica(request):
             data2.append([nombre, minutos])
         data2_formato=dumps(data2)
         #############
-
+        print(373)
         connection = psycopg2.connect(
             user = "farmaceuticouser",
             password = "LibroVerde23",
@@ -390,7 +390,7 @@ def estadistica(request):
         data4.append(['Edad', 'Tiempo'])
         data5.append(['Dia ', 'Exito'])
         data7.append(['Genero','Numero'])
-
+        print(393)
         cursor = connection.cursor()
         cursor2 = connection.cursor()
         '''
@@ -404,6 +404,7 @@ def estadistica(request):
         #Tiempo jugado vs compuestos hechos
         cursor.execute("SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 AS TiempoSesion FROM \"WEB_sesion\";")
         cursor2.execute("SELECT SUM(num_compounds_made) FROM \"WEB_day\" INNER JOIN \"WEB_try\" ON \"WEB_day\".try_id_id=\"WEB_try\".id INNER JOIN \"WEB_sesion\" ON \"WEB_try\".session_id_id= \"WEB_sesion\".id GROUP BY \"WEB_try\".session_id_id;")
+        print(407)
         '''
         #Nivel vs (compuestos, elementos, clientes, dinero)
         #la gigante
@@ -430,7 +431,7 @@ def estadistica(request):
         rows6= cursor6.fetchall()
         rows7= cursor7.fetchall()
         '''
-
+        print(434)
         ota= []
         ota2=[]
         for row in rows:
@@ -462,6 +463,7 @@ def estadistica(request):
         data7_formato= dumps(data7)
 
         '''
+        print(466)
         for i in range(len(ota)):
             data.append([ota[i], ota2[i]])
 
