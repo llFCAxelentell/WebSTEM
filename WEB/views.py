@@ -70,6 +70,7 @@ def mi_estadistica(request):
         data6=[]
         data7=[]
         data9=[]
+        data8=[]
         data10=[]
         data6.append(['nivel', 'exito'])
         data7.append(['tiempo', 'compuestos'])
