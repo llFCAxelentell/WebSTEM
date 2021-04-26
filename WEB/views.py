@@ -52,6 +52,7 @@ def juego(request):
 def mi_estadistica(request):
 
     try:
+        global connection
         usuario = request.user
         uuu = str(usuario)
         uu ="\'"+uuu+"\'"
@@ -356,6 +357,7 @@ def minutosJugadosPromedio(request):
 def estadistica(request):
 
     try:
+        global connection
         #################################
         #Minutos jugados totales
         #Duración promedio de sesión
