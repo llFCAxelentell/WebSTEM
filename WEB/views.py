@@ -144,9 +144,10 @@ def mi_estadistica(request):
             dat8.append([tt[1]])
 
         finSes= np.max(data8)- timedelta(hours=5)
-        x = finSes - datetime.timedelta(microseconds=finSes.microsecond)
-        print(x)
+
+        print(finSes)
         inicioSes= np.max(dat8)- timedelta(hours=5)
+        print(inicioSes)
 
         if len(rows6)>0:
             for rowq in rows6:
