@@ -136,14 +136,15 @@ def mi_estadistica(request):
         rows8 = cursor8.fetchall()
         rows9 = cursor9.fetchall()
         rows10 = cursor10.fetchall()
-        print(rows8)
 
-        print(rows6)
-
+        dat8=[]
         for tt in rows8:
-            data8.append([tt[0],tt[1]])
+            data8.append([tt[0]])
+            dat8.append([tt[1]])
         #data8_formato=dumps(data8)
-
+        print(data8)
+        print(dat8)
+        print(np.max(data8))
 
         if len(rows6)>0:
             for rowq in rows6:
