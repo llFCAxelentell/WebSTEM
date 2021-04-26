@@ -141,7 +141,7 @@ def mi_estadistica(request):
         print(rows6)
 
         for tt in rows8:
-            data8.append(tt[0],tt[1])
+            data8.append([tt[0],tt[1]])
         #data8_formato=dumps(data8)
 
 
