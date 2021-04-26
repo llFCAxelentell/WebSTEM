@@ -426,8 +426,8 @@ li.b{
 }
 
 div.fecha {
-  width: 100px;
-  height: 100px;
+  width: 20%;
+  height: 20%;
   position: relative;
   animation-name: fechaM;
   animation-duration: 35s;
