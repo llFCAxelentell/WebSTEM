@@ -137,7 +137,7 @@ def mi_estadistica(request):
         rows10 = cursor10.fetchall()
         print(rows8)
 
-        #print(rows9)
+        print(rows6)
 
         if len(rows6)>0:
             for rowq in rows6:
