@@ -146,6 +146,7 @@ def mi_estadistica(request):
         print(data8)
         print(dat8)
         print(np.max(data8)- timedelta(hours=5))
+        print(np.max(dat8)- timedelta(hours=5))
 
         if len(rows6)>0:
             for rowq in rows6:
