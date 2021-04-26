@@ -138,13 +138,19 @@ def mi_estadistica(request):
         print(rows8)
 
         print(rows6)
-
-        if len(rows6)>0:
-            for rowq in rows6:
-                data6.append([rowq[0], int(rowq[1]*100)])
-            data6_formato = dumps(data6)
+        if len(rows8)>0:
+            for tt in rows8:
+                data8.append(tt[0],tt[1])
+            data8_formato=dumps(data8)
         else:
             return render(request, 'sinRegistros.html', {'nombre':uuu})
+
+
+
+        for rowq in rows6:
+            data6.append([rowq[0], int(rowq[1]*100)])
+        data6_formato = dumps(data6)
+        
             '''
         ota= []
         ota2=[]
