@@ -465,6 +465,7 @@ def estadistica(request):
         print(data6[0][1])
         print(data6)
         print(data6[1][1])
+        print(data6[2][1])
 
 
         for rowaa in rows7:
