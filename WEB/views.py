@@ -388,8 +388,8 @@ def estadistica(request):
         data.append(['Tiempo', 'Compuestos hechos'])
         data3.append(['Nivel','Compuestos','Elementos', 'Clientes'])
         data4.append(['Edad', 'Tiempo'])
-        data5.append(['dia ', 'exito'])
-        data7.append(['genero','numero'])
+        data5.append(['Dia ', 'Exito'])
+        data7.append(['Genero','Numero'])
 
         cursor = connection.cursor()
         cursor2 = connection.cursor()
