@@ -157,8 +157,9 @@ def mi_estadistica(request):
         data7_formato= dumps(data7)
         '''
         for ee in rows7:
-            data7.append(ee[0],ee[1])
+            data7.append([ee[0],ee[1]])
         data7_formato = dumps(data7)
+
         for roww in rows9:
             data9.append([roww[0], roww[1]])
         data9_formato = dumps(data9)
