@@ -407,7 +407,7 @@ def estadistica(request):
         cursor2.execute("SELECT SUM(num_compounds_made) FROM \"WEB_day\" INNER JOIN \"WEB_try\" ON \"WEB_day\".try_id_id=\"WEB_try\".id INNER JOIN \"WEB_sesion\" ON \"WEB_try\".session_id_id= \"WEB_sesion\".id GROUP BY \"WEB_try\".session_id_id;")
         print(407)
 
-        cursor8.execute("SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 AS TiempoSesion, SUM(num_compounds_made) AS SumaCompuestos FROM \"WEB_Day\" INNER JOIN \"WEB_Try\" ON \"WEB_day\".try_id=\"WEB_try\".id INNER JOIN \"WEB_sesion\" ON \"WEB_try\".session_id= \"WEB_sesion\".id INNER JOIN \"WEB_usuario\" ON \"WEB_sesion\".user_id_id= \"WEB_usuario\".id INNER JOIN auth_user ON \"WEB_usuario\".id = auth_user.id GROUP BY session_id ORDER BY TiempoSesion ASC;")
+        cursor8.execute("SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 AS TiempoSesion, SUM(num_compounds_made) AS SumaCompuestos FROM \"WEB_day\" INNER JOIN \"WEB_Try\" ON \"WEB_day\".try_id=\"WEB_try\".id INNER JOIN \"WEB_sesion\" ON \"WEB_try\".session_id= \"WEB_sesion\".id INNER JOIN \"WEB_usuario\" ON \"WEB_sesion\".user_id_id= \"WEB_usuario\".id INNER JOIN auth_user ON \"WEB_usuario\".id = auth_user.id GROUP BY session_id ORDER BY TiempoSesion ASC;")
         '''
         #Nivel vs (compuestos, elementos, clientes, dinero)
         #la gigante
