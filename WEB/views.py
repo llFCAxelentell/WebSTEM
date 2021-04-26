@@ -83,7 +83,7 @@ def mi_estadistica(request):
         cursor5 = connection.cursor()
         cursor6 = connection.cursor()
         cursor7 = connection.cursor()
-        #cursor8 = connection.cursor()
+        cursor8 = connection.cursor()
         cursor9 = connection.cursor()
         cursor10 = connection.cursor()
 
@@ -104,6 +104,7 @@ def mi_estadistica(request):
         myQuery7="SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 AS TiempoSesion, SUM(num_compounds_made) AS SumaCompuestos FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id WHERE auth_user.username = "+ uu+ "GROUP BY \"WEB_sesion\".id;"
         #myQuery8="SELECT SUM(num_compounds_made) FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id WHERE auth_user.username = "+ uu+ "GROUP BY \"WEB_sesion\".id;"
 
+        myQuery8="SELECT ended, started FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id WHERE auth_user.username = "+ uu+ ";"
         #Compuestos vendidos vs Elementos Comprados
         myQuery9="SELECT num_compounds_sold, num_elements_purchased FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id WHERE auth_user.username = "+ uu+ ";"
 
@@ -120,7 +121,7 @@ def mi_estadistica(request):
         cursor5.execute(myQuery5)
         cursor6.execute(myQuery6)
         cursor7.execute(myQuery7)
-        #cursor8.execute(myQuery8)
+        cursor8.execute(myQuery8)
         cursor9.execute(myQuery9)
         cursor10.execute(myQuery10)
 
@@ -131,10 +132,10 @@ def mi_estadistica(request):
         rows5 = cursor5.fetchall()
         rows6 = cursor6.fetchall()
         rows7 = cursor7.fetchall()
-        #rows8 = cursor8.fetchall()
+        rows8 = cursor8.fetchall()
         rows9 = cursor9.fetchall()
         rows10 = cursor10.fetchall()
-        print(rows7)
+        print(rows8)
 
         #print(rows9)
 
