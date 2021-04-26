@@ -188,7 +188,7 @@ def mi_estadistica(request):
             cursor.close()
             connection.close()
 
-    return render(request, 'mi_estadistica.html', {'nombre':uuu,'tiempoTot':rows[0][0], 'tiempoProm':str(round(rows2[0][0], 2)), 'tiempoMin':rows3[0][0], 'tiempoMax':rows4[0][0], 'nivelMax':rows5[0][0],'datos6':data6_formato, 'datos7':data7_formato, 'datos9':data9_formato, 'datos10':data10_formato, 'finSes':finSes})
+    return render(request, 'mi_estadistica.html', {'nombre':uuu,'tiempoTot':rows[0][0], 'tiempoProm':str(round(rows2[0][0], 2)), 'tiempoMin':rows3[0][0], 'tiempoMax':rows4[0][0], 'nivelMax':rows5[0][0],'datos6':data6_formato, 'datos7':data7_formato, 'datos9':data9_formato, 'datos10':data10_formato, 'finSes':finSes, 'inicioSes':inicioSes})
 
 
 def stem(request):
