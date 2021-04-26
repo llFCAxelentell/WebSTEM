@@ -134,10 +134,10 @@ def mi_estadistica(request):
         #rows8 = cursor8.fetchall()
         rows9 = cursor9.fetchall()
         rows10 = cursor10.fetchall()
-        print(rows10)
+        print(rows7)
 
         #print(rows9)
-        print(rows6)
+
         if len(rows6)>0:
             for rowq in rows6:
                 data6.append([rowq[0], int(rowq[1]*100)])
