@@ -425,3 +425,17 @@ li.b{
     text-align: center;
 }
 
+div.fecha {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  animation-name: fechaM;
+  animation-duration: 35s;
+  animation-iteration-count: infinite
+}
+
+@keyframes fechaM {
+  0%   {background-color:red; left:0%;}
+  50%  {background-color:blue; left:90%;}
+  100% {background-color:red; left:0%;}
+}
