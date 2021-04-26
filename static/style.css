@@ -436,6 +436,6 @@ div.fecha {
 
 @keyframes fechaM {
   0%   {background-color:red; left:0%;}
-  50%  {background-color:blue; left:90%;}
+  50%  {background-color:blue; left:80%;}
   100% {background-color:red; left:0%;}
 }
