@@ -101,22 +101,19 @@ def mi_estadistica(request):
         myQuery6="SELECT day_number, avg(success::int) FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id WHERE auth_user.username = "+ uu+ "GROUP BY day_number ORDER BY day_number;"
 
         #tiempo jugado vs compuestos hechos
-        #myQuery7="SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 AS TiempoSesion, SUM(num_compounds_made) FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id WHERE auth_user.username = "+ uu+ "GROUP BY \"WEB_try\".session_id_id;"
-
-        #myQuery7="SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 AS TiempoSesion, SUM(num_compounds_made) AS SumaCompuestos FROM \"WEB_day\" INNER JOIN \"WEB_try\" ON \"WEB_day\".try_id_id=\"WEB_try\".id INNER JOIN \"WEB_sesion\" ON \"WEB_try\".session_id_id= \"WEB_sesion\".id INNER JOIN \"WEB_usuario\" ON \"WEB_sesion\".user_id_id= \"WEB_usuario\".id INNER JOIN auth_user ON \"WEB_usuario\".id = auth_user.id WHERE auth_user.username = "+ uu+ " GROUP BY \"WEB_sesion\".ended, \"WEB_sesion\".started ORDER BY TiempoSesion ASC;"
         myQuery7="SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 AS TiempoSesion, SUM(num_compounds_made) AS SumaCompuestos FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id WHERE auth_user.username = "+ uu+ "GROUP BY \"WEB_sesion\".id;"
-        #myQuery8="SELECT SUM(num_compounds_made) FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id WHERE auth_user.username = "+ uu+ "GROUP BY \"WEB_sesion\".id;"
 
+        #
         myQuery8="SELECT ended::timestamp, started::timestamp FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id WHERE auth_user.username = "+ uu+ ";"
+
         #Compuestos vendidos vs Elementos Comprados
         myQuery9="SELECT num_compounds_sold, num_elements_purchased FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id WHERE auth_user.username = "+ uu+ ";"
 
+        #
         myQuery10 ="SELECT day_number, AVG(num_compounds_sold) AS PromCompuestosVendidos, AVG(num_elements_purchased) AS PromElementos, AVG(customers_rejected) AS PromClientesRechazados FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id WHERE auth_user.username = "+ uu+ " GROUP BY day_number;"
 
         #inidicadores por nivel, Nivel vs (compuestos, elementos, clientes)
 
-
-        #SELECT ''''' FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id
         cursor.execute(myQuery)
         cursor2.execute(myQuery2)
         cursor3.execute(myQuery3)
@@ -194,26 +191,7 @@ def mi_estadistica(request):
 
 def stem(request):
     return render(request, 'stem.html')
-'''
-def scatter(request):
 
-    data = []
-    data.append(['num_compounds_made', 'num_compounds_sold'])
-
-    resultados= Day.objects.all()
-    titulo ='compounds made vs sold'
-    titulo_formato = dumps(titulo)
-    if len(resultados)>0:
-        for registro in resultados:
-            nombre = registro.num_compounds_made
-            minutos = registro.num_compounds_sold
-            data.append([nombre, minutos])
-        print (data)
-        data_formato=dumps(data) #formatear los datos en string para json
-        return render(request, 'scatter.html', {'losDatos':data_formato}) # scatter.html
-    else:
-        return HttpResponse("<h1>No hay registros </h1>")
-'''
 
 @csrf_exempt
 def SendLoginData(request):
