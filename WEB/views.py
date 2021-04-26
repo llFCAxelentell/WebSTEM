@@ -104,9 +104,9 @@ def mi_estadistica(request):
 
         #Compuestos vendidos vs Elementos Comprados
         myQuery9="SELECT num_compounds_sold, num_elements_purchased FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id WHERE auth_user.username = "+ uu+ ";"
-        
+
         myQuery10 ="SELECT day_number, AVG(num_compounds_sold) AS PromCompuestosVendidos, AVG(num_elements_purchased) AS PromElementos, AVG(customers_rejected) AS PromClientesRechazados FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id WHERE auth_user.username = "+ uu+ " GROUP BY day_number;"
-        
+
         #inidicadores por nivel, Nivel vs (compuestos, elementos, clientes)
 
 
@@ -156,7 +156,7 @@ def mi_estadistica(request):
         for roww in rows9:
             data9.append([roww[0], roww[1]])
         data9_formato = dumps(data9)
-        
+
         for rowww in rows10:
             data10.append([rowww[0], int(rowww[1]), int(rowww[2]/10), int(rowww[3])])
         data10_formato = dumps(data10)
@@ -464,7 +464,7 @@ def estadistica(request):
 
         data_formato= dumps(data)
 
-
+        elJson = {'losDatos':data_formato,'losDatos2':data2_formato, 'losDatos4':data4_formato, 'losDatos3':data3_formato, 'losDatos5':data5_formato, 'losDatos6':data6_formato, 'losDatos7':data7_formato, 'minutosTotales':str(round(minutosTotales, 2)) ,'promTemp':str(round(promTemp, 2)), 'maxTiempo':str(round(maxTiempo, 2)), 'minTiempo':str(round(minTiempo, 2))}
     #Handle the error throws by the command that is useful when using python while working with PostgreSQL
     except(Exception, psycopg2.Error) as error:
         print("Error connecting to PostgreSQL database", error)
@@ -477,4 +477,4 @@ def estadistica(request):
             connection.close()
             #print("PostgreSQL connection is now closed")
 
-    return render(request, 'estadistica.html', {'losDatos':data_formato,'losDatos2':data2_formato, 'losDatos4':data4_formato, 'losDatos3':data3_formato, 'losDatos5':data5_formato, 'losDatos6':data6_formato, 'losDatos7':data7_formato, 'minutosTotales':str(round(minutosTotales, 2)) ,'promTemp':str(round(promTemp, 2)), 'maxTiempo':str(round(maxTiempo, 2)), 'minTiempo':str(round(minTiempo, 2))})
+    return render(request, 'estadistica.html', elJson)
