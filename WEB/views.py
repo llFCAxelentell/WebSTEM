@@ -393,17 +393,18 @@ def estadistica(request):
 
         cursor = connection.cursor()
         cursor2 = connection.cursor()
+        '''
         cursor3 = connection.cursor()
         cursor4 = connection.cursor()
         cursor5 = connection.cursor()
         cursor6 = connection.cursor()
         cursor7 = connection.cursor()
-
+        '''
 
         #Tiempo jugado vs compuestos hechos
         cursor.execute("SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 AS TiempoSesion FROM \"WEB_sesion\";")
         cursor2.execute("SELECT SUM(num_compounds_made) FROM \"WEB_day\" INNER JOIN \"WEB_try\" ON \"WEB_day\".try_id_id=\"WEB_try\".id INNER JOIN \"WEB_sesion\" ON \"WEB_try\".session_id_id= \"WEB_sesion\".id GROUP BY \"WEB_try\".session_id_id;")
-
+        '''
         #Nivel vs (compuestos, elementos, clientes, dinero)
         #la gigante
         cursor3.execute("SELECT day_number, AVG(num_compounds_sold) AS PromCompuestosVendidos, AVG(num_elements_purchased) AS PromElementos, AVG(customers_rejected) AS PromClientesRechazados FROM \"WEB_day\" GROUP BY day_number;") #
@@ -419,14 +420,16 @@ def estadistica(request):
 
         #genero
         cursor7.execute("SELECT gender, count(id)  FROM \"WEB_usuario\" GROUP BY gender;")
-
+        '''
         rows = cursor.fetchall()
         rows2= cursor2.fetchall()
+        '''
         rows3= cursor3.fetchall()
         rows4= cursor4.fetchall()
         rows5= cursor5.fetchall()
         rows6= cursor6.fetchall()
         rows7= cursor7.fetchall()
+        '''
 
         ota= []
         ota2=[]
@@ -434,7 +437,7 @@ def estadistica(request):
             ota.append(row[0])
         for rowe in rows2:
             ota2.append(rowe[0])
-
+            '''
         for roweee in rows3:
             data3.append([int(roweee[0]), int(roweee[1]), int(roweee[2])/10, int(roweee[3])])
 
@@ -458,14 +461,14 @@ def estadistica(request):
             data7.append([rowaa[0],rowaa[1]])
         data7_formato= dumps(data7)
 
-
+        '''
         for i in range(len(ota)):
             data.append([ota[i], ota2[i]])
 
         data_formato= dumps(data)
-
-        elJson = {'losDatos':data_formato,'losDatos2':data2_formato, 'losDatos4':data4_formato, 'losDatos3':data3_formato, 'losDatos5':data5_formato, 'losDatos6':data6_formato, 'losDatos7':data7_formato, 'minutosTotales':str(round(minutosTotales, 2)) ,'promTemp':str(round(promTemp, 2)), 'maxTiempo':str(round(maxTiempo, 2)), 'minTiempo':str(round(minTiempo, 2))}
+        #'losDatos2':data2_formato, 'losDatos4':data4_formato, 'losDatos3':data3_formato, 'losDatos5':data5_formato, 'losDatos6':data6_formato, 'losDatos7':data7_formato, 'minutosTotales':str(round(minutosTotales, 2)) ,'promTemp':str(round(promTemp, 2)), 'maxTiempo':str(round(maxTiempo, 2)), 'minTiempo':str(round(minTiempo, 2))}
     #Handle the error throws by the command that is useful when using python while working with PostgreSQL
+        elJson = {'losDatos':data_formato}
     except(Exception, psycopg2.Error) as error:
         print("Error connecting to PostgreSQL database", error)
         connection = None
