@@ -462,9 +462,6 @@ def estadistica(request):
             data6.append([contador, roowe[0], int(roowe[1]) ])
             contador = contador+1
         data6_formato= dumps(data6)
-        print(data6[0][1])
-        print(data6[1][1])
-        print(data6[2][1])
 
 
         for rowaa in rows7:
