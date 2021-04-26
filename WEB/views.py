@@ -142,7 +142,7 @@ def mi_estadistica(request):
         if len(rows8)>0:
             for tt in rows8:
                 data8.append([tt[0],tt[1]])
-            data8_formato=dumps(data8)
+            print(data8)
         else:
             return render(request, 'sinRegistros.html', {'nombre':uuu})
 
