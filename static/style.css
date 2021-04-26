@@ -378,8 +378,8 @@ div.uno {
    width: 100%;
   height: 100%;
   animation-name: cambio;
-  animation-duration: 3s;
-  animation-delay: 2s;
+  animation-duration: 2s;
+  animation-delay: 1s;
   animation-iteration-count: infinite;
 }
 
@@ -387,8 +387,8 @@ div.dos {
    width: 100%;
   height: 100%;
   animation-name: cambio;
-  animation-duration: 3s;
-  animation-delay: 5s;
+  animation-duration: 2s;
+  animation-delay: 3s;
   animation-iteration-count: infinite;
 }
 
@@ -396,8 +396,8 @@ div.tres {
    width: 100%;
   height: 100%;
   animation-name: cambio;
-  animation-duration: 3s;
-  animation-delay: 8s;
+  animation-duration: 2s;
+  animation-delay: 5s;
   animation-iteration-count: infinite;
 }
 
@@ -405,8 +405,8 @@ div.cuatro {
    width: 100%;
   height: 100%;
   animation-name: cambio;
-  animation-duration: 3s;
-  animation-delay: 11s;
+  animation-duration: 2s;
+  animation-delay: 7s;
   animation-iteration-count: infinite;
 }
 
@@ -414,8 +414,8 @@ div.cinco {
    width: 100%;
   height: 100%;
   animation-name: cambio;
-  animation-duration: 3s;
-  animation-delay: 14s;
+  animation-duration: 2s;
+  animation-delay: 9s;
   animation-iteration-count: infinite;
 }
 
