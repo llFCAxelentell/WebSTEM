@@ -51,6 +51,12 @@
     <div>
         <h3>¿Te encuentras dentro de los mejores? </h3>
     </div>
+    
+    <h1 class = "p"><img src="{%static 'copa.png'%}" alt="decorativo" width="60" height="60">Hola<img src="{%static 'copa.png'%}" alt="decorativo" width="60" height="60"></h1>
+        <div class="first-place">1: Hola</div>
+        <div class="second-place">2: Foundtexas777</div>
+        <div class="third-place">3:Cr7</div>
+    
     <!--Prueba Leaderboard-->
             <script type="text/javascript">
                 google.charts.load('current', {
@@ -120,9 +126,8 @@
                 var data = google.visualization.arrayToDataTable({{losDatos5 | safe}});
 
                 var options = {
-                    chart: {
                     title: 'Promedio de éxito por nivel',
-                    subtitle: 'Visualización de éxito en los jugadores'},
+                    subtitle: 'Visualización de éxito en los jugadores',
                     vAxis: {
                         title: 'Promedio de éxito'
                     },
