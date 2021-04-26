@@ -464,6 +464,8 @@ def estadistica(request):
 
         '''
         print(466)
+        print(ota)
+        print(ota2)
         for i in range(len(ota)):
             data.append([ota[i], ota2[i]])
 
