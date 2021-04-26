@@ -139,6 +139,7 @@ def mi_estadistica(request):
         print(rows8)
 
         print(rows6)
+
         if len(rows8)>0:
             for tt in rows8:
                 data8.append([tt[0],tt[1]])
@@ -175,6 +176,7 @@ def mi_estadistica(request):
         for rowww in rows10:
             data10.append([rowww[0], int(rowww[1]), int(rowww[2]/10), int(rowww[3])])
         data10_formato = dumps(data10)
+        #'tiempoTot':rows[0][0], 'tiempoProm':str(round(rows2[0][0], 2)), 'tiempoMin':rows3[0][0], 'tiempoMax':rows4[0][0], 'nivelMax':rows5[0][0],'datos6':data6_formato, 'datos7':data7_formato, 'datos9':data9_formato, 'datos10':data10_formato})
 
     except(Exception, psycopg2.Error) as error:
         print("Error connecting to PostgreSQL database", error)
@@ -185,7 +187,7 @@ def mi_estadistica(request):
             cursor.close()
             connection.close()
 
-    return render(request, 'mi_estadistica.html', {'nombre':uuu,'tiempoTot':rows[0][0], 'tiempoProm':str(round(rows2[0][0], 2)), 'tiempoMin':rows3[0][0], 'tiempoMax':rows4[0][0], 'nivelMax':rows5[0][0],'datos6':data6_formato, 'datos7':data7_formato, 'datos9':data9_formato, 'datos10':data10_formato})
+    return render(request, 'mi_estadistica.html', {'nombre':uuu})
 
 
 def stem(request):
