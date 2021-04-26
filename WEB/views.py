@@ -393,6 +393,7 @@ def estadistica(request):
         print(393)
         cursor = connection.cursor()
         cursor2 = connection.cursor()
+        cursor8 = connection.cursor()
         '''
         cursor3 = connection.cursor()
         cursor4 = connection.cursor()
@@ -405,6 +406,8 @@ def estadistica(request):
         cursor.execute("SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 AS TiempoSesion FROM \"WEB_sesion\";")
         cursor2.execute("SELECT SUM(num_compounds_made) FROM \"WEB_day\" INNER JOIN \"WEB_try\" ON \"WEB_day\".try_id_id=\"WEB_try\".id INNER JOIN \"WEB_sesion\" ON \"WEB_try\".session_id_id= \"WEB_sesion\".id GROUP BY \"WEB_try\".session_id_id;")
         print(407)
+
+        cursor8.execute("SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 AS TiempoSesion, SUM(num_compounds_made) AS SumaCompuestos FROM \"WEB_Day\" INNER JOIN \"WEB_Try\" ON \"WEB_day\".try_id=\"WEB_try\".id INNER JOIN \"WEB_sesion\" ON \"WEB_try\".session_id= \"WEB_sesion\".id INNER JOIN \"WEB_usuario\" ON \"WEB_sesion\".user_id_id= \"WEB_usuario\".id INNER JOIN auth_user ON \"WEB_usuario\".id = auth_user.id GROUP BY session_id ORDER BY TiempoSesion ASC;")
         '''
         #Nivel vs (compuestos, elementos, clientes, dinero)
         #la gigante
@@ -424,6 +427,7 @@ def estadistica(request):
         '''
         rows = cursor.fetchall()
         rows2= cursor2.fetchall()
+        rows8= cursor8.fetchall()
         '''
         rows3= cursor3.fetchall()
         rows4= cursor4.fetchall()
@@ -431,6 +435,7 @@ def estadistica(request):
         rows6= cursor6.fetchall()
         rows7= cursor7.fetchall()
         '''
+        print(rows8)
         print(434)
         ota= []
         ota2=[]
@@ -466,10 +471,12 @@ def estadistica(request):
         print(466)
         print(ota)
         print(ota2)
+        '''
         for i in range(len(ota)):
             data.append([ota[i], ota2[i]])
 
         data_formato= dumps(data)
+        '''
         #'losDatos2':data2_formato, 'losDatos4':data4_formato, 'losDatos3':data3_formato, 'losDatos5':data5_formato, 'losDatos6':data6_formato, 'losDatos7':data7_formato, 'minutosTotales':str(round(minutosTotales, 2)) ,'promTemp':str(round(promTemp, 2)), 'maxTiempo':str(round(maxTiempo, 2)), 'minTiempo':str(round(minTiempo, 2))}
     #Handle the error throws by the command that is useful when using python while working with PostgreSQL
         elJson = {'losDatos':data_formato}
