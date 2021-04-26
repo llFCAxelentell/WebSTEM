@@ -379,36 +379,40 @@ def estadistica(request):
             database = "medchembd"
         )
 
-        data= []
+        data8= []
         data3 =[]
         data4= []
         data5=[]
         data6 = []
         data7= []
-        data.append(['Tiempo', 'Compuestos hechos'])
+        data8.append(['Tiempo', 'Compuestos hechos'])
         data3.append(['Nivel','Compuestos','Elementos', 'Clientes'])
         data4.append(['Edad', 'Tiempo'])
         data5.append(['Dia ', 'Exito'])
         data7.append(['Genero','Numero'])
         print(393)
+        '''
         cursor = connection.cursor()
         cursor2 = connection.cursor()
-        cursor8 = connection.cursor()
         '''
+        cursor8 = connection.cursor()
+
         cursor3 = connection.cursor()
         cursor4 = connection.cursor()
         cursor5 = connection.cursor()
         cursor6 = connection.cursor()
         cursor7 = connection.cursor()
-        '''
+
 
         #Tiempo jugado vs compuestos hechos
+        '''
         cursor.execute("SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 AS TiempoSesion FROM \"WEB_sesion\";")
         cursor2.execute("SELECT SUM(num_compounds_made) FROM \"WEB_day\" INNER JOIN \"WEB_try\" ON \"WEB_day\".try_id_id=\"WEB_try\".id INNER JOIN \"WEB_sesion\" ON \"WEB_try\".session_id_id= \"WEB_sesion\".id GROUP BY \"WEB_try\".session_id_id;")
         print(407)
+        '''
 
         cursor8.execute("SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 AS TiempoSesion, SUM(num_compounds_made) AS SumaCompuestos FROM \"WEB_day\" INNER JOIN \"WEB_try\" ON \"WEB_day\".try_id_id=\"WEB_try\".id INNER JOIN \"WEB_sesion\" ON \"WEB_try\".session_id_id= \"WEB_sesion\".id INNER JOIN \"WEB_usuario\" ON \"WEB_sesion\".user_id_id= \"WEB_usuario\".id INNER JOIN auth_user ON \"WEB_usuario\".id = auth_user.id GROUP BY \"WEB_sesion\".ended, \"WEB_sesion\".started ORDER BY TiempoSesion ASC;")
-        '''
+
         #Nivel vs (compuestos, elementos, clientes, dinero)
         #la gigante
         cursor3.execute("SELECT day_number, AVG(num_compounds_sold) AS PromCompuestosVendidos, AVG(num_elements_purchased) AS PromElementos, AVG(customers_rejected) AS PromClientesRechazados FROM \"WEB_day\" GROUP BY day_number;") #
@@ -427,8 +431,9 @@ def estadistica(request):
         '''
         rows = cursor.fetchall()
         rows2= cursor2.fetchall()
-        rows8= cursor8.fetchall()
         '''
+        rows8= cursor8.fetchall()
+
         rows3= cursor3.fetchall()
         rows4= cursor4.fetchall()
         rows5= cursor5.fetchall()
@@ -467,10 +472,11 @@ def estadistica(request):
             data7.append([rowaa[0],rowaa[1]])
         data7_formato= dumps(data7)
 
-        '''
-        print(466)
-        print(ota)
-        print(ota2)
+        for rowaar in rows8:
+            data8.append([rowaar[0],rowaar[1]])
+        data8_formato= dumps(data8)
+
+
         '''
         for i in range(len(ota)):
             data.append([ota[i], ota2[i]])
@@ -491,4 +497,4 @@ def estadistica(request):
             connection.close()
             #print("PostgreSQL connection is now closed")
 
-    return render(request, 'estadistica.html', {'losDatos':data_formato})
+    return render(request, 'estadistica.html', {'losDatos':data8_formato})
