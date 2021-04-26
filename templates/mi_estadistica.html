@@ -43,11 +43,14 @@
         <div class = "cuatro"><p>Maximo de tiempo es: {{tiempoMax}} min</p></div>
         <div class = "cinco"><p>Nivel maximo alcanzado es: {{nivelMax}}</p></div>
     </div>
-    <br><br>
+    <br>
+    
     <div class = "fecha">
+        <br>
         <p>Última Sesión</p>
-        <p>{{finSes}}</p>
-        <p>{{inicioSes}}</p>
+        <p>Inicio: {{inicioSes}}</p>
+        <p>Fin: {{finSes}}</p>
+        <br>
     </div>
 
     <div class="grid-container8">
@@ -56,27 +59,31 @@
             google.charts.load('current', {
                 'packages': ['corechart']
             });
-            google.charts.setOnLoadCallback(drawChart);
+            google.charts.setOnLoadCallback(drawVisualization);
 
-            function drawChart() {
-                var data = google.visualization.arrayToDataTable({{datos9|safe}});
+            function drawVisualization() {
+                // Some raw data (not necessarily accurate)
+                var data = google.visualization.arrayToDataTable({{datos6 | safe}});
 
                 var options = {
-                    title: 'Compuestos vs Elementos',
-                    hAxis: {
-                        title: 'Compuestos'
-                    },
+                    title: 'Porcentaje de exito vs Nivel',
                     vAxis: {
-                        title: 'Elementos'
+                        title: 'Éxito'
                     },
-                    legend: 'none'
+                    hAxis: {
+                        title: 'Nivel'
+                    },
+                    seriesType: 'bars',
+
                 };
-                var chart = new google.visualization.ScatterChart(document.getElementById('chart_1'));
+
+                var chart = new google.visualization.ComboChart(document.getElementById('chart_3'));
                 chart.draw(data, options);
             }
+
         </script>
 
-    <div id="chart_1" style="width: 650px; height: 400px;"></div>
+    <div id="chart_3" style="width: 650px; height: 400px;"></div>
 
     <!--Prueba Grafica2 -->
         <script type="text/javascript">
@@ -111,36 +118,32 @@
 
     <div class="grid-container8">
     <!--Prueba Grafica 3-->
-    <script type="text/javascript">
+        <script type="text/javascript">
             google.charts.load('current', {
                 'packages': ['corechart']
             });
-            google.charts.setOnLoadCallback(drawVisualization);
+            google.charts.setOnLoadCallback(drawChart);
 
-            function drawVisualization() {
-                // Some raw data (not necessarily accurate)
-                var data = google.visualization.arrayToDataTable({{datos6 | safe}});
+            function drawChart() {
+                var data = google.visualization.arrayToDataTable({{datos9|safe}});
 
                 var options = {
-                    title: 'Porcentaje de exito vs Nivel',
-                    vAxis: {
-                        title: 'Éxito'
-                    },
+                    title: 'Compuestos vs Elementos',
                     hAxis: {
-                        title: 'Nivel'
+                        title: 'Compuestos'
                     },
-                    seriesType: 'bars',
-
+                    vAxis: {
+                        title: 'Elementos'
+                    },
+                    legend: 'none'
                 };
-
-                var chart = new google.visualization.ComboChart(document.getElementById('chart_3'));
+                var chart = new google.visualization.ScatterChart(document.getElementById('chart_1'));
                 chart.draw(data, options);
             }
-
         </script>
 
-    <div id="chart_3" style="width: 650px; height: 400px;"></div>
-
+    <div id="chart_1" style="width: 650px; height: 400px;"></div> 
+      
     <!--Prueba Grafica4 -->
        <script type="text/javascript">
             google.charts.load('current', {
