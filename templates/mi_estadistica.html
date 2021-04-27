@@ -27,14 +27,8 @@
             <li><a href="http://40.124.40.241:8000/stem.html">STEM</a></li>
         </ul>
     </div>
-
-
-
-
-
-
-
-    <h3>Hola {{nombre}}, aquí están tus estadísticas </h1>
+    
+    <h3>Bienvenido {{nombre}}, a continuación podrás visualizar tus estadísticas de Medieval Chemist</h3>
 
     <div class="grid-container11">
         <div class = "uno"><p>Has jugado: {{tiempoTot}} min</p></div>
@@ -54,7 +48,7 @@
     </div>
 
     <div class="grid-container8">
-    <!--Prueba Grafica 1-->
+    <!--Grafica 1-->
         <script type="text/javascript">
             google.charts.load('current', {
                 'packages': ['corechart']
@@ -62,7 +56,6 @@
             google.charts.setOnLoadCallback(drawVisualization);
 
             function drawVisualization() {
-                // Some raw data (not necessarily accurate)
                 var data = google.visualization.arrayToDataTable({{datos6 | safe}});
 
                 var options = {
@@ -85,7 +78,7 @@
 
     <div id="chart_3" style="width: 650px; height: 400px;"></div>
 
-    <!--Prueba Grafica2 -->
+    <!--Grafica2 -->
         <script type="text/javascript">
             google.charts.load('current', {
                 'packages': ['corechart']
@@ -117,7 +110,7 @@
 </div>
 
     <div class="grid-container8">
-    <!--Prueba Grafica 3-->
+    <!--Grafica 3-->
         <script type="text/javascript">
             google.charts.load('current', {
                 'packages': ['corechart']
@@ -144,7 +137,7 @@
 
     <div id="chart_1" style="width: 650px; height: 400px;"></div> 
       
-    <!--Prueba Grafica4 -->
+    <!--Grafica 4 -->
        <script type="text/javascript">
             google.charts.load('current', {
                 'packages': ['corechart']
@@ -177,9 +170,9 @@
 
 </div>
 <br> <br>
-    <div>
+<div>
     <li class = "b"><a href="http://40.124.40.241:8000/accounts/logout/"><p class = "salir">Salir de la cuenta</p></a></li>
-    </div>
+</div>
 
 
 
