@@ -122,7 +122,7 @@
 
             function drawVisualization() {
                 // Some raw data (not necessarily accurate)
-                var data = google.visualization.arrayToDataTable({{losDatos5 | safe}});
+                var data = google.visualization.arrayToDataTable({{losDatos5 | safe}}, { role: 'annotation' });
 
                 var options = {
                     title: 'Promedio de éxito por nivel',
