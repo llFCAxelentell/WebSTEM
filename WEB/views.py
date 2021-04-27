@@ -215,8 +215,6 @@ def SendLoginData(request):
     else:
         return HttpResponse(-1)
 
-
-#Listo, solo que ahora no recivo el started, solo el id del usuario
 @csrf_exempt
 def StartSession(request):
 
@@ -231,8 +229,6 @@ def StartSession(request):
 
     return HttpResponse(p.id)
 
-
-#Listo
 @csrf_exempt
 def AddTry(request):
 
@@ -247,8 +243,6 @@ def AddTry(request):
 
     return HttpResponse(s.id)
 
-
-#Listo
 @csrf_exempt
 def AddDay(request):
     body_unicode = request.body.decode('utf-8')
@@ -268,7 +262,6 @@ def AddDay(request):
 
     return HttpResponse("okAddDay")
 
-#Listo
 @csrf_exempt
 def UpdateTry(request):
     body_unicode = request.body.decode('utf-8')
@@ -282,7 +275,6 @@ def UpdateTry(request):
     a.save()
     return HttpResponse("okUpdateTry")
 
-#listo, solo recibo el id, el ended ya no
 @csrf_exempt
 def UpdateSession(request):
     body_unicode = request.body.decode('utf-8')
@@ -297,8 +289,6 @@ def UpdateSession(request):
 
     return HttpResponse("okUpdateSession")
 
-
-#listo
 @csrf_exempt
 def minutosJugadosTotales(request):
         tiempo=0
@@ -313,7 +303,6 @@ def minutosJugadosTotales(request):
 
         return HttpResponse(minutosTotales)
 
-
 @csrf_exempt
 def minutosJugadosPromedio(request):
         tiempo=0
@@ -327,11 +316,6 @@ def minutosJugadosPromedio(request):
             minutosTotales += minutes
         prom =minutosTotales/len(star)
         return HttpResponse(prom)
-
-
-
-
-
 
 @csrf_exempt
 def estadistica(request):
@@ -378,7 +362,6 @@ def estadistica(request):
             port = "5432",
             database = "medchembd"
         )
-
         data8= []
         data3 =[]
         data4= []
@@ -416,7 +399,7 @@ def estadistica(request):
         #Top five de scores
         cursor6.execute("SELECT auth_user.username, (AVG(money_generated_day)*MAX(day_number)) AS Score FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id GROUP BY username ORDER BY Score DESC LIMIT 5 ;")
 
-        #genero
+        #Genero
         cursor7.execute("SELECT gender, count(id)  FROM \"WEB_usuario\" GROUP BY gender;")
 
         rows8= cursor8.fetchall()

@@ -16,8 +16,6 @@ urlpatterns = [
     path('UpdateSession',views.UpdateSession, name='UpdateSession'),
     path('minutosJugadosTotales',views.minutosJugadosTotales, name='minutosJugadosTotales'),
     path('minutosJugadosPromedio',views.minutosJugadosPromedio, name='minutosJugadosPromedio'),
-    
-
     #path('scatter',views.scatter, name='scatter'),
     #path('minutosTotales',views.minutosTotales, name='minutosTotales'),
     path('formulario',views.formulario, name='formulario'),
