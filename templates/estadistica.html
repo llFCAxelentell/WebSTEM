@@ -165,7 +165,8 @@
                     vAxis: {
                         title: 'Número de compuestos hechos'
                     },
-                    legend: 'none'
+                    legend: 'none',
+                    crosshair: { trigger: 'both' }
                 };
                 var chart = new google.visualization.ScatterChart(document.getElementById('chart_TvC'));
                 chart.draw(data, options);
@@ -192,7 +193,8 @@
                     vAxis: {
                         title: 'Número de compuestos vendidos'
                     },
-                    legend: 'none'
+                    legend: 'none',
+                    crosshair: { trigger: 'both' }
                 };
 
                 var chart = new google.visualization.ScatterChart(document.getElementById('chart_CvE'));

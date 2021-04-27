@@ -96,7 +96,8 @@
                     vAxis: {
                         title: 'Compuestos hechos'
                     },
-                    legend: 'none'
+                    legend: 'none',
+                    crosshair: { trigger: 'both' }
                 };
 
                 var chart = new google.visualization.ScatterChart(document.getElementById('chart_2'));
@@ -128,7 +129,8 @@
                     vAxis: {
                         title: 'Elementos'
                     },
-                    legend: 'none'
+                    legend: 'none',
+                    crosshair: { trigger: 'both' }
                 };
                 var chart = new google.visualization.ScatterChart(document.getElementById('chart_1'));
                 chart.draw(data, options);
