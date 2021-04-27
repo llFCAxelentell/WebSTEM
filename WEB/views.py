@@ -72,11 +72,12 @@ def mi_estadistica(request):
         data7=[]
         data9=[]
         data8=[]
+        dat8=[]
         data10=[]
-        data6.append(['nivel', 'exito'])
-        data7.append(['tiempo', 'compuestos'])
-        data9.append(['compuestos', 'elementos'])
-        data10.append(['nivel', 'compuestos', 'elementos', 'clientes'])
+        data6.append(['Nivel', 'Exito'])
+        data7.append(['Tiempo', 'Compuestos'])
+        data9.append(['Compuestos', 'Elementos'])
+        data10.append(['Nivel', 'Compuestos', 'Elementos', 'Clientes'])
 
         cursor = connection.cursor()
         cursor2 = connection.cursor()
@@ -102,16 +103,14 @@ def mi_estadistica(request):
         #tiempo jugado vs compuestos hechos
         myQuery7="SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 AS TiempoSesion, SUM(num_compounds_made) AS SumaCompuestos FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id WHERE auth_user.username = "+ uu+ "GROUP BY \"WEB_sesion\".id;"
 
-        #
+        #última sesión de ususario
         myQuery8="SELECT ended::timestamp, started::timestamp FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id WHERE auth_user.username = "+ uu+ ";"
 
         #Compuestos vendidos vs Elementos Comprados
         myQuery9="SELECT num_compounds_sold, num_elements_purchased FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id WHERE auth_user.username = "+ uu+ ";"
 
-        #
-        myQuery10 ="SELECT day_number, AVG(num_compounds_sold) AS PromCompuestosVendidos, AVG(num_elements_purchased) AS PromElementos, AVG(customers_rejected) AS PromClientesRechazados FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id WHERE auth_user.username = "+ uu+ " GROUP BY day_number;"
-
         #inidicadores por nivel, Nivel vs (compuestos, elementos, clientes)
+        myQuery10 ="SELECT day_number, AVG(num_compounds_sold) AS PromCompuestosVendidos, AVG(num_elements_purchased) AS PromElementos, AVG(customers_rejected) AS PromClientesRechazados FROM auth_user INNER JOIN \"WEB_usuario\" ON auth_user.id= \"WEB_usuario\".username_id INNER JOIN \"WEB_sesion\" ON \"WEB_usuario\".id =\"WEB_sesion\".user_id_id INNER JOIN \"WEB_try\" ON \"WEB_try\".session_id_id = \"WEB_sesion\".id INNER JOIN \"WEB_day\" ON \"WEB_try\".id =\"WEB_day\".try_id_id WHERE auth_user.username = "+ uu+ " GROUP BY day_number;"
 
         cursor.execute(myQuery)
         cursor2.execute(myQuery2)
@@ -135,17 +134,13 @@ def mi_estadistica(request):
         rows9 = cursor9.fetchall()
         rows10 = cursor10.fetchall()
 
-        dat8=[]
         if len(rows6)>0:
             for tt in rows8:
                 data8.append([tt[0]])
                 dat8.append([tt[1]])
 
             finSes= np.max(data8)- timedelta(hours=5)
-
-            print(finSes)
             inicioSes= np.max(dat8)- timedelta(hours=5)
-            print(inicioSes)
         else:
             return render(request, 'sinRegistros.html', {'nombre':uuu})
 
@@ -155,18 +150,7 @@ def mi_estadistica(request):
             data6_formato = dumps(data6)
         else:
             return render(request, 'sinRegistros.html', {'nombre':uuu})
-            '''
-        ota= []
-        ota2=[]
-        for row in rows7:
-            ota.append(row[0])
-        for rowe in rows8:
-            ota2.append(rowe[0])
 
-        for i in range(len(ota)):
-            data7.append([ota[i], ota2[i]])
-        data7_formato= dumps(data7)
-        '''
         for ee in rows7:
             data7.append([ee[0],ee[1]])
         data7_formato = dumps(data7)
@@ -197,15 +181,13 @@ def stem(request):
 
 @csrf_exempt
 def SendLoginData(request):
-
     body_unicode = request.body.decode('utf-8')
     body = loads(body_unicode)
-
     jugador_nombre = body['data_a']
     jugador_pass = body['data_b']
 
     jugador_o  = User.objects.filter(username=jugador_nombre)
-    jugador_objeto = Usuario.objects.filter(username=jugador_o[0].id)#select * from Reto where nombre = jugador_nombre
+    jugador_objeto = Usuario.objects.filter(username=jugador_o[0].id)
 
     passBD = jugador_objeto[0].password
     idBD = jugador_objeto[0].id
@@ -217,7 +199,6 @@ def SendLoginData(request):
 
 @csrf_exempt
 def StartSession(request):
-
     body_unicode = request.body.decode('utf-8')
     body = loads(body_unicode)
 
@@ -231,10 +212,8 @@ def StartSession(request):
 
 @csrf_exempt
 def AddTry(request):
-
     body_unicode = request.body.decode('utf-8')
     body = loads(body_unicode)
-
     session_id = body['session_id']
     try_num = body['try_num']
 
@@ -321,8 +300,6 @@ def minutosJugadosPromedio(request):
 def estadistica(request):
 
     try:
-        global connection
-        #################################
         #Minutos jugados totales
         #Duración promedio de sesión
         #Tiempo máximo de juego por sesión
@@ -341,20 +318,17 @@ def estadistica(request):
         maxTiempo = np.max(tiempos)
         minTiempo = np.min(tiempos)
         promTemp =minutosTotales/len(star)
-        print(360)
-        #################################
 
         #Compuestos vendidos vs elementos comprados
         data2 = []
-        data2.append(['num_elements_purchased', 'num_compounds_sold'])
+        data2.append(['Elementos comprados', 'Compuestos vendidos'])
         resultados= Day.objects.all()
         for registro in resultados:
             nombre = registro.num_elements_purchased
             minutos = registro.num_compounds_sold
             data2.append([nombre, minutos])
         data2_formato=dumps(data2)
-        #############
-        print(373)
+ 
         connection = psycopg2.connect(
             user = "farmaceuticouser",
             password = "LibroVerde23",
@@ -373,7 +347,6 @@ def estadistica(request):
         data4.append(['Edad', 'Tiempo'])
         data5.append(['Dia ', 'Exito'])
         data7.append(['Genero','Numero'])
-        print(393)
 
         cursor8 = connection.cursor()
         cursor3 = connection.cursor()
@@ -387,11 +360,10 @@ def estadistica(request):
         cursor8.execute("SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 AS TiempoSesion, SUM(num_compounds_made) AS SumaCompuestos FROM \"WEB_day\" INNER JOIN \"WEB_try\" ON \"WEB_day\".try_id_id=\"WEB_try\".id INNER JOIN \"WEB_sesion\" ON \"WEB_try\".session_id_id= \"WEB_sesion\".id INNER JOIN \"WEB_usuario\" ON \"WEB_sesion\".user_id_id= \"WEB_usuario\".id INNER JOIN auth_user ON \"WEB_usuario\".id = auth_user.id GROUP BY \"WEB_sesion\".ended, \"WEB_sesion\".started ORDER BY TiempoSesion ASC;")
 
         #Nivel vs (compuestos, elementos, clientes, dinero)
-        #la gigante
-        cursor3.execute("SELECT day_number, AVG(num_compounds_sold) AS PromCompuestosVendidos, AVG(num_elements_purchased) AS PromElementos, AVG(customers_rejected) AS PromClientesRechazados FROM \"WEB_day\" GROUP BY day_number;") #
+        cursor3.execute("SELECT day_number, AVG(num_compounds_sold) AS PromCompuestosVendidos, AVG(num_elements_purchased) AS PromElementos, AVG(customers_rejected) AS PromClientesRechazados FROM \"WEB_day\" GROUP BY day_number;") 
 
         #Edad vs tiempo jugado
-        cursor4.execute("SELECT  DATE_PART('year', CURRENT_DATE::date) - DATE_PART('year', birthdate::date) AS Edad, avg(extract (epoch from (ended::timestamp - started::timestamp))::integer/60) AS Tiempo FROM \"WEB_sesion\" INNER JOIN \"WEB_usuario\" ON \"WEB_sesion\".user_id_id=\"WEB_usuario\".id GROUP BY Edad ;") #
+        cursor4.execute("SELECT  DATE_PART('year', CURRENT_DATE::date) - DATE_PART('year', birthdate::date) AS Edad, avg(extract (epoch from (ended::timestamp - started::timestamp))::integer/60) AS Tiempo FROM \"WEB_sesion\" INNER JOIN \"WEB_usuario\" ON \"WEB_sesion\".user_id_id=\"WEB_usuario\".id GROUP BY Edad ;") 
 
         #Promedio de éxito / fallo por nivel
         cursor5.execute("SELECT day_number, avg(success::int) AS PromedioExito FROM \"WEB_day\" GROUP BY day_number ORDER BY day_number;")
@@ -411,7 +383,6 @@ def estadistica(request):
 
         for roweee in rows3:
             data3.append([int(roweee[0]), int(roweee[1]), int(roweee[2])/10, int(roweee[3])])
-
         data3_formato = dumps(data3)
 
         for rowee in rows4:
@@ -428,7 +399,6 @@ def estadistica(request):
             contador = contador+1
         data6_formato= dumps(data6)
 
-
         for rowaa in rows7:
             data7.append([rowaa[0],rowaa[1]])
         data7_formato= dumps(data7)
@@ -437,20 +407,15 @@ def estadistica(request):
             data8.append([rowaar[0],rowaar[1]])
         data8_formato= dumps(data8)
 
-
-
-        #'losDatos2':data2_formato, 'losDatos4':data4_formato, 'losDatos3':data3_formato, 'losDatos5':data5_formato, 'losDatos6':data6_formato, 'losDatos7':data7_formato, 'minutosTotales':str(round(minutosTotales, 2)) ,'promTemp':str(round(promTemp, 2)), 'maxTiempo':str(round(maxTiempo, 2)), 'minTiempo':str(round(minTiempo, 2))}
         elJson = {'losDatos':data_formato}
 
     except(Exception, psycopg2.Error) as error:
         print("Error connecting to PostgreSQL database", error)
         connection = None
 
-    #Close the database connection
     finally:
         if(connection != None):
             cursor.close()
             connection.close()
-            #print("PostgreSQL connection is now closed")
 
     return render(request, 'estadistica.html', {'losDatos':data8_formato, 'losDatos2':data2_formato, 'losDatos4':data4_formato, 'losDatos3':data3_formato, 'losDatos5':data5_formato, 'losDatos6':data6_formato, 'losDatos7':data7_formato, 'minutosTotales':str(round(minutosTotales, 2)) ,'promTemp':str(round(promTemp, 2)), 'maxTiempo':str(round(maxTiempo, 2)), 'minTiempo':str(round(minTiempo, 2)), 'firstP':data6[0][1], 'secondP': data6[1][1], 'thirdP': data6[2][1]});
