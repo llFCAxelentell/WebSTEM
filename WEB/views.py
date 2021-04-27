@@ -205,7 +205,7 @@ def StartSession(request):
     jugador_user_id = body['user_id']
     jugador_started = body['started']
     ahorita= dt.now()
-    p = Sesion(user_id = Usuario(jugador_user_id), started=ahorita, ended=None)
+    p = Sesion(user_id = Usuario(jugador_user_id), started=ahorita, ended=ahorita)
     p.save()
 
     return HttpResponse(p.id)
@@ -328,7 +328,7 @@ def estadistica(request):
             minutos = registro.num_compounds_sold
             data2.append([nombre, minutos])
         data2_formato=dumps(data2)
- 
+
         connection = psycopg2.connect(
             user = "farmaceuticouser",
             password = "LibroVerde23",
@@ -360,10 +360,10 @@ def estadistica(request):
         cursor8.execute("SELECT extract (epoch from (ended::timestamp - started::timestamp))::integer/60 AS TiempoSesion, SUM(num_compounds_made) AS SumaCompuestos FROM \"WEB_day\" INNER JOIN \"WEB_try\" ON \"WEB_day\".try_id_id=\"WEB_try\".id INNER JOIN \"WEB_sesion\" ON \"WEB_try\".session_id_id= \"WEB_sesion\".id INNER JOIN \"WEB_usuario\" ON \"WEB_sesion\".user_id_id= \"WEB_usuario\".id INNER JOIN auth_user ON \"WEB_usuario\".id = auth_user.id GROUP BY \"WEB_sesion\".ended, \"WEB_sesion\".started ORDER BY TiempoSesion ASC;")
 
         #Nivel vs (compuestos, elementos, clientes, dinero)
-        cursor3.execute("SELECT day_number, AVG(num_compounds_sold) AS PromCompuestosVendidos, AVG(num_elements_purchased) AS PromElementos, AVG(customers_rejected) AS PromClientesRechazados FROM \"WEB_day\" GROUP BY day_number;") 
+        cursor3.execute("SELECT day_number, AVG(num_compounds_sold) AS PromCompuestosVendidos, AVG(num_elements_purchased) AS PromElementos, AVG(customers_rejected) AS PromClientesRechazados FROM \"WEB_day\" GROUP BY day_number;")
 
         #Edad vs tiempo jugado
-        cursor4.execute("SELECT  DATE_PART('year', CURRENT_DATE::date) - DATE_PART('year', birthdate::date) AS Edad, avg(extract (epoch from (ended::timestamp - started::timestamp))::integer/60) AS Tiempo FROM \"WEB_sesion\" INNER JOIN \"WEB_usuario\" ON \"WEB_sesion\".user_id_id=\"WEB_usuario\".id GROUP BY Edad ;") 
+        cursor4.execute("SELECT  DATE_PART('year', CURRENT_DATE::date) - DATE_PART('year', birthdate::date) AS Edad, avg(extract (epoch from (ended::timestamp - started::timestamp))::integer/60) AS Tiempo FROM \"WEB_sesion\" INNER JOIN \"WEB_usuario\" ON \"WEB_sesion\".user_id_id=\"WEB_usuario\".id GROUP BY Edad ;")
 
         #Promedio de éxito / fallo por nivel
         cursor5.execute("SELECT day_number, avg(success::int) AS PromedioExito FROM \"WEB_day\" GROUP BY day_number ORDER BY day_number;")
