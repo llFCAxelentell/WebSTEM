@@ -51,7 +51,6 @@ def juego(request):
 def mi_estadistica(request):
 
     try:
-        global connection
         usuario = request.user
         uuu = str(usuario)
         uu ="\'"+uuu+"\'"
