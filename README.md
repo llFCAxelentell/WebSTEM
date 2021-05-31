@@ -5,7 +5,7 @@ Medieval Chemist is a video game that has the purpose of promoting and developin
 Medieval Chemist is a video game in which the player becomes a sorcerer from the Middle Ages, who must heal people by creating different compounds. The player will have an establishment, where people with different diseases will come in search of a potion. To do this, our character will have to buy the necessary elements to build said potion, which he will sell to the customer for a number of coins. Finally, to pass the level (of days), he will have to pay the rent of the establishment; If you do not have enough money and have a debt of more than a certain amount, the game is over. As the days go by, said income will go up or down in price (it will have a seasonal variation with a trend), in addition to an inflation in the prices of the elements, so the player must be able to properly manage their resources. The data that we will use to analyze is the playing time, the levels passed, the number of compounds made, the number of items purchased and the number of customers served. This in order to measure the interest of users in the video game, and therefore, in topics related to STEM careers. Thus, with the use of these collected indicators, more informed decisions can be made. To conclude, our video game has the same target audience as STEAM, people between 9 and 19 years old, so its classification will be E (everyone).
 
 Authors:
-Yusdivia Molina Román		
-Leonardo Arturo Morales López	
-Rodolfo León Gasca		
+Yusdivia Molina Román,		
+Leonardo Arturo Morales López,	
+Rodolfo León Gasca and 		
 Axel González Carreto		
